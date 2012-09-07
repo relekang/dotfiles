@@ -1,0 +1,6 @@
+*.idea
+*.egg-info
+.*
+*.DS_Store
+*.DS_STORE
+*project.db
