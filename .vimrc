@@ -14,3 +14,8 @@ let g:solarized_termcolors=256
 syntax enable
 set background=dark
 colorscheme solarized
+
+autocmd vimenter *.py NERDTree
+autocmd vimenter *.html NERDTree
+
+let NERDTreeIgnore=['\.vim$', '\~$', '.*\.egg-info', '.*\.pyc$', '.*\project.db$']
