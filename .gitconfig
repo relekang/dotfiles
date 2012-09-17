@@ -1,0 +1,5 @@
+[user]
+	name = Rolf Erik Lekang
+	email = relekang@gmail.com
+[core]
+	excludesfile = /Users/rolf/.gitignore
