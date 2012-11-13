@@ -2,4 +2,4 @@
 	name = Rolf Erik Lekang
 	email = relekang@gmail.com
 [core]
-	excludesfile = /Users/rolf/.gitignore
+	excludesfile = /Users/rolf/dotfiles/.gitignore
