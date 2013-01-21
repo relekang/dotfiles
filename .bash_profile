@@ -16,10 +16,11 @@ alias nginx='/usr/local/Cellar/nginx/1.2.3/sbin/nginx'
 
 alias :severus='ssh severus.mocco.no'
 alias :neville='ssh neville.mocco.no'
-alias :ariana='ssh ariana.mocco.no'
+alias :ariana='ssh lkng.me'
 
 alias :itdagene='ssh itdagene.no'
 
 alias :cass='ssh rolferl@login.samfundet.no'
+alias 'cirkus-tunnel'='ssh -L 5432:cirkus:5432 rolferl@login.samfundet.no'
 
 alias :ntnu='ssh rolferl@caracal.stud.ntnu.no'

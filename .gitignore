@@ -5,3 +5,4 @@
 *.DS_STORE
 *project.db
 bin/
+venv/
