@@ -14,6 +14,10 @@ export LC_TIME="en_US.UTF-8"
 
 alias nginx='/usr/local/Cellar/nginx/1.2.3/sbin/nginx'
 
+
+
+alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+
 alias :severus='ssh severus.mocco.no'
 alias :neville='ssh neville.mocco.no'
 alias :ariana='ssh lkng.me'
@@ -24,3 +28,11 @@ alias :cass='ssh rolferl@login.samfundet.no'
 alias 'cirkus-tunnel'='ssh -L 5432:cirkus:5432 rolferl@login.samfundet.no'
 
 alias :ntnu='ssh rolferl@caracal.stud.ntnu.no'
+
+alias :fs='ssh filtersystem@s8.wservices.ch'
+
+alias irc='mosh neville.mocco.no -- screen -rdU irc'
+alias ::neville='mosh neville.mocco.no'
+alias ::severus='mosh severus.mocco.no'
+alias ::lkng='mosh lkng.me'
+alias ::ntnu='mosh rolferl@caracal.stud.ntnu.no'
