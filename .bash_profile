@@ -20,7 +20,6 @@ alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgree
 
 alias :severus='ssh severus.mocco.no'
 alias :neville='ssh neville.mocco.no'
-alias :ariana='ssh ariana.mocco.no'
 
 alias :itdagene='ssh itdagene.no'
 
@@ -33,5 +32,5 @@ alias :fs='ssh filtersystem@s8.wservices.ch'
 alias irc='mosh neville.mocco.no -- screen -rdU irc'
 alias ::neville='mosh neville.mocco.no'
 alias ::severus='mosh severus.mocco.no'
-alias ::lkng='mosh lkng.me'
+alias ::lkng='mosh q.lkng.me'
 alias ::ntnu='mosh rolferl@caracal.stud.ntnu.no'
