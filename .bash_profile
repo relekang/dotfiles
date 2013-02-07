@@ -25,6 +25,7 @@ alias :itdagene='ssh itdagene.no'
 
 alias :cass='ssh rolferl@login.samfundet.no'
 alias 'cirkus-tunnel'='ssh -L 5432:cirkus:5432 rolferl@login.samfundet.no'
+alias 'jeeves-tunnel'='ssh -L 9000:127.0.0.1:9000 80.212.215.123'
 
 alias :ntnu='ssh rolferl@caracal.stud.ntnu.no'
 
