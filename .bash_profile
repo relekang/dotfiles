@@ -13,6 +13,8 @@ export LC_TIME="en_US.UTF-8"
 
 alias nginx='/usr/local/Cellar/nginx/1.2.3/sbin/nginx'
 
+alias jeeves='cd ~/dev/jeeves/ && venv/bin/python manage.py'
+
 #
 # git
 alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
