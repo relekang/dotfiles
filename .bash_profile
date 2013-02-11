@@ -14,6 +14,7 @@ export LC_TIME="en_US.UTF-8"
 alias nginx='/usr/local/Cellar/nginx/1.2.3/sbin/nginx'
 
 alias jeeves='cd ~/dev/jeeves/ && venv/bin/python manage.py'
+alias jeeves-remote='ssh 80.212.215.123 ~/dev/jeeves/venv/bin/python ~/dev/jeeves/manage.py'
 
 #
 # git
