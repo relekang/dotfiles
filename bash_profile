@@ -17,6 +17,7 @@ alias jeeves='cd ~/dev/jeeves/ && venv/bin/python manage.py'
 alias jeeves-remote='ssh 80.212.215.123 ~/dev/jeeves/venv/bin/python ~/dev/jeeves/manage.py'
 
 alias datafart='curl --data-binary @- datafart.com'
+alias update-pypi-stats='sh ~/dotfiles/update-pypi-stats.sh'
 
 #
 # git
