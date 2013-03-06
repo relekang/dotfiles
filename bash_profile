@@ -19,15 +19,17 @@ alias jeeves-remote='ssh 80.212.215.123 ~/dev/jeeves/venv/bin/python ~/dev/jeeve
 alias datafart='curl --data-binary @- datafart.com'
 alias update-pypi-stats='sh ~/dotfiles/update-pypi-stats.sh'
 
+alias ls='ls -l'
+
 #
 # git
-alias 'git pull'='git pull --rebase'
 alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 alias gc='git commit'
 alias gd='git diff'
 alias go='git checkout'
 alias gb='git branch'
-
+alias gs='git status'
+alias gr='git rebase'
 
 #
 # ssh
