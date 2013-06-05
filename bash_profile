@@ -10,8 +10,13 @@ export LC_MESSAGES="en_US.UTF-8"
 export LC_MONETARY="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
+export HISTFILESIZE=2500
+
+export DJANGO_COLORS="light"
 
 alias nginx='/usr/local/Cellar/nginx/1.2.3/sbin/nginx'
+
+alias readmail='cat /var/mail/rolf'
 
 alias jeeves='cd ~/dev/jeeves/ && venv/bin/python manage.py'
 alias jeeves-remote='ssh 80.212.215.123 ~/dev/jeeves/venv/bin/python ~/dev/jeeves/manage.py'
@@ -26,7 +31,7 @@ alias ls='ls -l'
 alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 alias gc='git commit'
 alias gd='git diff'
-alias go='git checkout'
+alias gch='git checkout'
 alias gb='git branch'
 alias gs='git status'
 alias gr='git rebase'
@@ -39,6 +44,7 @@ alias :neville='ssh neville.mocco.no'
 alias :itdagene='ssh itdagene.no'
 
 alias :cass='ssh rolferl@login.samfundet.no'
+alias :fendrel='ssh 80.212.215.123'
 alias 'cirkus-tunnel'='ssh -L 5432:cirkus:5432 rolferl@login.samfundet.no'
 alias 'jeeves-tunnel'='ssh -L 9000:127.0.0.1:9000 80.212.215.123'
 
