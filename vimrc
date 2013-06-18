@@ -13,7 +13,7 @@ let g:solarized_termcolors=256
 
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme delek
 
 autocmd vimenter *.py NERDTree
 autocmd vimenter *.html NERDTree
