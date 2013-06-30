@@ -1,4 +1,4 @@
-" call pathogen#infect()
+call pathogen#infect()
 
 set t_Co=256
 
@@ -13,9 +13,11 @@ let g:solarized_termcolors=256
 
 syntax enable
 set background=dark
-colorscheme delek
+colorscheme solarized
 
 autocmd vimenter *.py NERDTree
 autocmd vimenter *.html NERDTree
+autocmd vimenter *.pp set filetype=puppet
+au BufRead,BufNewFile *.pp              set filetype=puppet
 
 let NERDTreeIgnore=['\.vim$', '\~$', '.*\.egg-info', '.*\.pyc$', '.*\project.db$']
