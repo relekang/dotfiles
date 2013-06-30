@@ -14,6 +14,9 @@ alias gch='git checkout'
 alias gb='git branch'
 alias gs='git status'
 alias gr='git rebase'
+alias gf='git fetch'
+alias gp='git pull'
+alias gpp='git push'
 
 #
 # ssh
