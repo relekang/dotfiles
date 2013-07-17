@@ -1,9 +1,23 @@
 [user]
-	name = Rolf Erik Lekang
-	email = relekang@gmail.com
+  name = Rolf Erik Lekang
+  email = me@rolflekang.com
+  
 [core]
-	excludesfile = /Users/rolf/dotfiles/gitignore
+  excludesfile = /Users/rolf/dotfiles/gitignore
+  editor = vim
+  
 [github]
-	user = relekang
+  user = relekang
+  
 [ghi]
-	token = 93a7732921ad09a541e90f6a4a8adf65226c4812
+  token = 93a7732921ad09a541e90f6a4a8adf65226c4812
+  
+[alias]
+  :m = checkout master
+  
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
