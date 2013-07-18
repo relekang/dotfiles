@@ -1,0 +1,3 @@
+[submodule "mocco-dotfiles"]
+	path = mocco-dotfiles
+	url = git@github.com:mocco/mocco-dotfiles.git
