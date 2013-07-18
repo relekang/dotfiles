@@ -19,6 +19,10 @@ alias gp='git pull'
 alias gpp='git push'
 
 #
+# vim
+vim='vim -O'
+
+#
 # ssh
 alias :itdagene='ssh itdagene.no'
 
