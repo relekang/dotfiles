@@ -19,10 +19,11 @@ alias gp='git pull'
 alias gpp='git push'
 
 #
-# ssh
-alias :severus='ssh severus.mocco.no'
-alias :neville='ssh neville.mocco.no'
+# vim
+vim='vim -O'
 
+#
+# ssh
 alias :itdagene='ssh itdagene.no'
 
 alias :cass='ssh rolferl@login.samfundet.no'
@@ -36,8 +37,9 @@ alias :fs='ssh filtersystem@s8.wservices.ch'
 
 #
 # mosh
-alias irc='mosh neville.mocco.no -- screen -rdU irc'
-alias ::neville='mosh neville.mocco.no'
-alias ::severus='mosh severus.mocco.no'
 alias ::lkng='mosh q.lkng.me'
 alias ::ntnu='mosh rolferl@caracal.stud.ntnu.no'
+
+if [ -f ~/dotfiles/mocco-dotfiles/bash_aliases ]; then
+    . ~/dotfiles/mocco-dotfiles/bash_aliases
+fi

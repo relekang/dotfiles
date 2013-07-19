@@ -1,0 +1,9 @@
+[submodule "mocco-dotfiles"]
+	path = mocco-dotfiles
+	url = git@github.com:mocco/mocco-dotfiles.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = git@github.com:altercation/vim-colors-solarized.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
