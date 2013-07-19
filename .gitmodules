@@ -7,3 +7,6 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
+[submodule "irssi/gitmodules/irssi-bitlbee-facebook-rename"]
+	path = irssi/gitmodules/irssi-bitlbee-facebook-rename
+	url = git@github.com:avar/irssi-bitlbee-facebook-rename.git
