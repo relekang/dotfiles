@@ -22,6 +22,8 @@ colorscheme solarized
 autocmd vimenter *.py NERDTree
 autocmd vimenter *.html NERDTree
 autocmd vimenter *.pp set filetype=puppet
+autocmd vimenter *.rb set tabstop=2
+autocmd vimenter *.less set tabstop=2
 au BufRead,BufNewFile *.pp              set filetype=puppet
 
 let NERDTreeIgnore=['\.vim$', '\~$', '.*\.egg-info', '.*\.pyc$', '.*\project.db$']
