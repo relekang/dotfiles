@@ -10,3 +10,6 @@
 [submodule "irssi/gitmodules/irssi-bitlbee-facebook-rename"]
 	path = irssi/gitmodules/irssi-bitlbee-facebook-rename
 	url = git@github.com:avar/irssi-bitlbee-facebook-rename.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git

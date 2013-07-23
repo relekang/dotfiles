@@ -10,6 +10,10 @@ set autoindent
 set tabstop=4 shiftwidth=2 expandtab
 
 let g:solarized_termcolors=256
+let g:syntastic_auto_loc_list=1
+let g:syntastic_enable_signs=1
+let g:syntastic_javascript_jslint_conf=""
+
 
 syntax enable
 set background=dark
