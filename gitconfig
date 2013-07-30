@@ -21,3 +21,6 @@
   interactive = auto
   status = auto
   ui = auto
+
+[branch]
+	autosetuprebase = always
