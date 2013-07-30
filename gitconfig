@@ -24,3 +24,6 @@
 
 [branch]
 	autosetuprebase = always
+
+[push]
+    default = simple
