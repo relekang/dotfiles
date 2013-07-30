@@ -16,7 +16,9 @@ alias gs='git status'
 alias gr='git rebase'
 alias gf='git fetch'
 alias gp='git pull'
+alias gpnr='git pull --no-rebase'
 alias gpp='git push'
+alias gap='git add -p'
 
 #
 # vim
