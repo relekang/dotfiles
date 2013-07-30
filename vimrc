@@ -5,6 +5,9 @@ set cc=100
 
 " Linje nummerering
 set number
+
+"Load bashrc to !
+set shellcmdflag=-ic
  
 "Setter på automatisk innrykk og halverer innrykk lengden
 set autoindent
