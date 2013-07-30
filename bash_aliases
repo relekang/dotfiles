@@ -4,7 +4,7 @@ alias jeeves='cd ~/dev/jeeves/ && venv/bin/python manage.py'
 alias jeeves-remote='ssh 80.212.215.123 ~/dev/jeeves/venv/bin/python ~/dev/jeeves/manage.py'
 
 alias ls='ls -l'
-alias hcount='history | awk \'{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}\' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n'
+#alias hcount='history | awk \'{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}\' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n'
 
 #
 # git
@@ -17,7 +17,9 @@ alias gs='git status'
 alias gr='git rebase'
 alias gf='git fetch'
 alias gp='git pull'
+alias gpnr='git pull --no-rebase'
 alias gpp='git push'
+alias gap='git add -p'
 
 #
 # vim
