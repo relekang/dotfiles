@@ -5,18 +5,8 @@ alias ls='ls -l'
 
 #
 # git
+alias "g"="git"
 alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-alias gc='git commit'
-alias gd='git diff'
-alias gch='git checkout'
-alias gb='git branch'
-alias gs='git status'
-alias gr='git rebase'
-alias gf='git fetch'
-alias gp='git pull'
-alias gpnr='git pull --no-rebase'
-alias gpp='git push'
-alias gap='git add -p'
 
 #
 # vim
