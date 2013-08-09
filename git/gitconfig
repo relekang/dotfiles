@@ -1,0 +1,26 @@
+[user]
+  name = Rolf Erik Lekang
+  email = me@rolflekang.com
+  
+[core]
+  excludesfile = /Users/rolf/dotfiles/git/gitignore
+  editor = vim
+  
+[github]
+  user = relekang
+  
+[ghi]
+	token = 93a7732921ad09a541e90f6a4a8adf65226c4812
+
+[help]
+	autocorrect = 1
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+
+[branch]
+	autosetuprebase = always
