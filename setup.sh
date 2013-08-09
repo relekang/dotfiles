@@ -18,6 +18,11 @@ fi
 echo "Cloning vimfiles from github.com/relekang/vimfiles"
 git clone git@github.com:relekang/vimfiles.git
 
+cd vimfiles/
+git submodule init
+git submodule update
+cd ..
+
 rm $HOME/.vim
 ln -s $PWD/vimfiles/vim $HOME/.vim
 echo "Created symbolic link for .vim"
