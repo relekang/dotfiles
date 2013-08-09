@@ -14,3 +14,14 @@ if [[ $OSTYPE == "darwin12" ]]; then
   echo "Setting OS X settings"
   sh osx_defaults.sh
 fi
+
+echo "Cloning vimfiles from github.com/relekang/vimfiles"
+git clone git@github.com:relekang/vimfiles.git
+
+rm $HOME/.vim
+ln -s $PWD/vimfiles/vim $HOME/.vim
+echo "Created symbolic link for .vim"
+
+rm $HOME/.vimrc
+ln -s $PWD/vimfiles/vimrc $HOME/.vimrc
+echo "Created symbolic link for .vimrc"
