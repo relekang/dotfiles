@@ -59,3 +59,5 @@
   sp = stash pop
   ss = stash save
   sw = stash show
+[remote "origin"]
+	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
