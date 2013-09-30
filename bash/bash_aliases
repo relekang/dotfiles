@@ -1,0 +1,17 @@
+alias readmail='cat /var/mail/rolf'
+
+alias ls='ls -l'
+#alias hcount='history | awk \'{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}\' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n'
+
+#
+# git
+alias "g"="git"
+alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+
+#
+# vim
+vim='vim -p'
+
+if [ -f ~/dotfiles/mocco-dotfiles/bash_aliases ]; then
+    . ~/dotfiles/mocco-dotfiles/bash_aliases
+fi

@@ -1,10 +1,9 @@
 # dotfiles
+dotfiles for [@relekang](https://github.com/relekang)
 
 ```shell
 git clone git@github.com:relekang/dotfiles.git
 cd dotfiles
-git submodule init
-git submodule update
 sh setup.sh
 ```
 
