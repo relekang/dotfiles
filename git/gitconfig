@@ -48,6 +48,7 @@
   psu = push -u
   pso = push origin
 
+  st = status
   v = show
   d = diff
   dc = diff --cached
