@@ -14,6 +14,10 @@ alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgree
 # vim
 vim='vim -p'
 
+#
+# sublime
+alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+
 if [ -f ~/dotfiles/mocco-dotfiles/bash_aliases ]; then
     . ~/dotfiles/mocco-dotfiles/bash_aliases
 fi
