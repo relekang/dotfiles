@@ -5,6 +5,7 @@ alias ls='ls -l'
 
 alias vnv='source venv/bin/activate'
 alias httpserver='python -m SimpleHTTPServer'
+alias pt='puppet apply --noop --modulepath=~/dev/puppet'
 
 #
 # git
