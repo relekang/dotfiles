@@ -26,6 +26,12 @@ fi
 
 source /usr/local/opt/autoenv/activate.sh
 
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+#RUBIES+=($HOME/.rubies)
+
+
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \[\1\]/'
 }
@@ -47,3 +53,5 @@ PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;35m\]$(parse_git_b
 
 source ~/dotfiles/git/git-completion.bash
 
+export PATH=/usr/local/bin:$PATH
+export NODE_PATH="/usr/local/lib/node_modules" 
