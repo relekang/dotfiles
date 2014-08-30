@@ -40,6 +40,10 @@ gito() {
   git --git-dir=$PWD/$1/.git --work-tree=$PWD/$1 $2
 }
 
+vigrep() {
+  grep --exclude-dir=migrations -Ir $1 . | awk 'BEGIN {FS=":"} {print $1}' | sort | uniq | xargs -o vim -p 
+}
+
 tunnel() {
   ssh -L $1:127.0.0.1:$1 $2 
 }
