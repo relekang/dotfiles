@@ -10,7 +10,7 @@ alias findrpi='arp-scan --localnet | grep "b8:27:eb"'
 
 #
 # git
-alias "g"="git"
+alias git=hub
 alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 
 #
