@@ -1,9 +1,13 @@
 if [[ $OSTYPE == "darwin12" ]]; then
   # Setting PATH for Python 2.7
   # The orginal version is saved in .bash_profile.pysave
-  PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-  export PATH
+  export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 fi
+
+export PATH=/usr/local/bin:$PATH
+export NODE_PATH="/usr/local/lib/node_modules" 
+export STORM_HOME=/home/rolf/apache-storm/bin
+export PATH=$STORM_HOME:$PATH
 
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
@@ -20,17 +24,20 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-if which virtualenvwrapper.sh >/dev/null; then
-        source /usr/local/bin/virtualenvwrapper.sh
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+  source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-source /usr/local/opt/autoenv/activate.sh
+if [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+fi
 
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+if [ -f /usr/local/opt/autoenv/activate.sh ]; then
+  source /usr/local/opt/autoenv/activate.sh
+fi
 
-#RUBIES+=($HOME/.rubies)
-
+source ~/dotfiles/git/git-completion.bash
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \[\1\]/'
@@ -59,8 +66,3 @@ rpi() {
 }
      
 PS1='\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;35m\]$(parse_git_branch)\[\033[00m\]\$ '
-
-source ~/dotfiles/git/git-completion.bash
-
-export PATH=/usr/local/bin:$PATH
-export NODE_PATH="/usr/local/lib/node_modules" 
