@@ -6,7 +6,8 @@ alias ls='ls -l'
 alias vnv='source venv/bin/activate'
 alias httpserver='python -m SimpleHTTPServer'
 alias pt='puppet apply --noop --modulepath=~/dev/puppet'
-alias findrpi='arp-scan --localnet | grep "b8:27:eb"'
+alias po='cd ~/Dropbox/NTNU/prosjektoppgave; vim'
+
 
 #
 # git
