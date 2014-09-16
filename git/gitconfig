@@ -3,7 +3,7 @@
   email = me@rolflekang.com
   
 [core]
-  excludesfile = /Users/rolf/dotfiles/git/gitignore
+  excludesfile = ~/dotfiles/git/gitignore
   editor = vim
   
 [github]
