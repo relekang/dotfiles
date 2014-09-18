@@ -23,7 +23,3 @@ alias pepify="flake8 | awk '$awk_arg' | cut -c 3- | sort | uniq | xargs -o  vim 
 #
 # sublime
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-
-if [ -f ~/dotfiles/mocco-dotfiles/bash_aliases ]; then
-    . ~/dotfiles/mocco-dotfiles/bash_aliases
-fi

@@ -1,0 +1,3 @@
+vigrep() {
+  grep --exclude-dir=migrations -Ir $1 . | awk 'BEGIN {FS=":"} {print $1}' | sort | uniq | xargs -o vim -p 
+}

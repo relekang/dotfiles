@@ -1,0 +1,5 @@
+rpi() {
+  echo 'Will run the command:'
+  echo '    sudo arp-scan --localnet | grep "b8:27:eb"'
+  sudo arp-scan --localnet | grep "b8:27:eb"
+}
