@@ -7,6 +7,8 @@ HIST_STAMPS="yyyy-mm-dd"
 
 export PROJECTS=~/dev
 export EDITOR='vim'
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
 
 plugins=(autoenv git npm pip redis-cli fabric mvn bower rbates)
 
