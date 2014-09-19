@@ -1,4 +1,7 @@
-install: $(HOME)/.gitconfig $(HOME)/.zshrc vim homebrew
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc vim homebrew
+
+$(HOME)/.oh-my-zsh:
+	curl -L http://install.ohmyz.sh | sh
 
 $(HOME)/.gitconfig:
 	@ln -s $(shell pwd)/git/gitconfig $(HOME)/.gitconfig
