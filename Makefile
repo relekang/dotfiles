@@ -34,8 +34,8 @@ homebrew:
 	@echo "Installed homebrew and brew packages"
 
 clean:
-	@rm  -f $(HOME)/.gitconfig $(HOME)/.zshrc
-	@rm -rf $(HOME)/.vimrc $(HOME)/.vim
+	@rm -f $(HOME)/.gitconfig $(HOME)/.zshrc
+	@rm -f $(HOME)/.vimrc $(HOME)/.vim
 	@echo "Removed all dotfiles"
 
 .PHONY: vim vim_plugins clean homebrew
