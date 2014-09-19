@@ -1,21 +1,3 @@
 [submodule "mocco-dotfiles"]
 	path = mocco-dotfiles
 	url = git@github.com:mocco/mocco-dotfiles.git
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = git@github.com:altercation/vim-colors-solarized.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule "irssi/gitmodules/irssi-bitlbee-facebook-rename"]
-	path = irssi/gitmodules/irssi-bitlbee-facebook-rename
-	url = git@github.com:avar/irssi-bitlbee-facebook-rename.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
-[submodule "vim/bundle/vim-nerdtree-tabs"]
-	path = vim/bundle/vim-nerdtree-tabs
-	url = git@github.com:jistr/vim-nerdtree-tabs.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
