@@ -18,7 +18,7 @@ $(HOME)/.vim: vimfiles
 	@echo "Created symbolic link for .vim"
 
 $(HOME)/.vimrc: vimfiles
-	#@ln -s $(shell pwd)/vimfiles/vimrc $(HOME)/.vimrc
+	@ln -s $(shell pwd)/vimfiles/vimrc $(HOME)/.vimrc
 	@echo "Created symbolic link for .vimrc"
 
 vimfiles:
@@ -34,8 +34,8 @@ homebrew:
 	@echo "Installed homebrew and brew packages"
 
 clean:
-	@rm $(HOME)/.gitconfig $(HOME)/.zshrc
-	@rm -r $(HOME)/.vimrc $(HOME)/.vim
+	@rm  -f $(HOME)/.gitconfig $(HOME)/.zshrc
+	@rm -rf $(HOME)/.vimrc $(HOME)/.vim
 	@echo "Removed all dotfiles"
 
 .PHONY: vim vim_plugins clean homebrew

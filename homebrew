@@ -4,9 +4,9 @@ if test ! $(which brew)
 then
   echo "  Installing Homebrew for you."
   ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" > /tmp/homebrew-install.log
+  brew tap phinze/cask
 fi
 
-brew tap phinze/cask
 brew install grc coreutils brew-cask htop-osx wget unrar hub node mosh
 
 exit 0

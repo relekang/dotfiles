@@ -1,0 +1,13 @@
+gito() {
+  git --git-dir=$PWD/$1/.git --work-tree=$PWD/$1 $2
+}
+
+rpi() {
+  echo 'Will run the command:'
+  echo '    sudo arp-scan --localnet | grep "b8:27:eb"'
+  sudo arp-scan --localnet | grep "b8:27:eb"
+}
+
+vigrep() {
+  grep --exclude-dir=migrations -Ir $1 . | awk 'BEGIN {FS=":"} {print $1}' | sort | uniq | xargs -o vim -p 
+}

@@ -10,7 +10,7 @@ export EDITOR='vim'
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
 
-plugins=(autoenv git npm pip redis-cli fabric mvn bower rbates)
+plugins=(git npm pip redis-cli bower rbates)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -19,5 +19,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/home/rolf/apache-storm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/usr/texbin"
 
 . $DOT/aliases
-
-autoload -U $DOT/functions/*(:t)
+source $DOT/chruby
+source $DOT/functions
+source $DOT/python/virtualenvwrapper

@@ -1,3 +1,0 @@
-gito() {
-  git --git-dir=$PWD/$1/.git --work-tree=$PWD/$1 $2
-}
