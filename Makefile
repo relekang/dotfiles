@@ -1,4 +1,4 @@
-install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.vim $(HOME)/.vimrc os_stuff
+install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.vim $(HOME)/.vimrc
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
@@ -19,9 +19,15 @@ $(HOME)/.vimrc:
 	@ln -s $(shell pwd)/vimfiles/vimrc $(HOME)/.vimrc
 	@echo "Created symbolic link for .vimrc"
 
+i3: $(HOME)/.i3/config $(HOME)/.i3status.conf
+
 $(HOME)/.i3/config: $(HOME)/.i3
 	@ln -s $(shell pwd)/i3/config $(HOME)/.i3/config
 	@echo "Created symbolic link for .i3/config"
+
+$(HOME)/.i3status.conf:
+	@ln -s $(shell pwd)/i3/status $(HOME)/.i3status.conf
+	@echo "Created symbolic link for .i3/status"
 
 $(HOME)/.i3:
 	mkdir -p $(HOME)/.i3
@@ -44,4 +50,4 @@ clean:
 	@rm -f $(HOME)/.vimrc $(HOME)/.vim
 	@echo "Removed all dotfiles"
 
-.PHONY: vim vim_plugins clean os_stuff
+.PHONY: vim vim_plugins clean os_stuff i3
