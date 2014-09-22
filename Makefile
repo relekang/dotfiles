@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc vim homebrew
+install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.vim $(HOME)/.vimrc os_stuff
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
@@ -11,31 +11,37 @@ $(HOME)/.zshrc:
 	@ln -s $(shell pwd)/zshrc $(HOME)/.zshrc
 	@echo "Created symbolic link for .zshrc"
 
-vim: $(HOME)/.vim $(HOME)/.vimrc vimfiles vim_plugins
-
-$(HOME)/.vim: vimfiles
+$(HOME)/.vim:
 	@ln -s $(shell pwd)/vimfiles/vim $(HOME)/.vim
 	@echo "Created symbolic link for .vim"
 
-$(HOME)/.vimrc: vimfiles
+$(HOME)/.vimrc:
 	@ln -s $(shell pwd)/vimfiles/vimrc $(HOME)/.vimrc
 	@echo "Created symbolic link for .vimrc"
+
+$(HOME)/.i3/config: $(HOME)/.i3
+	@ln -s $(shell pwd)/i3/config $(HOME)/.i3/config
+	@echo "Created symbolic link for .i3/config"
+
+$(HOME)/.i3:
+	mkdir -p $(HOME)/.i3
 
 vimfiles:
 	@git clone git@github.com:relekang/vimfiles.git
 	@echo "Cloned dotfiles"
 
 vim_plugins: vimfiles
-	cd vimfiles/ && git submodule init
-	cd vimfiles/ && git submodule update
+	@cd vimfiles/ && git submodule init
+	@cd vimfiles/ && git submodule update
+	@echo "Updated vim plugins"
 
-homebrew:
-	@sh homebrew
-	@echo "Installed homebrew and brew packages"
+os_stuff:
+	sh osx
+	sh linux
 
 clean:
 	@rm -f $(HOME)/.gitconfig $(HOME)/.zshrc
 	@rm -f $(HOME)/.vimrc $(HOME)/.vim
 	@echo "Removed all dotfiles"
 
-.PHONY: vim vim_plugins clean homebrew
+.PHONY: vim vim_plugins clean os_stuff

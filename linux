@@ -1,0 +1,4 @@
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+  sudo apt-get install i3
+fi 
