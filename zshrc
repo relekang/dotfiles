@@ -1,5 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
-export DOT=$HOME/dotfiles
+export DOT=$HOME/.dotfiles
 
 ZSH_THEME="af-magic"
 CASE_SENSITIVE="true"
