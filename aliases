@@ -23,3 +23,9 @@ alias pepify="flake8 | awk '$awk_arg' | cut -c 3- | sort | uniq | xargs -o  vim 
 #
 # sublime
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+
+#
+# docker
+alias dockercleancontainers="docker ps -a -notrunc| grep 'Exit' | awk '{print \$1}' | xargs -L 1 -r docker rm"
+alias dockercleanimages="docker images -a -notrunc | grep none | awk '{print \$3}' | xargs -L 1 -r docker rmi"
+alias dockerclean="dockercleancontainers && dockercleanimages"
