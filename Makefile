@@ -3,6 +3,9 @@ install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
 
+$(HOME)/.local/bin/pipsi:
+	curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python
+
 $(HOME)/.gitconfig:
 	@ln -s $(shell pwd)/git/gitconfig $(HOME)/.gitconfig
 	@echo "Created symbolic link for .gitconfig"

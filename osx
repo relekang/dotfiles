@@ -1,6 +1,6 @@
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
-  . homebrew
+#  . homebrew
 
   # Show battery life percentage.
   defaults write com.apple.menuextra.battery ShowPercent -string "YES"

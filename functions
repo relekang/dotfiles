@@ -11,3 +11,14 @@ rpi() {
 vigrep() {
   grep --exclude-dir=migrations -Ir $1 . | awk 'BEGIN {FS=":"} {print $1}' | sort | uniq | xargs -o vim -p 
 }
+
+reposize() {
+  curl --silent https://api.github.com/repos/$1/$2 | grep size | awk '{print $2}' | sed 's/.$//' | awk '
+    function human(x) {
+        s="kMGTEPYZ";
+        while (x>=1000 && length(s)>1)
+            {x/=1024; s=substr(s,2)}
+        return int(x+0.5) substr(s,1,1)
+    }
+    {gsub(/^[0-9]+/, human($1)); print}'
+}
