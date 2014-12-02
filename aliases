@@ -13,6 +13,7 @@ alias po='cd ~/Dropbox/NTNU/prosjektoppgave; vim'
 # git
 alias git=hub
 alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+gist='gist -p'
 
 #
 # vim
