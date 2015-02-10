@@ -8,6 +8,10 @@ rpi() {
   sudo arp-scan --localnet | grep "b8:27:eb"
 }
 
+pipsi-update() {
+  ~/.local/venvs/$1/bin/pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs ~/.local/venvs/$1/bin/pip install -U
+}
+
 vigrep() {
   grep --exclude-dir=migrations -Ir $1 . | awk 'BEGIN {FS=":"} {print $1}' | sort | uniq | xargs -o vim -p 
 }
