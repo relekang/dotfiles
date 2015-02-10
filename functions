@@ -26,3 +26,7 @@ reposize() {
     }
     {gsub(/^[0-9]+/, human($1)); print}'
 }
+
+light() {
+  curl -X POST http://10.0.0.111:3000/nexa-send -d "command=${1}"
+}
