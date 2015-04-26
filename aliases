@@ -7,6 +7,7 @@ alias vnv='source venv/bin/activate'
 alias httpserver='python -m SimpleHTTPServer'
 alias pt='puppet apply --noop --modulepath=~/dev/puppet'
 alias po='cd ~/Dropbox/NTNU/prosjektoppgave; vim'
+alias flush-memcache='echo "flush_all" | nc localhost 11211'
 
 
 #
