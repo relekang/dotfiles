@@ -30,3 +30,9 @@ reposize() {
 light() {
   curl -X POST http://10.0.0.111:3000/nexa-send -d "command=${1}"
 }
+
+empty-frigg-queue() {
+  while 1
+  do curl --header "x-frigg-worker-token: ${1}" jobs.frigg.io/fetch$2
+  done
+}
