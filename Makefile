@@ -1,4 +1,4 @@
-install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.vim $(HOME)/.vimrc
+install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.vim $(HOME)/.vimrc $(HOME)/.atom
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
@@ -21,6 +21,10 @@ $(HOME)/.vim:
 $(HOME)/.vimrc:
 	@ln -s $(shell pwd)/vimfiles/vimrc $(HOME)/.vimrc
 	@echo "Created symbolic link for .vimrc"
+
+$(HOME)/.atom:
+	@ln -s $(shell pwd)/atom $(HOME)/.atom
+	@echo "Created symbolic link for .atom/"
 
 i3: $(HOME)/.i3/config $(HOME)/.i3status.conf
 
