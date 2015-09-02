@@ -66,3 +66,5 @@
 	smudge = git media smudge %f
 [push]
 	default = current
+[credential]
+	helper = osxkeychain
