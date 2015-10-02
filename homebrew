@@ -8,6 +8,6 @@ then
   brew tap phinze/cask
 fi
 
-brew install grc coreutils brew-cask htop-osx wget unrar hub node mosh
+. brews
 
 exit 0
