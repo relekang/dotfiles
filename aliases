@@ -12,7 +12,7 @@ alias ix="curl -F 'f:1=<-' ix.io"
 
 #
 # git
-#alias git=hub
+alias git=hub
 alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 gist='gist -p'
 
