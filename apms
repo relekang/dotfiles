@@ -1,0 +1,6 @@
+apm install linter linter-eslint
+apm install atom-ternjs
+apm install frigg-runner-status
+apm install change-case
+apm install vim-mode
+apm install sort-lines

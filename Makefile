@@ -43,6 +43,15 @@ vimfiles:
 	@git clone git@github.com:relekang/vimfiles.git
 	@echo "Cloned dotfiles"
 
+atom-packages:
+	sh apms
+
+homebrew:
+	sh brew
+
+python:
+	sh python/init
+
 vim_plugins: vimfiles
 	@cd vimfiles/ && git submodule init
 	@cd vimfiles/ && git submodule update

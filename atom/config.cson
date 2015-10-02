@@ -13,7 +13,7 @@
       "linter-jshint"
     ]
     themes: [
-      "atom-dark-ui"
+      "one-dark-ui"
       "base16-tomorrow-dark-theme"
     ]
   editor:
