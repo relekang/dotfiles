@@ -60,6 +60,9 @@
   sp = stash pop
   ss = stash save
   sw = stash show
+
+  cleanup = "!git b --merged | grep  -v 'master' | xargs git b -d"
+
 [filter "media"]
 	required = true
 	clean = git media clean %f
