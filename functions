@@ -36,3 +36,7 @@ empty-frigg-queue() {
   do curl --header "x-frigg-worker-token: ${1}" jobs.frigg.io/fetch$2
   done
 }
+
+ncugrep() {
+  ncu | grep $1 | awk '{print $1}' | xargs -t -n1 ncu --packageFile package.json -u
+}
