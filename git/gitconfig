@@ -71,3 +71,5 @@
 	default = current
 [credential]
 	helper = osxkeychain
+[rerere]
+	enabled = true
