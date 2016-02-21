@@ -40,3 +40,7 @@ empty-frigg-queue() {
 ncugrep() {
   ncu | grep $1 | awk '{print $1}' | xargs -t -n1 ncu --packageFile package.json -u
 }
+
+dash() {
+  open dash://$1:$2
+}
