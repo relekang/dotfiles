@@ -9,7 +9,7 @@ export PROJECTS=~/dev
 export EDITOR='vim'
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 export PHANTOMJS_BIN=/usr/local/bin/phantomjs
 
 plugins=(git npm pip)
