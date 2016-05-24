@@ -55,6 +55,7 @@ python:
 vim_plugins: vimfiles
 	@cd vimfiles/ && git submodule init
 	@cd vimfiles/ && git submodule update
+	@vim +PluginInstall +qa
 	@echo "Updated vim plugins"
 
 os_stuff:
