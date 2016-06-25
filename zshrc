@@ -11,6 +11,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 export PHANTOMJS_BIN=/usr/local/bin/phantomjs
+export GOPATH=$HOME/gocode/
 
 plugins=(git npm pip)
 
@@ -23,6 +24,7 @@ PATH=./node_modules/.bin:$PATH
 PATH=$DOT/bin:$PATH
 PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 export PATH
 
 . $DOT/aliases
