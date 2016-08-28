@@ -9,6 +9,7 @@ alias pt='puppet apply --noop --modulepath=~/dev/puppet'
 alias po='cd ~/Dropbox/NTNU/prosjektoppgave; vim'
 alias flush-memcache='echo "flush_all" | nc localhost 11211'
 alias ix="curl -F 'f:1=<-' ix.io"
+alias pbjson="pbpaste | python -m json.tool | pbcopy"
 
 #
 # git
