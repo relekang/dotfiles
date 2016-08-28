@@ -19,6 +19,9 @@
   status = auto
   ui = auto
 
+[diff]
+  compactionHeuristic = true
+
 [branch]
 	autosetuprebase = always
 
