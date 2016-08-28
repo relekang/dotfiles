@@ -30,5 +30,12 @@ source $DOT/chruby
 source $DOT/functions
 source $DOT/python/virtualenvwrapper
 
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH=~/.rbenv/shims:$PATH
+
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# added by travis gem
+[ -f /Users/rolf/.travis/travis.sh ] && source /Users/rolf/.travis/travis.sh
