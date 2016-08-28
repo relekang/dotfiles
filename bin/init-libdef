@@ -1,0 +1,15 @@
+#!/bin/bash -eux
+
+NAME=$1
+VERSION=$2
+FLOW_VERSION=${3:-0.25.x}
+
+echo $NAME@$VERSION
+
+DIRECTORY=$(pwd)/definitions/npm/${NAME}_v$VERSION
+
+mkdir -p $DIRECTORY
+mkdir -p "$DIRECTORY/flow_>=v$FLOW_VERSION"
+
+echo "declare module '$NAME' {\n\n}" > "$DIRECTORY/flow_>=v$FLOW_VERSION/${NAME}_v$VERSION.js"
+echo "import $NAME from '$NAME'" > $DIRECTORY/test_${NAME}_v$VERSION.js

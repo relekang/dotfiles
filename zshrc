@@ -18,9 +18,12 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="./node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/usr/texbin"
-export PATH=~/.local/bin:$PATH
-export PATH=~/bin:$PATH
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+PATH=./node_modules/.bin:$PATH
+PATH=$DOT/bin:$PATH
+PATH=~/.local/bin:$PATH
+PATH=~/bin:$PATH
+export PATH
 
 . $DOT/aliases
 source $DOT/chruby
