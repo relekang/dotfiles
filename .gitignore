@@ -2,8 +2,4 @@ irssi/away.log
 vimfiles/
 irssi/scripts/test.pl
 irssi/scripts/thumbs_up.pl
-atom/packages/
-atom/storage/
-atom/compile-cache/
-atom/.apm/
-atom/.node-gyp/
+/atom
