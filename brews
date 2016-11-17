@@ -1,8 +1,4 @@
-brew install grc coreutils brew-cask htop-osx wget unrar hub node mosh redis rust hub mvn maven htop
+brew install grc coreutils htop-osx wget unrar hub node mosh redis rust hub maven htop neovim/neovim/neovim postgresql redis nginx htop ansible nvm
 
 
-brew cask install google-chrome
-# Need to move Chrome in order to use 1Password
-cp -r /opt/homebrew-cask/Caskroom/google-chrome/latest/Google\ Chrome.app /Applications/.
-
-brew cask install postgres caffeine atom spotify virtualbox
+brew cask install postgres caffeine atom spotify virtualbox dropbox iterm2 alfred postico java intellij-idea

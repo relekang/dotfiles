@@ -7,7 +7,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 export PROJECTS=~/dev
 export EDITOR='vim'
-export LC_ALL=en_US.UTF-8  
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 export PHANTOMJS_BIN=/usr/local/bin/phantomjs
@@ -35,7 +35,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH=~/.rbenv/shims:$PATH
 
 export NVM_DIR="${HOME}/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+NVM_SH="/usr/local/opt/nvm/nvm.sh"
+[ -s "$NVM_SH" ] && . "$NVM_SH"  # This loads nvm
 
 # added by travis gem
 [ -f /Users/rolf/.travis/travis.sh ] && source /Users/rolf/.travis/travis.sh

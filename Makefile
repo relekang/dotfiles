@@ -41,6 +41,7 @@ $(HOME)/.i3:
 
 vimfiles:
 	@git clone git@github.com:relekang/vimfiles.git
+	vim +PluginInstall +qall
 	@echo "Cloned dotfiles"
 
 atom-packages:
