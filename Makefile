@@ -22,6 +22,10 @@ $(HOME)/.vimrc:
 	@ln -s $(shell pwd)/vimfiles/vimrc $(HOME)/.vimrc
 	@echo "Created symbolic link for .vimrc"
 
+$(HOME)/.config/nvim:
+	@ln -s $(shell pwd)/nvim $(HOME)/.config/nvim
+	@echo "Created symbolic link for nvim"
+
 $(HOME)/.atom:
 	@ln -s $(shell pwd)/atom $(HOME)/.atom
 	@echo "Created symbolic link for .atom/"

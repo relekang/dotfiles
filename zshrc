@@ -42,3 +42,6 @@ NVM_SH="/usr/local/opt/nvm/nvm.sh"
 
 # added by travis gem
 [ -f /Users/rolf/.travis/travis.sh ] && source /Users/rolf/.travis/travis.sh
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
