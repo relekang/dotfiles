@@ -21,6 +21,7 @@ gist='gist -p'
 
 #
 # vim
+alias vi='vim'
 alias vim='/usr/local/bin/vim -p'
 awk_arg='BEGIN {FS=":"} {print$1}'
 alias pepify="flake8 | awk '$awk_arg' | cut -c 3- | sort | uniq | xargs -o  vim -p"
