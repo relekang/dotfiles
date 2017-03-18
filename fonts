@@ -1,0 +1,4 @@
+#!/bin/sh
+wget https://github.com/tonsky/FiraCode/releases/download/1.204/FiraCode_1.204.zip
+unzip -o FiraCode_1.204.zip -d FiraCode
+cp FiraCode/ttf/*.ttf /Library/Fonts/.
