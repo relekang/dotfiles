@@ -1,4 +1,40 @@
-brew install grc coreutils htop-osx wget unrar hub node mosh redis rust hub maven htop neovim/neovim/neovim postgresql redis nginx htop ansible nvm
+brew install \
+  grc \
+  coreutils \
+  htop-osx \
+  wget \
+  unrar \
+  hub \
+  node \
+  mosh \
+  redis \
+  rust \
+  hub \
+  maven \
+  neovim/neovim/neovim \
+  postgresql \
+  redis \
+  nginx \
+  ansible \
+  nvm \
+  mas \
+  vim \
+  zsh-syntax-highlighting \
+  yarn
 
 
-brew cask install postgres caffeine atom spotify virtualbox dropbox iterm2 alfred postico java intellij-idea
+
+brew cask install \
+  postgres \
+  caffeine \
+  atom \
+  spotify \
+  virtualbox \
+  dropbox \
+  iterm2 \
+  alfred \
+  postico \
+  java \
+  intellij-idea \
+  pycharm \
+  datagrip
