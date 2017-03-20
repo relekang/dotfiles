@@ -82,5 +82,7 @@ if [[ "$unamestr" == 'Darwin' ]]; then
   sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
   sh fonts
+  sh brews
+  sh mas
 
 fi
