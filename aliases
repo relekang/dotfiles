@@ -11,7 +11,7 @@ alias flush-memcache='echo "flush_all" | nc localhost 11211'
 alias ix="curl -F 'f:1=<-' ix.io"
 alias pbjson="pbpaste | python -m json.tool | pbcopy"
 
-alias hbmocha="BABEL_ENV=test mocha --reporter dot --recursive --compilers js:babel-core/register common/test_utils/setup.js"
+alias tbase="npm run test:base --"
 
 #
 # git
