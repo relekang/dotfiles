@@ -24,6 +24,7 @@ PATH=./node_modules/.bin:$PATH
 PATH=$DOT/bin:$PATH
 PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
+PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
 export PATH=$GOPATH/bin:$PATH
 export PATH
 

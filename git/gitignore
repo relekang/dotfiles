@@ -7,3 +7,4 @@
 venv/
 .env
 node_modules/
+.vscode
