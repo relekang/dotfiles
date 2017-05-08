@@ -1,4 +1,4 @@
-install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.vim $(HOME)/.vimrc $(HOME)/.atom
+install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.vim $(HOME)/.vimrc $(HOME)/.atom $(HOME)/.hyper.js
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
@@ -25,6 +25,10 @@ $(HOME)/.vimrc:
 $(HOME)/.config/nvim:
 	@ln -s $(shell pwd)/nvim $(HOME)/.config/nvim
 	@echo "Created symbolic link for nvim"
+
+$(HOME)/.hyper.js:
+	@ln -s $(shell pwd)/hyper.js $(HOME)/.hyper.js
+	@echo "Created symbolic link for .hyper.js"
 
 $(HOME)/.atom:
 	@ln -s $(shell pwd)/atom $(HOME)/.atom
