@@ -19,14 +19,17 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 PATH=./node_modules/.bin:$PATH
 PATH=$DOT/bin:$PATH
+PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
+PATH=$GOPATH/bin:$PATH
 PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
-PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
-export PATH=$GOPATH/bin:$PATH
 export PATH
+
+export VIM_BACKGROUND=light
 
 . $DOT/aliases
 source $DOT/chruby
@@ -48,5 +51,9 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
+
+PATH=~/.local/bin:$PATH
+PATH=~/bin:$PATH
+export PATH
 
 . /Users/rolf/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
