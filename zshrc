@@ -22,7 +22,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-PATH=./node_modules/.bin:$PATH
 PATH=$DOT/bin:$PATH
 PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
 PATH=$GOPATH/bin:$PATH
@@ -57,6 +56,7 @@ fi
 
 PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
+PATH=./node_modules/.bin:$PATH
 export PATH
 
 . /Users/rolf/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
