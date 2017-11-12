@@ -19,6 +19,7 @@ brew install \
   nvm \
   mas \
   vim \
+  neovim \
   zsh-syntax-highlighting \
   yarn
 
