@@ -12,6 +12,7 @@ export LANG=en_US.UTF-8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8 2>/dev/null)
 export PHANTOMJS_BIN=/usr/local/bin/phantomjs
 export GOPATH=$HOME/gocode/
+export RAINBOW=true
 
 plugins=(git npm pip)
 
@@ -30,6 +31,8 @@ PATH=~/bin:$PATH
 export PATH
 
 export VIM_BACKGROUND=dark
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 
 . $DOT/aliases
 source $DOT/chruby
