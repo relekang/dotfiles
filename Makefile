@@ -1,4 +1,4 @@
-install: vim_plugins $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.vim $(HOME)/.vimrc $(HOME)/.atom $(HOME)/.hyper.js
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
@@ -49,8 +49,10 @@ $(HOME)/.i3:
 
 vimfiles:
 	@git clone git@github.com:relekang/vimfiles.git
-	vim +PluginInstall +qall
-	@echo "Cloned dotfiles"
+	@echo "Cloned dotfiles. Installing..."
+	cd vimfiles && $(MAKE)
+	@echo "Installed"
+
 
 atom-packages:
 	sh apms
@@ -60,12 +62,6 @@ homebrew:
 
 python:
 	sh python/init
-
-vim_plugins: vimfiles
-	@cd vimfiles/ && git submodule init
-	@cd vimfiles/ && git submodule update
-	@vim +PluginInstall +qa
-	@echo "Updated vim plugins"
 
 os_stuff:
 	sh osx
