@@ -29,7 +29,7 @@ PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
 export PATH
 
-export VIM_BACKGROUND=light
+export VIM_BACKGROUND=dark
 
 . $DOT/aliases
 source $DOT/chruby
