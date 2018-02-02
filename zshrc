@@ -45,7 +45,12 @@ export PATH=~/.rbenv/shims:$PATH
 export NVM_DIR="${HOME}/.nvm"
 NVM_SH="/usr/local/opt/nvm/nvm.sh"
 [ -s "$NVM_SH" ] && . "$NVM_SH"  # This loads nvm
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # added by travis gem
 [ -f /Users/rolf/.travis/travis.sh ] && source /Users/rolf/.travis/travis.sh
