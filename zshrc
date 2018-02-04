@@ -31,7 +31,8 @@ export PATH
 
 export VIM_BACKGROUND=dark
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+PYTHON=$(which python3)
+export VIRTUALENVWRAPPER_PYTHON=$PYTHON
 
 . $DOT/aliases
 source $DOT/chruby
