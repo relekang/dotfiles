@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# This is a script to install python tools into virtualenvs.
+# It is kind of a lightweight version of pipsi.
+
+package=$1
+path=~/.local/venv/$package
+
+mkdir -p ~/.local/bin/
+
+if [[ ! -d $path ]]; then
+  virtualenv -p $(which python3) $path
+fi
+
+$path/bin/pip install -U $package
+
+ln -s $path/bin/$package ~/.local/bin/$package
