@@ -12,6 +12,6 @@ if [[ ! -d $path ]]; then
   virtualenv -p $(which python3) $path
 fi
 
-$path/bin/pip install -U $package
+$path/bin/pip install -U $@
 
 ln -s $path/bin/$package ~/.local/bin/$package
