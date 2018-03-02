@@ -9,6 +9,8 @@ module.exports = {
     // default font size in pixels for all tabs
     fontSize: 14,
 
+    canary: true,
+
     // font family with optional fallbacks
     fontFamily: 'Fira Code, Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
@@ -107,7 +109,9 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     (hours >= 9 || hours <= 20) ? 'hyper-papercolor' : 'hyper-nord',
+    //'hyper-nord',
     'hyper-markdown-preview',
+    'hyperlinks',
   ],
 
   // in development, you can create a directory under
