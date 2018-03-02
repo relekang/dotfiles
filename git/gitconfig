@@ -65,7 +65,7 @@
   sw = stash show
 
   cleanup = "!git b --merged | grep  -v 'master' | xargs git b -d"
-  wip = "!git add . && git ca -m'wip'"
+  wip = "!git add . && git ca -nm'wip'"
 
 [filter "media"]
 	required = true
