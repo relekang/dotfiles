@@ -1,7 +1,7 @@
-brew install python python3
-echo "sudo rm -rf /usr/bin/python"
+brew install python python2
+
 pip install virtualenv virtualenvwrapper
-curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python
-pipsi install flake8
-pipsi install tox
-pipsi install frigg-runner
+
+pipi install flake8
+pipi install tox
+pipi install pipenv pew
