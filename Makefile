@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/Library/Application\ Support/Code/User/settings.json
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
@@ -34,6 +34,10 @@ $(HOME)/.atom:
 	@ln -s $(shell pwd)/atom $(HOME)/.atom
 	@echo "Created symbolic link for .atom/"
 
+$(HOME)/Library/Application\ Support/Code/User/settings.json:
+	@ln -s $(shell pwd)/vscode/settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
+	@echo "Created symbolic link for vscode settings.json"
+
 i3: $(HOME)/.i3/config $(HOME)/.i3status.conf
 
 $(HOME)/.i3/config: $(HOME)/.i3
@@ -57,6 +61,8 @@ vimfiles:
 atom-packages:
 	sh apms
 
+vscode: $(HOME)/Library/Application\ Support/Code/User/settings.json
+
 homebrew:
 	sh homebrew
 
@@ -70,6 +76,7 @@ os_stuff:
 clean:
 	@rm -f $(HOME)/.gitconfig $(HOME)/.zshrc
 	@rm -f $(HOME)/.vimrc $(HOME)/.vim
+	@rm -f $(HOME)/Library/Application\ Support/Code/User/settings.json
 	@echo "Removed all dotfiles"
 
-.PHONY: vim vim_plugins clean os_stuff i3 python homebrew
+.PHONY: vim vim_plugins clean os_stuff i3 python homebrew vscode
