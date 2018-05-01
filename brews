@@ -8,10 +8,7 @@ brew install \
   node \
   mosh \
   redis \
-  rust \
   hub \
-  maven \
-  neovim/neovim/neovim \
   postgresql \
   redis \
   nginx \
@@ -19,7 +16,6 @@ brew install \
   nvm \
   mas \
   vim \
-  neovim \
   zsh-syntax-highlighting \
   yarn
 
@@ -27,10 +23,8 @@ brew install \
 
 brew cask install \
   postgres \
-  caffeine \
   atom \
   spotify \
-  virtualbox \
   dropbox \
   iterm2 \
   alfred \
@@ -39,3 +33,5 @@ brew cask install \
   intellij-idea \
   pycharm \
   datagrip
+
+brew install maven # this has to be after installing java

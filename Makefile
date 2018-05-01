@@ -58,7 +58,7 @@ atom-packages:
 	sh apms
 
 homebrew:
-	sh brew
+	sh homebrew
 
 python:
 	sh python/init
@@ -72,4 +72,4 @@ clean:
 	@rm -f $(HOME)/.vimrc $(HOME)/.vim
 	@echo "Removed all dotfiles"
 
-.PHONY: vim vim_plugins clean os_stuff i3
+.PHONY: vim vim_plugins clean os_stuff i3 python homebrew
