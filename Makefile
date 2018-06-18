@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/Library/Application\ Support/Code/User/settings.json
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/Library/Application\ Support/Code/User/settings.json python os_stuff
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
