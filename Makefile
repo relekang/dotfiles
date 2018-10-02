@@ -62,6 +62,8 @@ atom-packages:
 	sh apms
 
 vscode: $(HOME)/Library/Application\ Support/Code/User/settings.json
+	brew cask install visual-studio-code
+	./vscode/install-extensions
 
 homebrew:
 	sh homebrew

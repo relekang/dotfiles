@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function extensions() {
+    echo gaearon.subliminal
+    echo vscodevim.vim
+    echo jaredly.reason-vscode
+    echo gcazaciuc.vscode-flow-ide
+    echo esbenp.prettier-vscode
+    echo dbaeumer.vscode-eslint
+    echo octref.vetur
+    echo alexdima.copy-relative-path
+    echo wmaurer.vscode-jumpy
+}
+
+for extension in $(extensions); do
+  code --install-extension $extension
+done
