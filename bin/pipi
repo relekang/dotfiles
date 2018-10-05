@@ -4,6 +4,12 @@
 # It is kind of a lightweight version of pipsi.
 
 package=$1
+if [[ "$package" == "install" ]]; then
+  package=$2
+fi
+
+echo "Installing $package into ~/.local/bin/$package"
+
 path=~/.local/venv/$package
 
 mkdir -p ~/.local/bin/
@@ -12,6 +18,11 @@ if [[ ! -d $path ]]; then
   virtualenv -p $(which python3) $path
 fi
 
-$path/bin/pip install -U $@
+if [[ "$1" == "install" ]]; then
+  $path/bin/pip $@
+else
+  $path/bin/pip install -U $@
+fi
 
+rm -rf ~/.local/bin/$package
 ln -s $path/bin/$package ~/.local/bin/$package
