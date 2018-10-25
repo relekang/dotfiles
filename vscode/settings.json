@@ -16,4 +16,25 @@
     "workbench.editor.showIcons": false,
     "workbench.iconTheme": null,
     "workbench.settings.editor": "json",
+    "javascript.validate.enable": false,
+    "editor.tabSize": 2,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true
+        }
+    ],
+    "window.zoomLevel": 0,
 }
