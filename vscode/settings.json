@@ -5,13 +5,18 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "eslint.autoFixOnSave": true,
-    "files.insertFinalNewline": true,
+    "eslint.packageManager": "yarn",
+    "eslint.run": "onSave",
     "files.autoSave": "onFocusChange",
+    "files.insertFinalNewline": true,
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "javascript.validate.enable": false,
     "prettier.requireConfig": true,
     "reason.codelens.enabled": true,
     "reason.diagnostics.tools": [ "merlin", "bsb" ],
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+    "terminal.integrated.rendererType": "dom",
     "workbench.colorTheme": "Monokai Ocean",
     "workbench.editor.showIcons": false,
     "workbench.iconTheme": null,
@@ -36,5 +41,5 @@
             "autoFix": true
         }
     ],
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 0
 }
