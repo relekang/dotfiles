@@ -35,6 +35,7 @@ PYTHON=$(which python3)
 export VIRTUALENVWRAPPER_PYTHON=$PYTHON
 
 . $DOT/aliases
+. $DOT/secret-aliases
 source $DOT/chruby
 source $DOT/functions
 source $DOT/python/virtualenvwrapper
