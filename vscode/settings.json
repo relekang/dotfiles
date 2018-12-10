@@ -41,5 +41,13 @@
             "autoFix": true
         }
     ],
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "vetur.format.defaultFormatter.css": "none",
+    "vetur.format.defaultFormatter.html": "none",
+    "vetur.format.defaultFormatter.js": "none",
+    "vetur.format.defaultFormatter.less": "none",
+    "vetur.format.defaultFormatter.postcss": "none",
+    "vetur.format.defaultFormatter.scss": "none",
+    "vetur.format.defaultFormatter.stylus": "none",
+    "vetur.format.defaultFormatter.ts": "none"
 }
