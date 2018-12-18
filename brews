@@ -37,6 +37,7 @@ brew cask install \
   datagrip \
   firefox \
   visual-studio-code \
-  google-chrome
+  google-chrome \
+  choosy
 
 brew install maven # this has to be after installing java
