@@ -1,3 +1,8 @@
+#
+# THIS IS DEPRECATED, check ./macos
+#
+#
+
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
 #  . homebrew
