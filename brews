@@ -35,6 +35,7 @@ brew cask install \
   intellij-idea \
   pycharm \
   datagrip \
-  firefox
+  firefox \
+  visual-studio-code
 
 brew install maven # this has to be after installing java
