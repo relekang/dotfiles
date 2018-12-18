@@ -1,6 +1,7 @@
 brew install python python2
 
 pip install virtualenv virtualenvwrapper
+pip3 install virtualenv virtualenvwrapper
 
 pipi install flake8
 pipi install tox
