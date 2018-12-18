@@ -1,4 +1,6 @@
-#/bin/bash -eux
+#/bin/bash
+
+set -x
 
 if [ ! -f ~/.ssh/id_rsa.pub ]; then
   ssh-keygen -t rsa -b 4096 -C "me@rolflekang.com"
