@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/Library/Application\ Support/Code/User/settings.json python os_stuff
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/Library/Application\ Support/Code/User/settings.json python os secret-aliases
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
@@ -50,6 +50,9 @@ $(HOME)/.i3status.conf:
 
 $(HOME)/.i3:
 	mkdir -p $(HOME)/.i3
+
+secret-aliases:
+	touch secret-aliases
 
 vimfiles:
 	@git clone git@github.com:relekang/vimfiles.git
