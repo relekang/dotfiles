@@ -71,7 +71,7 @@ homebrew:
 python:
 	sh python/init
 
-os_stuff:
+os:
 	sh osx
 	sh linux
 
@@ -81,4 +81,4 @@ clean:
 	@rm -f $(HOME)/Library/Application\ Support/Code/User/settings.json
 	@echo "Removed all dotfiles"
 
-.PHONY: vim vim_plugins clean os_stuff i3 python homebrew vscode
+.PHONY: vim vim_plugins clean os i3 python homebrew vscode
