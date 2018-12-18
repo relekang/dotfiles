@@ -10,6 +10,8 @@ function extensions() {
     echo octref.vetur
     echo alexdima.copy-relative-path
     echo wmaurer.vscode-jumpy
+    echo eamodio.gitlens
+    echo rofrol.monokai-ocean
 }
 
 for extension in $(extensions); do

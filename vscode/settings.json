@@ -21,7 +21,6 @@
     "workbench.editor.showIcons": false,
     "workbench.iconTheme": null,
     "workbench.settings.editor": "json",
-    "javascript.validate.enable": false,
     "editor.tabSize": 2,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDragAndDrop": false,
