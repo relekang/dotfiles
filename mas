@@ -2,9 +2,9 @@
 
 # Install Mac App Store Applications
 
-mas install 413857545  # Divvy
-mas install 443987910  # 1Password
-mas install 1176895641 # Spark
-mas install 409183694  # Keynote
-mas install 803453959  # Slack
-mas install 1263070803 # Lungo
+mas install 413857545   # Divvy
+mas install 1333542190  # 1Password
+mas install 1176895641  # Spark
+mas install 409183694   # Keynote
+mas install 803453959   # Slack
+mas install 1263070803  # Lungo
