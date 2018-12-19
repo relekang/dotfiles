@@ -39,6 +39,14 @@
             "autoFix": true
         }
     ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.bs.js": true
+    },
     "window.zoomLevel": 0,
     "vetur.format.defaultFormatter.css": "none",
     "vetur.format.defaultFormatter.html": "none",
