@@ -75,7 +75,7 @@ python:
 	sh python/init
 
 os:
-	sh osx
+	sh macos/osx
 	sh linux
 
 clean:
