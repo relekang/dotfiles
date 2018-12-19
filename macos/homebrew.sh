@@ -7,7 +7,3 @@ then
 
   brew tap phinze/cask
 fi
-
-. brews
-
-exit 0
