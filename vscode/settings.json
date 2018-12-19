@@ -10,7 +10,6 @@
     "files.autoSave": "onFocusChange",
     "files.insertFinalNewline": true,
     "javascript.updateImportsOnFileMove.enabled": "never",
-    "javascript.validate.enable": false,
     "prettier.requireConfig": true,
     "reason.codelens.enabled": true,
     "reason.diagnostics.tools": [ "merlin", "bsb" ],
