@@ -69,7 +69,7 @@ vscode: $(HOME)/Library/Application\ Support/Code/User/settings.json
 	./vscode/install-extensions
 
 homebrew:
-	sh homebrew
+	sh macos/homebrew
 
 python:
 	sh python/init
