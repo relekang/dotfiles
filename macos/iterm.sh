@@ -19,7 +19,8 @@ sleep 2 && osascript -e 'quit app "iTerm"'
 /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Silence Bell' true" ~/Library/Preferences/com.googlecode.iTerm2.plist
 
 # Set split-pane dimming amount
-/usr/libexec/PlistBuddy -c "Set 'SplitPaneDimmingAmount' 0.1866511418269231" ~/Library/Preferences/com.googlecode.iTerm2.plist
+/usr/libexec/PlistBuddy -c "Set 'SplitPaneDimmingAmount' 0.18" ~/Library/Preferences/com.googlecode.iTerm2.plist
+/usr/libexec/PlistBuddy -c "Set 'DimOnlyText' 1" ~/Library/Preferences/com.googlecode.iTerm2.plist
 
 # Set new split-pane working dir to previous pane working dir
 /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'AWDS Pane Option' Recycle" ~/Library/Preferences/com.googlecode.iTerm2.plist
