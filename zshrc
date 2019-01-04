@@ -27,6 +27,7 @@ PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
 PATH=$GOPATH/bin:$PATH
 PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
+PATH=/Users/rolf/Library/Python/2.7/bin:/Users/rolf/Library/Python/3.7/bin:$PATH
 export PATH
 
 export VIM_BACKGROUND=dark
