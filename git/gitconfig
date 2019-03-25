@@ -42,6 +42,7 @@
 
   re = reset
   reh = reset --hard
+  rlc = reset HEAD^
 
   p = pull --rebase
   pn = pull --no-rebase
