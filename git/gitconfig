@@ -66,6 +66,7 @@
   sw = stash show
 
   cleanup = "!git b --merged | grep  -v 'master' | xargs git b -d"
+  delete-merged = "!git-delete-merged"
   wip = "!git add . && git ca -nm'wip'"
 	exec = "!exec "
 

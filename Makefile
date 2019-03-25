@@ -10,6 +10,9 @@ $(HOME)/.gitconfig:
 	@ln -s $(shell pwd)/git/gitconfig $(HOME)/.gitconfig
 	@echo "Created symbolic link for .gitconfig"
 
+$(HOME)/.local/bin/git-delete-merged:
+	@ln -s $(shell pwd)/git/delete-merged.sh $(HOME)/.local/bin/git-delete-merged
+
 $(HOME)/.zshrc:
 	@ln -s $(shell pwd)/zshrc $(HOME)/.zshrc
 	@echo "Created symbolic link for .zshrc"
