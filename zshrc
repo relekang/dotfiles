@@ -20,6 +20,7 @@ source $ZSH/oh-my-zsh.sh
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 PATH=$DOT/bin:$PATH
 PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
+PATH=$PATH:/usr/local/lib/ruby/gems/2.5.0/bin/
 PATH=$GOPATH/bin:$PATH
 PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
