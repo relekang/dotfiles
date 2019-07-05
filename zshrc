@@ -38,7 +38,8 @@ source $DOT/chruby
 source $DOT/functions
 source $DOT/python/virtualenvwrapper
 
-eval `fnm env`
+# fnm
+eval "$(fnm env --multi)"
 
 if [[ "$(uname)" == "Darwin" ]]; then
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

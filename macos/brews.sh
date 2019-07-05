@@ -19,7 +19,8 @@ brew install \
   zsh-syntax-highlighting \
   yarn \
   httpie \
-  ripgrep
+  ripgrep \
+  Schniz/tap/fnm
 
 
 
