@@ -66,6 +66,8 @@
     "vetur.format.defaultFormatter.scss": "none",
     "vetur.format.defaultFormatter.stylus": "none",
     "vetur.format.defaultFormatter.ts": "none",
+    "vetur.format.enable": false,
+    "vetur.validation.script": true,
     "[reason]": {
         "editor.defaultFormatter": "jaredly.reason-vscode"
     },
