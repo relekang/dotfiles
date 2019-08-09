@@ -8,3 +8,6 @@ venv/
 .env
 node_modules/
 .vscode
+.classpath
+.project
+.settings
