@@ -45,7 +45,8 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/*.bs.js": true
+        "**/*.bs.js": true,
+        "**/*.pyc": true,
     },
     "window.zoomLevel": 0,
     "vetur.format.defaultFormatter.css": "none",
@@ -55,5 +56,9 @@
     "vetur.format.defaultFormatter.postcss": "none",
     "vetur.format.defaultFormatter.scss": "none",
     "vetur.format.defaultFormatter.stylus": "none",
-    "vetur.format.defaultFormatter.ts": "none"
+    "vetur.format.defaultFormatter.ts": "none",
+    "[reason]": {
+        "editor.defaultFormatter": "jaredly.reason-vscode"
+    },
+    "python.linting.flake8Enabled": true
 }
