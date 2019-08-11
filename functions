@@ -13,7 +13,7 @@ pipsi-update() {
 }
 
 vigrep() {
-  grep --exclude-dir=migrations -Ir $1 . | awk 'BEGIN {FS=":"} {print $1}' | sort | uniq | xargs -o vim -p 
+  grep --exclude-dir=migrations -Ir $1 . | awk 'BEGIN {FS=":"} {print $1}' | sort | uniq | xargs -o vim -p
 }
 
 reposize() {
@@ -43,4 +43,14 @@ ncugrep() {
 
 dash() {
   open dash://$1:$2
+}
+
+t() {
+  todo $@
+}
+
+tt() {
+  cd ~/dev/todo > /dev/null
+  esy x --release TodoApp.exe $@
+  cd - > /dev/null
 }
