@@ -25,6 +25,7 @@ PATH=$GOPATH/bin:$PATH
 PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
 PATH=/Users/rolf/Library/Python/2.7/bin:/Users/rolf/Library/Python/3.7/bin:$PATH
+PATH=~/.poetry/bin:$PATH
 export PATH
 
 export VIM_BACKGROUND=dark
@@ -54,3 +55,11 @@ PATH=./node_modules/.bin:$PATH
 export PATH
 
 . /Users/rolf/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/sls.zsh

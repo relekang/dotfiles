@@ -20,7 +20,7 @@
     "workbench.colorTheme": "Monokai Ocean",
     "workbench.editor.showIcons": false,
     "workbench.iconTheme": null,
-    "workbench.settings.editor": "json",
+    "workbench.settings.editor": "ui",
     "editor.tabSize": 2,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDragAndDrop": false,

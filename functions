@@ -47,6 +47,7 @@ dash() {
 
 t() {
   todo $@
+  refresh-bitbar
 }
 
 tt() {
