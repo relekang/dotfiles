@@ -44,6 +44,9 @@
   reh = reset --hard
   rlc = reset HEAD^
 
+  pop = reset HEAD^
+  wip = "!git add . && git ca -nm'wip'"
+
   p = pull --rebase
   pn = pull --no-rebase
   po = pull --rebase origin
@@ -67,7 +70,6 @@
 
   cleanup = "!git b --merged | grep  -v 'master' | xargs git b -d"
   delete-merged = "!git-delete-merged"
-  wip = "!git add . && git ca -nm'wip'"
 	exec = "!exec "
 
 [filter "media"]
