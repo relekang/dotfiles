@@ -76,9 +76,15 @@
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+
 [push]
 	default = current
+
 [credential]
 	helper = osxkeychain
+
 [rerere]
 	enabled = true
+
+[includeIf "gitdir:~/dev/dnb/"]
+  path = .gitconfig-dnb
