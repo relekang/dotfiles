@@ -13,7 +13,10 @@
     "javascript.updateImportsOnFileMove.enabled": "never",
     "prettier.requireConfig": true,
     "reason.codelens.enabled": true,
-    "reason.diagnostics.tools": [ "merlin", "bsb" ],
+    "reason.diagnostics.tools": [
+        "merlin",
+        "bsb"
+    ],
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "terminal.integrated.rendererType": "dom",
@@ -55,7 +58,10 @@
         "**/.classpath": true,
         "**/.project": true,
         "**/.settings": true,
-        "**/.factorypath": true
+        "**/.factorypath": true,
+        "**/node_modules": true,
+        "**/.scannerwork": true,
+        "**/coverage": true
     },
     "window.zoomLevel": 0,
     "vetur.format.defaultFormatter.css": "none",
