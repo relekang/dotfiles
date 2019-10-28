@@ -13,7 +13,6 @@ brew install \
   redis \
   nginx \
   ansible \
-  nvm \
   mas \
   vim \
   zsh-syntax-highlighting \
