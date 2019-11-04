@@ -41,7 +41,6 @@ source $DOT/chruby
 source $DOT/functions
 source $DOT/python/virtualenvwrapper
 
-# fnm
 eval "$(fnm env --multi)"
 
 if [[ "$(uname)" == "Darwin" ]]; then
