@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # This is a script to install python tools into virtualenvs.
 # It is kind of a lightweight version of pipsi.
@@ -30,7 +30,17 @@ if [[ "$1" == "install" ]]; then
   else
     ln -s $path/bin/$cmd ~/.local/bin/$cmd
   fi
+elif [[ "$1" == "cmd" ]]; then
+  package=$2
+  shift
+  shift
+  path=~/.local/venv/$package
+
+  echo "Running pip $@ in $package"
+
+  $path/bin/pip $@
+
 else
-  echo "Only install supported at this point"
+  echo "Only install and cmd supported at this point"
   exit 1
 fi
