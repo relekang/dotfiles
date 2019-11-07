@@ -65,21 +65,21 @@ vim: vimfiles
 	@cd vimfiles && $(MAKE)
 
 atom-packages:
-	sh apms
+	bash apms
 
 vscode: $(HOME)/Library/Application\ Support/Code/User/settings.json
 	brew cask install visual-studio-code
 	./vscode/install-extensions
 
 homebrew:
-	sh macos/homebrew
+	bash macos/homebrew
 
 python:
-	sh python/init
+	bash python/init
 
 os:
-	sh macos/osx
-	sh linux
+	bash macos/macos.sh
+	bash linux
 
 clean:
 	@rm -f $(HOME)/.gitconfig $(HOME)/.zshrc
