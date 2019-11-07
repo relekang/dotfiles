@@ -1,3 +1,7 @@
+if [[ "$OSTYPE" != "darwin"* ]]; then
+  exit 0
+fi
+
 echo "Manual things:"
 echo " * Enable prevent computer from sleeping when attached to power and screen is off"
 echo " * Enable sync during sleep"
