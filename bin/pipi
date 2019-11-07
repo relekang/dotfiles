@@ -1,28 +1,36 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # This is a script to install python tools into virtualenvs.
 # It is kind of a lightweight version of pipsi.
 
-package=$1
-if [[ "$package" == "install" ]]; then
-  package=$2
-fi
-
-echo "Installing $package into ~/.local/bin/$package"
-
-path=~/.local/venv/$package
-
-mkdir -p ~/.local/bin/
-
-if [[ ! -d $path ]]; then
-  virtualenv -p $(which python3) $path
-fi
+# Usage:
+#   pipi install <package> [<cliname>]
 
 if [[ "$1" == "install" ]]; then
-  $path/bin/pip $@
-else
-  $path/bin/pip install -U $@
-fi
+  package=$2
+  cmd=$3
 
-rm -rf ~/.local/bin/$package
-ln -s $path/bin/$package ~/.local/bin/$package
+  echo "Installing $package into ~/.local/bin/$package"
+
+  path=~/.local/venv/$package
+
+  mkdir -p ~/.local/bin/
+
+  if [[ -d $path ]]; then
+    rm -rf $path
+  fi
+
+  virtualenv -p $(which python3) $path
+  $path/bin/pip install -U $package
+
+  rm -rf ~/.local/bin/$package
+
+  if [[ "$cmd" == "" ]]; then
+    ln -s $path/bin/$package ~/.local/bin/$package
+  else
+    ln -s $path/bin/$cmd ~/.local/bin/$cmd
+  fi
+else
+  echo "Only install supported at this point"
+  exit 1
+fi
