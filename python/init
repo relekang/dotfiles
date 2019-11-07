@@ -1,8 +1,10 @@
-brew install python python2
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  brew install python python2
+fi
 
 pip install virtualenv virtualenvwrapper
 pip3 install virtualenv virtualenvwrapper
 
-pipi install flake8
-pipi install tox
-pipi install pipenv pew
+./bin/pipi install flake8
+./bin/pipi install tox
+./bin/pipi install pipenv pew
