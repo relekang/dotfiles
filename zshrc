@@ -1,7 +1,9 @@
 export ZSH=$HOME/.oh-my-zsh
 export DOT=$HOME/.dotfiles
 
-ZSH_THEME="af-magic"
+ZSH_CUSTOM=$HOME/.zsh-custom
+
+ZSH_THEME=rl
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
@@ -66,3 +68,5 @@ export PATH
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/sls.zsh
+
+true

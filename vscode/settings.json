@@ -23,7 +23,10 @@
     "workbench.colorTheme": "Monokai Ocean",
     "workbench.editor.showIcons": false,
     "workbench.iconTheme": null,
-    "workbench.settings.editor": "ui",
+    "workbench.settings.editor": "json",
+    "workbench.colorCustomizations": {
+        "terminal.background": "#000000"
+    },
     "editor.tabSize": 2,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDragAndDrop": false,
@@ -77,5 +80,6 @@
     "[reason]": {
         "editor.defaultFormatter": "jaredly.reason-vscode"
     },
-    "python.linting.flake8Enabled": true
+    "python.linting.flake8Enabled": true,
+    "terminal.integrated.fontSize": 15
 }

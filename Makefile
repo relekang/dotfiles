@@ -1,4 +1,5 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/Library/Application\ Support/Code/User/settings.json python os secret-aliases
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zsh-custom $(HOME)/.python os secret-aliases
+install-docker: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
 $(HOME)/.oh-my-zsh:
 	curl -L http://install.ohmyz.sh | sh
@@ -16,6 +17,10 @@ $(HOME)/.local/bin/git-delete-merged:
 $(HOME)/.zshrc:
 	@ln -s $(shell pwd)/zshrc $(HOME)/.zshrc
 	@echo "Created symbolic link for .zshrc"
+
+$(HOME)/.zsh-custom:
+	@ln -s $(shell pwd)/zsh-custom $(HOME)/.zsh-custom
+	@echo "Created symbolic link for .zsh-custom"
 
 $(HOME)/.vim:
 	@ln -s $(shell pwd)/vimfiles/vim $(HOME)/.vim
@@ -74,17 +79,22 @@ vscode: $(HOME)/Library/Application\ Support/Code/User/settings.json
 homebrew:
 	bash macos/homebrew
 
-python:
+$(HOME)/.python:
 	bash python/init
+	@touch $(HOME)/.python
 
 os:
 	bash macos/macos.sh
 	bash linux
 
 clean:
-	@rm -f $(HOME)/.gitconfig $(HOME)/.zshrc
+	@rm -f $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zsh-custom
 	@rm -f $(HOME)/.vimrc $(HOME)/.vim
+	@rm -f $(HOME)/.python
 	@rm -f $(HOME)/Library/Application\ Support/Code/User/settings.json
 	@echo "Removed all dotfiles"
 
-.PHONY: vim vim_plugins clean os i3 python homebrew vscode
+docker-image: Dockerfile-dev-env
+	docker build -t dev-env -f Dockerfile-dev-env .
+
+.PHONY: vim vim_plugins clean os i3 python homebrew vscode docker-image
