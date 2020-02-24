@@ -1,0 +1,26 @@
+FROM ubuntu
+
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:jonathonf/vim && apt-get update && \
+  apt-get install -y curl build-essential git zsh zsh-syntax-highlighting mlocate vim python python-pip python3 python3-pip && \
+  rm -rf /var/lib/apt/lists/*
+
+ENV USERNAME rolf
+
+RUN adduser $USERNAME --disabled-password --gecos ""
+
+RUN apt-get update && apt-get install zip unzip
+
+USER $USERNAME
+WORKDIR /home/$USERNAME
+
+RUN curl -fsSL https://github.com/Schniz/fnm/raw/master/.ci/install.sh | bash
+
+#RUN cd ~ && git clone https://github.com/relekang/dotfiles.git .dotfiles
+COPY . /home/$USERNAME/.dotfiles
+
+RUN cd ~/.dotfiles && make clean install-docker || true
+RUN cd ~/.dotfiles && make clean install-docker || true
+
+ENTRYPOINT /bin/zsh
+
