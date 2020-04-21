@@ -14,3 +14,4 @@ mas install 1295203466  # Ms RDP
 mas install 568494494   # Pocket
 mas install 410628904   # Wunderlist
 mas install 1082624744  # Gifox
+mas install 1155850258  # Push Mic Control

@@ -1,9 +1,10 @@
 {
     "editor.folding": true,
     "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 15,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
+    "editor.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
     "eslint.autoFixOnSave": true,
     "eslint.packageManager": "yarn",
     "extensions.autoUpdate": true,
@@ -81,5 +82,9 @@
         "editor.defaultFormatter": "jaredly.reason-vscode"
     },
     "python.linting.flake8Enabled": true,
-    "terminal.integrated.fontSize": 15
+    "python.formatting.provider": "black",
+    "[python]": {},
+    "files.associations": {
+        "*.css": "postcss"
+    }
 }
