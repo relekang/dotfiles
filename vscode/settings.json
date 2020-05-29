@@ -7,6 +7,10 @@
     "eslint.autoFixOnSave": true,
     "eslint.packageManager": "yarn",
     "extensions.autoUpdate": true,
+    "window.autoDetectColorScheme": true,
+    "workbench.colorTheme": "GitHub Light",
+    "workbench.preferredLightColorTheme": "GitHub Light",
+    "workbench.preferredDarkColorTheme": "GitHub Dark",
     "eslint.run": "onSave",
     "files.autoSave": "onFocusChange",
     "files.insertFinalNewline": true,
@@ -20,7 +24,6 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "terminal.integrated.rendererType": "dom",
-    "workbench.colorTheme": "Monokai Ocean",
     "workbench.editor.showIcons": false,
     "workbench.iconTheme": null,
     "workbench.settings.editor": "json",
@@ -33,18 +36,9 @@
     "eslint.validate": [
         "javascript",
         "javascriptreact",
-        {
-            "language": "vue",
-            "autoFix": true
-        },
-        {
-            "language": "typescript",
-            "autoFix": true
-        },
-        {
-            "language": "typescriptreact",
-            "autoFix": true
-        }
+        "vue",
+        "typescript",
+        "typescriptreact"
     ],
     "files.exclude": {
         "**/.git": true,
@@ -81,5 +75,40 @@
         "editor.defaultFormatter": "jaredly.reason-vscode"
     },
     "python.linting.flake8Enabled": true,
-    "terminal.integrated.fontSize": 15
+    "files.associations": {
+        ".eslintrc": "yaml"
+    },
+    "yaml.schemas": {
+        "file:///Users/rolf/.vscode/extensions/atlassian.atlascode-2.1.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "terminal.integrated.fontSize": 15,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.renderWhitespace": "all",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "go.formatTool": "gofmt",
+    "yaml.customTags": [
+        "!FindInMap sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!Join sequence",
+        "!Ref",
+        "!Select sequence",
+        "!Split sequence",
+        "!Sub",
+        "!If sequence",
+        "!Not sequence",
+        "!Equals sequence"
+    ],
+    "go.useLanguageServer": true,
+    "debug.onTaskErrors": "debugAnyway",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.requirements.JDK11Warning": false,
+    "python.jediEnabled": false,
+    "java.semanticHighlighting.enabled": true
 }
