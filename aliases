@@ -35,6 +35,8 @@ alias pepify="flake8 | awk '$awk_arg' | cut -c 3- | sort | uniq | xargs -o  vim 
 alias hintify="jshint . | awk '$awk_arg' | sort | uniq | tail -n+3 | xargs -o  vim -p"
 alias esify="eslint . | awk '{print $1}' | grep '[a-z]' | sort | uniq | xargs -o vim -p"
 
+alias oni='/Applications/Onivim2.App/Contents/MacOS/Oni2'
+
 alias apepify="flake8 | awk '$awk_arg' | cut -c 3- | sort | uniq | xargs atom"
 alias aesify="eslint . | awk '{print $1}' | grep '[a-z]' | sort | uniq | xargs atom"
 
