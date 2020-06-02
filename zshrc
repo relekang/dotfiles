@@ -45,7 +45,7 @@ source $DOT/python/virtualenvwrapper
 
 # fnm
 PATH="~/.fnm:$PATH"
-eval "$(fnm env --multi)"
+eval "$(fnm env --multi --use-on-cd)"
 
 if [[ "$(uname)" == "Darwin" ]]; then
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -61,12 +61,5 @@ export PATH
 
 . /Users/rolf/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/rolf/dev/rl.com/lambdas/node_modules/tabtab/.completions/sls.zsh
 
 true
