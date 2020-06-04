@@ -1,5 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 wget https://github.com/tonsky/FiraCode/releases/download/4/Fira_Code_v4.zip
 unzip -o Fira_Code_v4.zip -d FiraCode
 rm -rf Fira_Code*.zip
-cp -v FiraCode/ttf/*.ttf /Library/Fonts/
+
+
+if [[ "$(uname)" == 'Darwin' ]]; then
+  cp -v FiraCode/ttf/*.ttf /Library/Fonts/
+else
+  echo "Missing install for $(uname)"
+  exit 1
+fi
