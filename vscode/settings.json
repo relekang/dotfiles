@@ -108,5 +108,6 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "java.requirements.JDK11Warning": false,
   "python.jediEnabled": false,
-  "java.semanticHighlighting.enabled": true
+"java.semanticHighlighting.enabled": true,
+"python.languageServer": "Microsoft"
 }
