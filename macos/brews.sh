@@ -19,7 +19,8 @@ brew install \
   yarn \
   httpie \
   ripgrep \
-  Schniz/tap/fnm
+  Schniz/tap/fnm \
+  git-flow
 
 
 
