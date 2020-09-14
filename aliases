@@ -21,7 +21,9 @@ alias tbase="npm run test:base --"
 
 #
 # git
-alias git=hub
+if which hub > /dev/null; then
+  alias git=hub
+fi
 alias gl='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 gist='gist -p'
 

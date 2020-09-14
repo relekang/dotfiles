@@ -41,16 +41,22 @@ if [ -f "$DOT/secret-aliases" ]; then
 fi
 source $DOT/chruby
 source $DOT/functions
-source $DOT/python/virtualenvwrapper
+
 
 # fnm
-PATH="~/.fnm:$PATH"
-eval "$(fnm env --multi --use-on-cd)"
+PATH="$HOME/.fnm:$PATH"
+if which fnm > /dev/null; then
+  eval "$(fnm env --multi --use-on-cd)"
+fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  if [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  fi
 else
-  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  fi
 fi
 
 PATH=~/.local/bin:$PATH
