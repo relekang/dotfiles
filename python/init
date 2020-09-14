@@ -2,9 +2,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install python python2
 fi
 
-pip install virtualenv virtualenvwrapper
-pip3 install virtualenv virtualenvwrapper
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
-./bin/pipi install flake8
-./bin/pipi install tox
-./bin/pipi install pipenv pew
