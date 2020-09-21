@@ -67,5 +67,8 @@ export PATH
 
 . /Users/rolf/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval `ssh-agent -t 1d`
+fi
 
 true
