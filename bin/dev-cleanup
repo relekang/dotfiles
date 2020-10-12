@@ -1,0 +1,13 @@
+#!/bin/bash
+
+repositories=$(find ~/dev \
+  -type d \
+  \( -name node_modules -o -name .tox -o -path site-packages \) -prune -false \
+  -o -name '.git')
+
+for repo in $repositories; do
+  path="$(dirname "$repo")"
+  echo "$path"
+  git -C "$path" fetch -p
+  git -C "$path" cleanup || true
+done
