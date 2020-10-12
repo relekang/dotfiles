@@ -4,8 +4,6 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.fontSize": 15,
-  "terminal.integrated.fontSize": 15,
-  "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "extensions.autoUpdate": true,
   "eslint.run": "onSave",
@@ -76,9 +74,13 @@
   "python.formatting.provider": "black",
   "[python]": {},
   "files.associations": {
+    "**/ansible/**/*.yml": "ansible",
+    "**/tasks/*.yml": "ansible",
+    "**/roles/*.yml": "ansible",
     "*.css": "postcss",
     ".eslintrc": "yaml"
   },
+  "ansible.validation": false,
   "terminal.integrated.fontSize": 15,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -100,7 +102,8 @@
     "!Sub",
     "!If sequence",
     "!Not sequence",
-    "!Equals sequence"
+    "!Equals sequence",
+    "!Base64 mapping"
   ],
   "go.useLanguageServer": true,
   "debug.onTaskErrors": "debugAnyway",
