@@ -55,3 +55,11 @@ tt() {
   esy x --release TodoApp.exe $@
   cd - > /dev/null
 }
+
+aws-profile() {
+  if grep "\[profile $1\]" ~/.aws/config > /dev/null; then
+    export AWS_PROFILE=$1
+  else
+    echo "Missing profile $1"
+  fi
+}
