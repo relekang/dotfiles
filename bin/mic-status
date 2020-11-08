@@ -1,0 +1,11 @@
+#!/usr/bin/osascript
+
+on getMicrophoneVolume()
+  input volume of (get volume settings)
+end getMicrophoneVolume
+
+if getMicrophoneVolume() is greater than 0 then
+  do shell script "echo on"
+else
+  do shell script "echo off"
+end if
