@@ -84,7 +84,7 @@ $(HOME)/.python:
 	@touch $(HOME)/.python
 
 os:
-	bash macos/macos.sh
+	bash macos/index.sh
 	bash linux
 
 clean:

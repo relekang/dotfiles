@@ -25,7 +25,15 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Set a really fast key repeat.
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write -g KeyRepeat -int 2
+
+defaults write -g InitialKeyRepeat -int 15
+
+defaults write -g NSAutomaticCapitalizationEnabled --int 0
+
+defaults write -g com.apple.keyboard.fnState --int 1
+defaults write -g com.apple.springing.delay --string 0.5
+defaults write -g com.apple.springing.enabled --int 1
 
 ########## Dock ##########
 

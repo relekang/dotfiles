@@ -56,7 +56,7 @@
     "**/.scannerwork": true,
     "**/coverage": true
   },
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.html": "none",
   "vetur.format.defaultFormatter.js": "none",
@@ -112,5 +112,7 @@
   "java.requirements.JDK11Warning": false,
   "python.jediEnabled": false,
 "java.semanticHighlighting.enabled": true,
-"python.languageServer": "Microsoft"
+"python.languageServer": "Microsoft",
+"python.showStartPage": false,
+"workbench.startupEditor": "newUntitledFile"
 }

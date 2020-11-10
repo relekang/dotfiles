@@ -9,11 +9,6 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 # sleep 2 && osascript -e 'quit app "iTerm"'
 
 
-# Set custom preference directory
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/macos/iterm2"
-# Tell iTerm2 to use the custom preferences in the directory
-defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-
 # Fonts
 /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Normal Font' FiraCode-Regular 15" ~/Library/Preferences/com.googlecode.iTerm2.plist
 /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Non Ascii Font' FiraCode-Regular 15" ~/Library/Preferences/com.googlecode.iTerm2.plist

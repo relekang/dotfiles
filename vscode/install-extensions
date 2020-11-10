@@ -1,17 +1,21 @@
 #!/bin/bash
 
 function extensions() {
-    echo gaearon.subliminal
-    echo vscodevim.vim
-    echo jaredly.reason-vscode
-    echo gcazaciuc.vscode-flow-ide
-    echo esbenp.prettier-vscode
-    echo dbaeumer.vscode-eslint
-    echo octref.vetur
-    echo alexdima.copy-relative-path
-    echo wmaurer.vscode-jumpy
-    echo eamodio.gitlens
-    echo rofrol.monokai-ocean
+  echo github.github-vscode-theme
+  echo gaearon.subliminal
+  echo vscodevim.vim
+  echo jaredly.reason-vscode
+  echo gcazaciuc.vscode-flow-ide
+  echo esbenp.prettier-vscode
+  echo dbaeumer.vscode-eslint
+  echo octref.vetur
+  echo alexdima.copy-relative-path
+  echo wmaurer.vscode-jumpy
+  echo eamodio.gitlens
+  echo rofrol.monokai-ocean
+  echo visualstudioexptteam.vscodeintellicode
+  echo ms-vscode.go
+  echo ms-ossdata.vscode-postgresql
 }
 
 for extension in $(extensions); do
