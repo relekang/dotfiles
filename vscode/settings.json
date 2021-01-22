@@ -103,7 +103,9 @@
     "!If sequence",
     "!Not sequence",
     "!Equals sequence",
-    "!Base64 mapping"
+    "!Base64 mapping",
+    "!Or sequence",
+    "!And sequence"
   ],
   "go.useLanguageServer": true,
   "debug.onTaskErrors": "debugAnyway",
@@ -114,5 +116,21 @@
 "java.semanticHighlighting.enabled": true,
 "python.languageServer": "Microsoft",
 "python.showStartPage": false,
-"workbench.startupEditor": "newUntitledFile"
+"files.watcherExclude": {
+  "**/.bloop": true,
+  "**/.metals": true,
+  "**/.ammonite": true
+},
+"java.home": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/",
+"java.configuration.runtimes": [
+  {
+    "name": "JavaSE-1.8",
+    "path": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home/",
+  },
+  {
+    "name": "JavaSE-11",
+    "path": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/",
+  }
+],
+"files.trimTrailingWhitespace": true
 }
