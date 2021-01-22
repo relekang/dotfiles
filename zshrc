@@ -46,7 +46,7 @@ source $DOT/functions
 # fnm
 PATH="$HOME/.fnm:$PATH"
 if which fnm > /dev/null; then
-  eval "$(fnm env --multi --use-on-cd)"
+  eval "$(fnm env --use-on-cd)"
 fi
 
 if [[ "$(uname)" == "Darwin" ]]; then

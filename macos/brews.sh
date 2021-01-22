@@ -3,7 +3,6 @@ brew install \
   coreutils \
   htop-osx \
   wget \
-  unrar \
   hub \
   node \
   mosh \
@@ -19,12 +18,15 @@ brew install \
   yarn \
   httpie \
   ripgrep \
-  Schniz/tap/fnm \
-  git-flow
+  fnm \
+  git-flow \
+  golang \
+  openjdk openjdk@8 openjdk@11 \
+  jq
 
 
 
-brew cask install \
+brew install --cask \
   postgres \
   atom \
   spotify \
@@ -32,13 +34,9 @@ brew cask install \
   iterm2 \
   alfred \
   postico \
-  java \
-  intellij-idea \
-  pycharm \
-  datagrip \
   firefox \
   visual-studio-code \
-  google-chrome \
-  choosy
+  choosy \
+  jetbrains-toolbox
 
 brew install maven # this has to be after installing java

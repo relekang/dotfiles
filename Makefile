@@ -73,13 +73,15 @@ atom-packages:
 	bash apms
 
 vscode: $(HOME)/Library/Application\ Support/Code/User/settings.json
-	brew cask install visual-studio-code
+	brew install --cask visual-studio-code
 	./vscode/install-extensions
 
-homebrew:
-	bash macos/homebrew
+/usr/local/bin/brew:
+	bash macos/homebrew.sh
 
-$(HOME)/.python:
+homebrew: /usr/local/bin/brew
+
+$(HOME)/.python: /usr/local/bin/brew
 	bash python/init
 	@touch $(HOME)/.python
 

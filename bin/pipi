@@ -20,7 +20,7 @@ if [[ "$1" == "install" ]]; then
     rm -rf $path
   fi
 
-  virtualenv -p $(which python3) $path
+  python3 -m venv $path
   $path/bin/pip install -U $package
 
   rm -rf ~/.local/bin/$package
@@ -38,7 +38,7 @@ elif [[ "$1" == "cmd" ]]; then
 
   echo "Running pip $@ in $package"
 
-  $path/bin/pip $@
+  $path/bin/pip "$@"
 
 else
   echo "Only install and cmd supported at this point"
