@@ -16,6 +16,7 @@ function extensions() {
   echo visualstudioexptteam.vscodeintellicode
   echo ms-vscode.go
   echo ms-ossdata.vscode-postgresql
+  echo editorconfig.editorconfig
 }
 
 for extension in $(extensions); do
