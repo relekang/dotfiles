@@ -68,7 +68,7 @@
   ss = stash save
   sw = stash show
 
-  cleanup = "!git b --merged | grep  -v 'master' | xargs git b -d"
+  cleanup = "!git b --merged | grep -v develop | grep -v master | grep  -v $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') | xargs git b -d"
   delete-merged = "!git-delete-merged"
 	exec = "!exec "
 
