@@ -62,6 +62,7 @@ fi
 PATH=~/.local/bin:$PATH
 PATH=~/.node-bin/node_modules/.bin:$PATH
 PATH=~/bin:$PATH
+PATH=~/.bin:$PATH
 PATH=./node_modules/.bin:$PATH
 export PATH
 
