@@ -21,6 +21,7 @@ if [[ "$1" == "install" ]]; then
   fi
 
   python3 -m venv $path
+  $path/bin/pip install -U pip
   $path/bin/pip install -U $package
 
   rm -rf ~/.local/bin/$package
