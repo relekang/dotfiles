@@ -63,3 +63,7 @@ aws-profile() {
     echo "Missing profile $1"
   fi
 }
+
+search() {
+  open "https://duckduckgo.com/?q=$1"
+}
