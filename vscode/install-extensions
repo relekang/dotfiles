@@ -1,22 +1,31 @@
 #!/bin/bash
 
 function extensions() {
-  echo github.github-vscode-theme
-  echo gaearon.subliminal
-  echo vscodevim.vim
-  echo jaredly.reason-vscode
-  echo gcazaciuc.vscode-flow-ide
-  echo esbenp.prettier-vscode
-  echo dbaeumer.vscode-eslint
-  echo octref.vetur
   echo alexdima.copy-relative-path
-  echo wmaurer.vscode-jumpy
+  echo dbaeumer.vscode-eslint
   echo eamodio.gitlens
-  echo rofrol.monokai-ocean
-  echo visualstudioexptteam.vscodeintellicode
-  echo ms-vscode.go
+  echo EditorConfig.EditorConfig
+  echo esbenp.prettier-vscode
+  echo gaearon.subliminal
+  echo GitHub.github-vscode-theme
+  echo golang.go
+  echo jaredly.reason-vscode
+  echo ms-azuretools.vscode-docker
   echo ms-ossdata.vscode-postgresql
   echo editorconfig.editorconfig
+  echo ms-python.python
+  echo ms-python.vscode-pylance
+  echo ms-toolsai.jupyter
+  echo ms-vscode-remote.remote-containers
+  echo ms-vscode-remote.remote-ssh
+  echo ms-vscode-remote.remote-ssh-edit
+  echo rofrol.monokai-ocean
+  echo timonwong.shellcheck
+  echo VisualStudioExptTeam.vscodeintellicode
+  echo vscodevim.vim
+  echo vscoss.vscode-ansible
+  echo wmaurer.vscode-jumpy
+  echo wolfmah.ansible-vault-inline
 }
 
 for extension in $(extensions); do

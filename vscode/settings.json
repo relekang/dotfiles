@@ -43,6 +43,7 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/*.bs.js": true,
+    "**/*.gen.tsx": true,
     "**/*.pyc": true,
     "**/.merlin": true,
     "**/_esy": true,
