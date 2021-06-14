@@ -101,6 +101,7 @@
     "!Select sequence",
     "!Split sequence",
     "!Sub",
+    "!Sub sequence",
     "!If sequence",
     "!Not sequence",
     "!Equals sequence",
@@ -133,5 +134,17 @@
     "path": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/",
   }
 ],
-"files.trimTrailingWhitespace": true
+"files.trimTrailingWhitespace": true,
+"workbench.editorAssociations": {
+  "*.ipynb": "jupyter.notebook.ipynb"
+},
+"[yaml]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"terminal.integrated.copyOnSelection": true,
+"editor.cursorStyle": "line",
+"editor.insertSpaces": false,
+"editor.lineNumbers": "on",
+"editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+"editor.wordWrap": "off"
 }
