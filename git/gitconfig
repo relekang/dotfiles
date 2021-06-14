@@ -71,6 +71,7 @@
   cleanup = "!git b --merged | grep -v develop | grep -v master | grep  -v $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') | xargs git b -d"
   delete-merged = "!git-delete-merged"
 	exec = "!exec "
+	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 
 [filter "media"]
 	required = true
