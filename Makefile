@@ -42,6 +42,10 @@ $(HOME)/.atom:
 	@ln -s $(shell pwd)/atom $(HOME)/.atom
 	@echo "Created symbolic link for .atom/"
 
+$(HOME)/.tmux.conf:
+	@ln -s $(shell pwd)/tmux.conf $(HOME)/.tmux.conf
+	@echo "Created symbolic link for .tmux.conf"
+
 $(HOME)/Library/Application\ Support/Code/User/settings.json:
 	@ln -s $(shell pwd)/vscode/settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	@echo "Created symbolic link for vscode settings.json"
