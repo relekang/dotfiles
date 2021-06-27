@@ -76,3 +76,21 @@ complete -C _aws-profile aws-profile
 search() {
   open "https://duckduckgo.com/?q=$1"
 }
+
+tx() {
+  if tmux list-sessions | grep $1 > /dev/null; then
+    tmux a -t $1
+  else
+    tmux new -s $1
+  fi
+
+}
+
+_tx() {
+  if [[ -z "$1" ]]; then
+    tmux list-sessions | awk '{split($0,a,":"); print a[1]}'
+  else
+    tmux list-sessions | awk '{split($0,a,":"); print a[1]}' | grep --color=never $1
+  fi
+}
+complete -C _tx tx
