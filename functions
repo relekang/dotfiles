@@ -9,8 +9,12 @@ rpi() {
 }
 
 pipsi-update() {
-  ~/.local/venvs/$1/bin/pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs ~/.local/venvs/$1/bin/pip install -U
+  ~/.local/venv/$1/bin/pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs ~/.local/venv/$1/bin/pip install -U
 }
+_pipsi-update() {
+  /bin/ls ~/.local/venv/
+}
+complete -C _pipsi-update pipsi-update
 
 vigrep() {
   grep --exclude-dir=migrations -Ir $1 . | awk 'BEGIN {FS=":"} {print $1}' | sort | uniq | xargs -o vim -p
@@ -63,6 +67,11 @@ aws-profile() {
     echo "Missing profile $1"
   fi
 }
+
+_aws-profile() {
+  grep -oE "\[profile ([^]]+)" ~/.aws/config | awk '{print $2}'
+}
+complete -C _aws-profile aws-profile
 
 search() {
   open "https://duckduckgo.com/?q=$1"
