@@ -25,6 +25,10 @@
 [branch]
 	autosetuprebase = always
 
+[rebase]
+  autosquash = true
+
+
 [alias]
   c = commit
   ca = commit -a
