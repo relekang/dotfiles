@@ -68,6 +68,10 @@ export PATH
 
 . /Users/rolf/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+fi
+
 if [ -z "$SSH_AUTH_SOCK" ]; then
   eval `ssh-agent -t 1d`
 fi
