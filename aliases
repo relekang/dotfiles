@@ -15,7 +15,7 @@ alias pbjson="pbpaste | python -m json.tool | pbcopy"
 
 alias parrot="curl parrot.live"
 
-alias dc=docker-compose
+alias dc="docker compose"
 
 alias tbase="npm run test:base --"
 

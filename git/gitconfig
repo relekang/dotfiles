@@ -3,7 +3,7 @@
   email = me@rolflekang.com
 
 [core]
-  excludesfile = ~/.dotfiles/git/gitignore
+  excludeseile = ~/.dotfiles/git/gitignore
   editor = vim
 
 [github]
@@ -94,5 +94,5 @@
 [rerere]
 	enabled = true
 
-[includeIf "gitdir:~/dev/dnb/"]
-  path = .gitconfig-dnb
+[includeIf "gitdir:~/dev/wanda/"]
+  path = ~/.dotfiles/git/gitconfig-wanda
