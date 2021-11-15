@@ -57,7 +57,6 @@
     "**/.scannerwork": true,
     "**/coverage": true
   },
-  "window.zoomLevel": 1,
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.html": "none",
   "vetur.format.defaultFormatter.js": "none",
@@ -116,7 +115,6 @@
   "java.requirements.JDK11Warning": false,
   "python.jediEnabled": false,
 "java.semanticHighlighting.enabled": true,
-"python.languageServer": "Microsoft",
 "python.showStartPage": false,
 "files.watcherExclude": {
   "**/.bloop": true,
@@ -127,11 +125,11 @@
 "java.configuration.runtimes": [
   {
     "name": "JavaSE-1.8",
-    "path": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home/",
+    "path": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home/"
   },
   {
     "name": "JavaSE-11",
-    "path": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/",
+    "path": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/"
   }
 ],
 "files.trimTrailingWhitespace": true,
@@ -141,10 +139,17 @@
 "[yaml]": {
   "editor.defaultFormatter": "esbenp.prettier-vscode"
 },
+"[sql]": {
+  "editor.formatOnSave": false
+},
 "terminal.integrated.copyOnSelection": true,
 "editor.cursorStyle": "line",
 "editor.insertSpaces": false,
 "editor.lineNumbers": "on",
 "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-"editor.wordWrap": "off"
+"editor.wordWrap": "off",
+"go.toolsManagement.autoUpdate": true,
+"explorer.confirmDelete": false,
+"terminal.integrated.scrollback": 1000000,
+"python.languageServer": "Microsoft"
 }
