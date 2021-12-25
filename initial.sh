@@ -18,7 +18,7 @@ until git --version; do
 done
 
 cd ~
-git clone git@github.com:relekang/dotfiles.git .dotfiles
+git clone git@github.com:relekang/dotfiles.git .files
 
-cd .dotfiles
+cd .files
 make clean install

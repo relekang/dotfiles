@@ -1,5 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
-export DOT=$HOME/.dotfiles
+export DOT=$HOME/.files
 
 ZSH_CUSTOM=$HOME/.zsh-custom
 
