@@ -4,11 +4,11 @@ brew install \
   htop-osx \
   wget \
   hub \
+  postgresql \
   node \
   mosh \
   redis \
   hub \
-  postgresql \
   redis \
   nginx \
   ansible \
@@ -21,13 +21,16 @@ brew install \
   fnm \
   git-flow \
   golang \
-  openjdk openjdk@8 openjdk@11 \
-  jq
+  openjdk \
+  jq \
+  gh \
+  terraform \
+  sshuttle \
+  rust
 
 
 
 brew install --cask \
-  postgres \
   atom \
   spotify \
   dropbox \
@@ -37,6 +40,8 @@ brew install --cask \
   firefox \
   visual-studio-code \
   choosy \
-  jetbrains-toolbox
+  jetbrains-toolbox \
+  docker \
+  google-cloud-sdk
 
 brew install maven # this has to be after installing java
