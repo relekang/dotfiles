@@ -42,6 +42,7 @@ brew install --cask \
   choosy \
   jetbrains-toolbox \
   docker \
-  google-cloud-sdk
+  google-cloud-sdk \
+  nightowl
 
 brew install maven # this has to be after installing java
