@@ -85,6 +85,22 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
+  "[javscript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
+  "[javasctiptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
   "editor.renderWhitespace": "all",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -108,13 +124,13 @@
     "!Or sequence",
     "!And sequence"
   ],
-  "go.useLanguageServer": true,
   "debug.onTaskErrors": "debugAnyway",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "java.requirements.JDK11Warning": false,
   "python.jediEnabled": false,
 "java.semanticHighlighting.enabled": true,
+"python.languageServer": "Default",
 "python.showStartPage": false,
 "files.watcherExclude": {
   "**/.bloop": true,
@@ -148,8 +164,14 @@
 "editor.lineNumbers": "on",
 "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
 "editor.wordWrap": "off",
+<<<<<<< HEAD
 "go.toolsManagement.autoUpdate": true,
 "explorer.confirmDelete": false,
 "terminal.integrated.scrollback": 1000000,
 "python.languageServer": "Microsoft"
+=======
+"liveshare.presence": true,
+"terminal.integrated.scrollback": 100000000,
+"window.zoomLevel": 1
+>>>>>>> 73c063f (Update vscode settings)
 }

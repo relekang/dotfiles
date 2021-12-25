@@ -26,6 +26,7 @@ function extensions() {
   echo vscoss.vscode-ansible
   echo wmaurer.vscode-jumpy
   echo wolfmah.ansible-vault-inline
+  echo hashicorp.terraform
 }
 
 for extension in $(extensions); do
