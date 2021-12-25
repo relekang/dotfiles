@@ -42,6 +42,7 @@ fi
 source $DOT/chruby
 source $DOT/functions
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # fnm
 PATH="$HOME/.fnm:$PATH"
