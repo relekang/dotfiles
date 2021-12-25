@@ -17,7 +17,9 @@ alias parrot="curl parrot.live"
 
 alias dc="docker compose"
 
+alias nr="npm run --"
 alias tbase="npm run test:base --"
+
 
 #
 # git
