@@ -7,6 +7,7 @@ ZSH_THEME=rl
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
+export STARSHIP_CONFIG=$DOT/starship.toml
 export PROJECTS=~/dev
 export EDITOR='vim'
 export LC_ALL=en_US.UTF-8
@@ -28,6 +29,7 @@ PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
 PATH=/Users/rolf/Library/Python/2.7/bin:/Users/rolf/Library/Python/3.7/bin:$PATH
 PATH=~/.poetry/bin:$PATH
+PATH=/opt/homebrew/bin:$PATH
 export PATH
 
 export VIM_BACKGROUND=dark
@@ -78,3 +80,7 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 true
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+eval "$(starship init zsh)"
