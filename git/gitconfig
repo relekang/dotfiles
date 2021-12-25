@@ -6,6 +6,9 @@
   excludesfile = ~/.dotfiles/git/gitignore
   editor = vim
 
+[init]
+	defaultBranch = main
+
 [github]
   user = relekang
 
