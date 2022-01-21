@@ -80,6 +80,15 @@ fi
 
 true
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 export PATH="$HOME/.poetry/bin:$PATH"
+
+export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.9
 
 eval "$(starship init zsh)"
