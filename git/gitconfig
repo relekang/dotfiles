@@ -82,6 +82,7 @@
   fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
   main-branch = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
   rr = "!git wip && git r -i origin/$(git main-branch) && git pop"
+  om = "!git checkout $(git main-branch)"
 
 [filter "media"]
 	required = true
