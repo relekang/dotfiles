@@ -3,7 +3,7 @@
   email = me@rolflekang.com
 
 [core]
-  excludesfile = ~/.dotfiles/git/gitignore
+  excludesfile = ~/.files/git/gitignore
   editor = vim
 
 [init]
@@ -98,4 +98,6 @@
 	enabled = true
 
 [includeIf "gitdir:~/dev/wanda/"]
-  path = ~/.dotfiles/git/gitconfig-wanda
+  path = ~/.files/git/gitconfig-wanda
+[blame]
+  #ignoreRevsFile = .git-blame-ignore-revs
