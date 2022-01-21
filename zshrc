@@ -66,7 +66,6 @@ PATH=~/.local/bin:$PATH
 PATH=~/.node-bin/node_modules/.bin:$PATH
 PATH=~/bin:$PATH
 PATH=~/.bin:$PATH
-PATH=./node_modules/.bin:$PATH
 export PATH
 
 . /Users/rolf/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
