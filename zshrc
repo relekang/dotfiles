@@ -49,7 +49,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # fnm
 PATH="$HOME/.fnm:$PATH"
 if which fnm > /dev/null; then
-  eval "$(fnm env --use-on-cd)"
+  eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
