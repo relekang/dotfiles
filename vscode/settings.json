@@ -1,34 +1,24 @@
 {
+  "ansible.validation": false,
+  "debug.onTaskErrors": "debugAnyway",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.cursorStyle": "line",
   "editor.folding": true,
-  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'FiraCode Nerd Font', Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 15,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.fontSize": 15,
-  "eslint.packageManager": "yarn",
-  "extensions.autoUpdate": true,
-  "eslint.run": "onSave",
-  "files.autoSave": "onFocusChange",
-  "files.insertFinalNewline": true,
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "prettier.requireConfig": true,
-  "reason.codelens.enabled": true,
-  "reason.diagnostics.tools": ["merlin", "bsb"],
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-  "terminal.integrated.rendererType": "dom",
-  "window.autoDetectColorScheme": true,
-  "workbench.colorTheme": "GitHub Dark",
-  "workbench.preferredLightColorTheme": "GitHub Light",
-  "workbench.preferredDarkColorTheme": "GitHub Dark",
-  "workbench.editor.showIcons": false,
-  "workbench.iconTheme": null,
-  "workbench.settings.editor": "json",
-  "workbench.colorCustomizations": {
-    "terminal.background": "#000000"
-  },
+  "editor.insertSpaces": false,
+  "editor.lineNumbers": "on",
+  "editor.renderWhitespace": "all",
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "explorer.confirmDragAndDrop": false,
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "eslint.packageManager": "yarn",
+  "eslint.run": "onSave",
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -36,6 +26,18 @@
     "typescript",
     "typescriptreact"
   ],
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.autoUpdate": true,
+  "files.associations": {
+    "**/ansible/**/*.yml": "ansible",
+    "**/tasks/*.yml": "ansible",
+    "**/roles/*.yml": "ansible",
+    "*.css": "postcss",
+    ".eslintrc": "yaml",
+    "*.module.css": "css"
+  },
+  "files.autoSave": "onFocusChange",
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -57,6 +59,48 @@
     "**/.scannerwork": true,
     "**/coverage": true
   },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "go.formatTool": "gofmt",
+  "go.toolsManagement.autoUpdate": true,
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-1.8",
+      "path": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home/"
+    },
+    {
+      "name": "JavaSE-11",
+      "path": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/"
+    }
+  ],
+  "java.home": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/",
+  "java.requirements.JDK11Warning": false,
+  "java.semanticHighlighting.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "liveshare.presence": true,
+  "python.formatting.provider": "black",
+  "python.jediEnabled": false,
+  "python.languageServer": "Default",
+  "python.linting.flake8Enabled": true,
+  "python.showStartPage": false,
+  "reason.codelens.enabled": true,
+  "reason.diagnostics.tools": [
+    "merlin",
+    "bsb"
+  ],
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.fontFamily": "'FiraCode Nerd Font', Fira Code, monospace",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.rendererType": "dom",
+  "terminal.integrated.scrollback": 100000000,
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.html": "none",
   "vetur.format.defaultFormatter.js": "none",
@@ -67,45 +111,20 @@
   "vetur.format.defaultFormatter.ts": "none",
   "vetur.format.enable": false,
   "vetur.validation.script": true,
-  "[reason]": {
-    "editor.defaultFormatter": "jaredly.reason-vscode"
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.autoDetectColorScheme": true,
+  "workbench.colorCustomizations": {
+    "terminal.background": "#000000"
   },
-  "python.linting.flake8Enabled": true,
-  "python.formatting.provider": "black",
-  "[python]": {},
-  "files.associations": {
-    "**/ansible/**/*.yml": "ansible",
-    "**/tasks/*.yml": "ansible",
-    "**/roles/*.yml": "ansible",
-    "*.css": "postcss",
-    ".eslintrc": "yaml"
+  "workbench.colorTheme": "GitHub Dark",
+  "workbench.editor.showIcons": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
   },
-  "ansible.validation": false,
-  "terminal.integrated.fontSize": 15,
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  },
-  "[javscript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  },
-  "[javasctiptreact]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  },
-  "editor.renderWhitespace": "all",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "go.formatTool": "gofmt",
+  "workbench.iconTheme": null,
+  "workbench.preferredDarkColorTheme": "GitHub Dark",
+  "workbench.preferredLightColorTheme": "GitHub Light",
+  "workbench.settings.editor": "json",
   "yaml.customTags": [
     "!FindInMap sequence",
     "!GetAtt",
@@ -124,54 +143,41 @@
     "!Or sequence",
     "!And sequence"
   ],
-  "debug.onTaskErrors": "debugAnyway",
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "java.requirements.JDK11Warning": false,
-  "python.jediEnabled": false,
-"java.semanticHighlighting.enabled": true,
-"python.languageServer": "Default",
-"python.showStartPage": false,
-"files.watcherExclude": {
-  "**/.bloop": true,
-  "**/.metals": true,
-  "**/.ammonite": true
-},
-"java.home": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/",
-"java.configuration.runtimes": [
-  {
-    "name": "JavaSE-1.8",
-    "path": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home/"
+  "gitlens.currentLine.enabled": true,
+
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  {
-    "name": "JavaSE-11",
-    "path": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/"
-  }
-],
-"files.trimTrailingWhitespace": true,
-"workbench.editorAssociations": {
-  "*.ipynb": "jupyter.notebook.ipynb"
-},
-"[yaml]": {
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[sql]": {
-  "editor.formatOnSave": false
-},
-"terminal.integrated.copyOnSelection": true,
-"editor.cursorStyle": "line",
-"editor.insertSpaces": false,
-"editor.lineNumbers": "on",
-"editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-"editor.wordWrap": "off",
-<<<<<<< HEAD
-"go.toolsManagement.autoUpdate": true,
-"explorer.confirmDelete": false,
-"terminal.integrated.scrollback": 1000000,
-"python.languageServer": "Microsoft"
-=======
-"liveshare.presence": true,
-"terminal.integrated.scrollback": 100000000,
-"window.zoomLevel": 1
->>>>>>> 73c063f (Update vscode settings)
+  "[javasctiptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javscript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {},
+  "[reason]": {
+    "editor.defaultFormatter": "jaredly.reason-vscode"
+  },
+  "[sql]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.requireConfig": true,
+  "terminal.integrated.persistentSessionScrollback": 10000,
+  "window.zoomLevel": 1
 }
