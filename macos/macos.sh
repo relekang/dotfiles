@@ -58,6 +58,6 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 killall Dock
 
 ########## Requires sudo ##########
-echo '\033[91mSome settings require sudo.\033[0m'
+echo -e $(lightred 'Some settings require sudo.')
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
