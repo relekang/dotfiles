@@ -1,8 +1,9 @@
 #/bin/bash
-
 set -x
 
-if [ ! -f ~/.ssh/id_rsa.pub ]; then
+if [ -f $HOME/.ssh/id_rsa.pub ]; then
+  echo "Key already exists"
+else
   ssh-keygen -t rsa -b 4096 -C "me@rolflekang.com"
   cat ~/.ssh/id_rsa.pub | pbcopy
   
