@@ -2,6 +2,12 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
   exit 0
 fi
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+. "$DIR/../utils/shell-utils.sh"
+
+set -x
+
 echo "Manual things:"
 echo " * Enable prevent computer from sleeping when attached to power and screen is off"
 echo " * Enable sync during sleep"
