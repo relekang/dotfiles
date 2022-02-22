@@ -28,7 +28,11 @@ brew install \
   gh \
   terraform \
   sshuttle \
-  rust
+  rust \
+  grip \
+  sops \
+  watch \
+  glow
 
 
 
