@@ -89,10 +89,7 @@
   "python.linting.flake8Enabled": true,
   "python.showStartPage": false,
   "reason.codelens.enabled": true,
-  "reason.diagnostics.tools": [
-    "merlin",
-    "bsb"
-  ],
+  "reason.diagnostics.tools": ["merlin", "bsb"],
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "terminal.integrated.copyOnSelection": true,
