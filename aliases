@@ -20,6 +20,8 @@ alias dc="docker compose"
 alias nr="npm run --"
 alias tbase="npm run test:base --"
 
+alias ncu="npx npm-check -u"
+
 
 #
 # git
