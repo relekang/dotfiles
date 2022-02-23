@@ -13,7 +13,7 @@
   user = relekang
 
 [help]
-	autocorrect = 1
+	autocorrect = 10
 
 [color]
   branch = auto
