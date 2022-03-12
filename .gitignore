@@ -8,3 +8,5 @@ FiraCode
 Fira_Code
 *.zip
 secret-aliases
+docker-data
+!docker-data/.gitkeep

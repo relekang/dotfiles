@@ -89,7 +89,6 @@ killall Dock
 killall SystemUIServer
 killall Finder
 
-exit 0
 ########## Requires sudo ##########
 echo -e $(lightred 'Some settings require sudo.')
 # Disable the sound effects on boot
