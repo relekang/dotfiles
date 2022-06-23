@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+
+if [ -z "$1" ]; then
+  echo "Usage curl-wait <curl-options>"
+  exit 0
+fi
+
+while true; do
+  curl -k -q $@ && exit 0 || sleep 2
+done
