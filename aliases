@@ -22,6 +22,10 @@ alias tbase="npm run test:base --"
 
 alias ncu="npx npm-check -u"
 
+alias uuid="npx --yes uuid v4"
+alias uuidn="npx --yes uuid v4 | tr -d '\n'"
+alias uuidc="npx --yes uuid v4 | tr -d '\n' | pbcopy"
+
 
 #
 # git
