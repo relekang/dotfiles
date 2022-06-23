@@ -16,11 +16,11 @@ async def main(connection):
             parts = theme.split(" ")
             if "dark" in parts:
                 preset = await iterm2.ColorPreset.async_get(
-                    connection, "Dark Background"
+                    connection, "papercolor-dark"
                 )
             else:
                 preset = await iterm2.ColorPreset.async_get(
-                    connection, "Light Background"
+                    connection, "papercolor-light"
                 )
 
             # Update the list of all profiles and iterate over them.

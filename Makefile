@@ -63,9 +63,9 @@ $(HOME)/.i3status.conf:
 $(HOME)/.i3:
 	mkdir -p $(HOME)/.i3
 
-$(HOME)/Library/ApplicationSupport/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py:
-	mkdir -p $(HOME)/Library/ApplicationSupport/iTerm2/Scripts/AutoLaunch
-	@ln -s $(shell pwd)/iterm-light-switch.py $(HOME)/Library/ApplicationSupport/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
+$(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py:
+	mkdir -p $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch
+	@ln -s $(shell pwd)/iterm-light-switch.py $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
 
 secret-aliases:
 	touch secret-aliases
@@ -93,7 +93,7 @@ $(HOME)/.python: /usr/local/bin/brew
 	bash python/init
 	@touch $(HOME)/.python
 
-os: $(HOME)/Library/ApplicationSupport/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
+os: $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
 	bash macos/index.sh
 	bash linux
 
