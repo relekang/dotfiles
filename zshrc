@@ -32,7 +32,7 @@ PATH=~/.poetry/bin:$PATH
 PATH=/opt/homebrew/bin:$PATH
 export PATH
 
-export VIM_BACKGROUND=dark
+export COLOR_MODE=$(color-mode)
 
 PYTHON=$(which python3)
 export VIRTUALENVWRAPPER_PYTHON=$PYTHON

@@ -67,6 +67,8 @@ $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switc
 	mkdir -p $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch
 	@ln -s $(shell pwd)/iterm-light-switch.py $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
 
+iterm-scripts: $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
+
 secret-aliases:
 	touch secret-aliases
 
@@ -93,7 +95,7 @@ $(HOME)/.python: /usr/local/bin/brew
 	bash python/init
 	@touch $(HOME)/.python
 
-os: $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
+os: iterm-scripts
 	bash macos/index.sh
 	bash linux
 
@@ -107,4 +109,4 @@ clean:
 docker-image: Dockerfile-dev-env
 	docker build -t dev-env -f Dockerfile-dev-env .
 
-.PHONY: vim vim_plugins clean os i3 python homebrew vscode docker-image
+.PHONY: vim vim_plugins clean os i3 python homebrew vscode docker-image iterm-scripts
