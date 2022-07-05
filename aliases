@@ -56,3 +56,7 @@ alias dockerclean="dockercleancontainers && dockercleanimages"
 
 
 alias travis="$HOME/.rbenv/versions/1.9.3-p551/bin/travis"
+
+#
+# file endings
+alias -s md=glow
