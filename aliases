@@ -20,7 +20,7 @@ alias dc="docker compose"
 alias nr="npm run --"
 alias tbase="npm run test:base --"
 
-alias ncu="npx npm-check -u"
+alias ncu="npx --yes npm-check -u"
 
 alias uuid="npx --yes uuid v4"
 alias uuidn="npx --yes uuid v4 | tr -d '\n'"
@@ -60,3 +60,6 @@ alias travis="$HOME/.rbenv/versions/1.9.3-p551/bin/travis"
 #
 # file endings
 alias -s md=glow
+alias -s html=open
+alias -s txt=less
+alias -s json=jq
