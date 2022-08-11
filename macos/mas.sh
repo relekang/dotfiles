@@ -13,3 +13,4 @@ mas install 568494494   # Pocket
 mas install 1082624744  # Gifox
 mas install 1471867429  # OTP Auth
 mas install 904280696   # Things 3
+mas install 1607635845  # Velja
