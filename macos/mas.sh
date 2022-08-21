@@ -1,16 +1,23 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install Mac App Store Applications
 
-mas install 413857545   # Divvy
-mas install 1333542190  # 1Password
-mas install 1176895641  # Spark
-mas install 409183694   # Keynote
-mas install 803453959   # Slack
-mas install 1263070803  # Lungo
-mas install 1116599239  # NordVPN
-mas install 568494494   # Pocket
-mas install 1082624744  # Gifox
-mas install 1471867429  # OTP Auth
-mas install 904280696   # Things 3
-mas install 1607635845  # Velja
+INSTALLED=$(mas list)
+
+function install() {
+  if ! echo $INSTALLED | grep $1 > /dev/null; then
+    mas install $1
+  fi
+}
+
+install 413857545   # Divvy
+install 1176895641  # Spark
+install 409183694   # Keynote
+install 803453959   # Slack
+install 1263070803  # Lungo
+install 1116599239  # NordVPN
+install 568494494   # Pocket
+install 1082624744  # Gifox
+install 1471867429  # OTP Auth
+install 904280696   # Things 3
+install 1607635845  # Velja

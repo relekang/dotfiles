@@ -1,9 +1,40 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-brew install \
+INSTALLED="$(brew list)"
+
+if [[ "$@" == *"--upgrade"* ]]; then
+  UPGRADE="yes"
+fi
+
+
+function install() {
+  args=""
+  if [[ "$1" == "--cask" ]]; then
+    shift
+    args="--cask"
+  fi
+
+  if [[ "$UPGRADE" == "yes" ]]; then
+    brew install $args $@
+  fi
+
+  to_install=""
+  for name in $@; do
+    if ! echo $INSTALLED | grep $name > /dev/null; then
+      echo $name
+      to_install="$to_install $name"
+    fi
+  done
+  if [[ ! -z "$to_install" ]];then
+    echo "Installing: $to_install"
+    brew install $args $to_install
+  fi
+}
+
+install \
   grc \
   coreutils \
-  htop-osx \
+  htop \
   wget \
   hub \
   postgresql \
@@ -22,7 +53,7 @@ brew install \
   ripgrep \
   fnm \
   git-flow \
-  golang \
+  go \
   openjdk \
   jq \
   gh \
@@ -36,8 +67,7 @@ brew install \
 
 
 
-brew install --cask \
-  atom \
+install --cask \
   spotify \
   dropbox \
   iterm2 \
@@ -49,6 +79,5 @@ brew install --cask \
   jetbrains-toolbox \
   docker \
   google-cloud-sdk \
-  nightowl
-
-brew install maven # this has to be after installing java
+  nightowl \
+  postgres-unofficial
