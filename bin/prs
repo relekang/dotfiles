@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+  GH_FORCE_TTY=100% gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 | awk '{print $1}' | xargs gh pr checkout
+else
+  gh pr list \
+    --search "is:open archived:false -label:dependencies draft:false org:$1" \
+    --json 'id,title,number,url,headRepository,headRepositoryOwner' \
+    | jq -r '. | map(.headRepositoryOwner.login+"/"+.headRepository.name+"	"+(.number|tostring)+"	"+.title+"	"+.url) | join("\n")' \
+    | fzf --ansi \
+    | awk 'BEGIN{FS="\t"} {print $4}' \
+    | xargs open
+fi
+# --preview 'GH_FORCE_TTY=100% gh pr view -R {1} {2}' --preview-window down --header-lines 3 \
+
