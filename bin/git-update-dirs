@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+for name in ./*; do
+  if [[ -d "$name/.git" ]]; then
+    echo -e "\n$name $(git -C "$name" remote -v | head -n 1 | awk '{print $2}')"
+    git -C "$name" fetch -p
+    git -C "$name" cleanup
+    main_branch="$(git -C "$name" main-branch)"
+    branch="$(git -C "$name" rev-parse --abbrev-ref HEAD)"
+
+    if [[ "$1" == "checkout-main" ]]; then
+      git -C "$name" checkout $main_branch
+    fi
+
+    if [[ "$branch" == "$main_branch" ]]; then
+      git -C "$name" pull origin $main_branch > /dev/null 2>&1
+    fi
+  fi
+done
+
