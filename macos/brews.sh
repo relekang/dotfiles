@@ -63,7 +63,8 @@ install \
   grip \
   sops \
   watch \
-  glow
+  glow \
+  tmux
 
 
 
