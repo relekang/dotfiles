@@ -17,7 +17,6 @@
   "editor.tabSize": 2,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.wordWrap": "off",
-  "eslint.packageManager": "yarn",
   "eslint.run": "onSave",
   "eslint.validate": [
     "javascript",
@@ -110,7 +109,7 @@
   "vetur.validation.script": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.autoDetectColorScheme": true,
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.showIcons": false,
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
