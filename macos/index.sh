@@ -17,11 +17,15 @@ if [[ "$(uname)" == 'Darwin' ]]; then
   . "$DIR/mas.sh"
   . "$DIR/iterm.sh"
 
-  if [ -d "/Applications/Choosy.app" ]; then
-    echo -e $(bold "Setting choosy as default browser")
-    defaultbrowser choosy
+  if command -v defaultbrowser &> /dev/null; then
+    if [ -d "/Applications/Choosy.app" ]; then
+      echo -e $(bold "Setting choosy as default browser")
+      defaultbrowser choosy
+    else
+      echo -e $(bold "Setting firefox as default browser")
+      defaultbrowser firefox
+    fi
   else
-    echo -e $(bold "Setting firefox as default browser")
-    defaultbrowser firefox
+    echo "Missing defaultbrowser command"
   fi
 fi
