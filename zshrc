@@ -9,7 +9,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 export STARSHIP_CONFIG=$DOT/starship.toml
 export PROJECTS=~/dev
-export EDITOR='vim'
+export EDITOR='nvim'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8 2>/dev/null)

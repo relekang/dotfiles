@@ -180,5 +180,6 @@
   },
   "prettier.requireConfig": true,
   "terminal.integrated.persistentSessionScrollback": 10000,
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "editor.inlineSuggest.enabled": true
 }
