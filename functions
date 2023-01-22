@@ -51,12 +51,14 @@ dash() {
 
 t() {
   todo $@
-  refresh-bitbar
+  sleep 1
+  /usr/bin/open -g "xbar://app.xbarapp.com/refreshPlugin?path=/Users/rolf/Library/Application Support/xbar/plugins/todo.10s.sh"
 }
 
 tt() {
   cd ~/dev/todo > /dev/null
-  esy x --release TodoApp.exe $@
+  go run main.go $@
+  /usr/bin/open -g "xbar://app.xbarapp.com/refreshPlugin?path=/Users/rolf/Library/Application\ Support/xbar/plugins/todo.10s.sh"
   cd - > /dev/null
 }
 
