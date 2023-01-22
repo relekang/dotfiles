@@ -1,5 +1,4 @@
 {
-  "ansible.validation": false,
   "debug.onTaskErrors": "debugAnyway",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -67,46 +66,17 @@
   },
   "go.formatTool": "gofmt",
   "go.toolsManagement.autoUpdate": true,
-  "java.configuration.runtimes": [
-    {
-      "name": "JavaSE-1.8",
-      "path": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home/"
-    },
-    {
-      "name": "JavaSE-11",
-      "path": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/"
-    }
-  ],
-  "java.home": "/Library/Java/JavaVirtualMachines/openjdk-11.0.1.jdk/Contents/Home/",
-  "java.requirements.JDK11Warning": false,
-  "java.semanticHighlighting.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "never",
-  "liveshare.presence": true,
   "python.formatting.provider": "black",
-  "python.jediEnabled": false,
-  "python.languageServer": "Default",
-  "python.linting.flake8Enabled": true,
-  "python.showStartPage": false,
-  "reason.codelens.enabled": true,
-  "reason.diagnostics.tools": ["merlin", "bsb"],
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
+  "python.languageServer": "Pylance",
+  "python.analysis.indexing": true,
+  "vsintellicode.features.python.deepLearning": "enabled",
+  "telemetry.telemetryLevel": "off",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.fontFamily": "'FiraCode Nerd Font', Fira Code, monospace",
   "terminal.integrated.fontSize": 15,
-  "terminal.integrated.rendererType": "dom",
   "terminal.integrated.scrollback": 100000000,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "vetur.format.defaultFormatter.css": "none",
-  "vetur.format.defaultFormatter.html": "none",
-  "vetur.format.defaultFormatter.js": "none",
-  "vetur.format.defaultFormatter.less": "none",
-  "vetur.format.defaultFormatter.postcss": "none",
-  "vetur.format.defaultFormatter.scss": "none",
-  "vetur.format.defaultFormatter.stylus": "none",
-  "vetur.format.defaultFormatter.ts": "none",
-  "vetur.format.enable": false,
-  "vetur.validation.script": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.autoDetectColorScheme": true,
   "workbench.colorTheme": "GitHub Dark",
@@ -160,7 +130,12 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[python]": {},
+  "[python]": {
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "editor.formatOnSave": true
+    }
+  },
   "[reason]": {
     "editor.defaultFormatter": "jaredly.reason-vscode"
   },
@@ -180,6 +155,17 @@
   },
   "prettier.requireConfig": true,
   "terminal.integrated.persistentSessionScrollback": 10000,
-  "window.zoomLevel": 1,
-  "editor.inlineSuggest.enabled": true
+  "editor.inlineSuggest.enabled": true,
+  "redhat.telemetry.enabled": false,
+  "python.venvFolders": [
+    "/Users/rolf/Library/Caches/pypoetry/virtualenvs"
+  ],
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": false
+  },
+  "window.zoomLevel": 1
 }

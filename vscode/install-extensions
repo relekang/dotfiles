@@ -15,6 +15,7 @@ function extensions() {
   echo editorconfig.editorconfig
   echo ms-python.python
   echo ms-python.vscode-pylance
+  echo ms-python.isort
   echo ms-toolsai.jupyter
   echo ms-vscode-remote.remote-containers
   echo ms-vscode-remote.remote-ssh
@@ -24,9 +25,11 @@ function extensions() {
   echo VisualStudioExptTeam.vscodeintellicode
   echo vscodevim.vim
   echo vscoss.vscode-ansible
-  echo wmaurer.vscode-jumpy
   echo wolfmah.ansible-vault-inline
   echo hashicorp.terraform
+  echo wmaurer.change-case
+  echo GitHub.copilot-labs
+  echo charliermarsh.ruff
 }
 
 for extension in $(extensions); do
