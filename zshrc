@@ -20,7 +20,8 @@ plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:.bin"
+PATH=/opt/homebrew/bin
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:.bin:$PATH"
 PATH=$DOT/bin:$PATH
 PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
 PATH=$PATH:/usr/local/lib/ruby/gems/2.5.0/bin/
@@ -29,7 +30,6 @@ PATH=~/.local/bin:$PATH
 PATH=~/bin:$PATH
 PATH=/Users/rolf/Library/Python/2.7/bin:/Users/rolf/Library/Python/3.7/bin:$PATH
 PATH=~/.poetry/bin:$PATH
-PATH=/opt/homebrew/bin:$PATH
 export PATH
 
 export COLOR_MODE=$(color-mode)
@@ -92,3 +92,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.9
 
 eval "$(starship init zsh)"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
