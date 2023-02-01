@@ -46,9 +46,19 @@ $(HOME)/.tmux.conf:
 	@ln -s $(shell pwd)/tmux.conf $(HOME)/.tmux.conf
 	@echo "Created symbolic link for .tmux.conf"
 
+$(HOME)/.tmux/plugins:
+	@mkdir -p $(HOME)/.tmux/plugins
+	@echo "Created dir .tmux/plugins"
+
+$(HOME)/.tmux/plugins/tmp: $(HOME)/.tmux/plugins
+	@git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
+	@echo "Cloned tmux plugin manager"
+
 $(HOME)/Library/Application\ Support/Code/User/settings.json:
 	@ln -s $(shell pwd)/vscode/settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	@echo "Created symbolic link for vscode settings.json"
+
+tmux: $(HOME)/.tmux.conf $(HOME)/.tmux/plugins/tmp
 
 i3: $(HOME)/.i3/config $(HOME)/.i3status.conf
 

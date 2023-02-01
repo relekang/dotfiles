@@ -80,12 +80,16 @@ search() {
 }
 
 tx() {
-  if tmux list-sessions | grep $1 2>&1 > /dev/null; then
-    tmux a -t $1
+  if [ -z ${1+x} ]; then
+    session=$(tmux list-sessions | fzf | awk '{print $1}' | sed 's/:$//' )
+    tmux a -t $session
   else
-    tmux new -s $1
+    if tmux list-sessions | grep $1 2>&1 > /dev/null; then
+      tmux a -t $1
+    else
+      tmux new -s $1
+    fi
   fi
-
 }
 
 _tx() {

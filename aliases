@@ -49,6 +49,12 @@ alias dockerclean="dockercleancontainers && dockercleanimages"
 
 
 #
+# tmux
+# tx is in ./functions
+alias txl="tmux list-sessions"
+
+
+#
 # file endings
 alias -s md=glow
 alias -s html=open
