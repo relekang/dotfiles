@@ -64,7 +64,8 @@ install \
   sops \
   watch \
   glow \
-  tmux
+  tmux \
+  gnu-sed
 
 
 
