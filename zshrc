@@ -92,6 +92,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.9
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # tabtab source for packages
 # uninstall by removing these lines

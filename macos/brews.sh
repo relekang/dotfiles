@@ -65,7 +65,8 @@ install \
   watch \
   glow \
   tmux \
-  gnu-sed
+  gnu-sed \
+  zoxide
 
 
 
