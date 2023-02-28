@@ -84,6 +84,7 @@
   om = "!git checkout $(git main-branch)"
   r-main = "!git r -i origin/$(git main-branch)"
   rr = "!git wip && git r-main||true && git pop"
+  resolve-poetry = "!git checkout --theirs poetry.lock && poetry lock --no-update"
 
 [filter "media"]
 	required = true
