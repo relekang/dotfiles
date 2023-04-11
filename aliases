@@ -38,8 +38,11 @@ VIM=$(which nvim)
 alias vi='vim'
 alias nv='nvim'
 alias vim='$VIM -p'
-awk_arg='BEGIN {FS=":"} {print$1}'
 
+alias avim="NVIM_APPNAME=astro nvim"
+alias lvim="NVIM_APPNAME=lazyvim nvim"
+
+awk_arg='BEGIN {FS=":"} {print$1}'
 
 #
 # docker
