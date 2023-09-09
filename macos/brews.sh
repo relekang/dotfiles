@@ -82,5 +82,5 @@ install --cask \
   jetbrains-toolbox \
   docker \
   google-cloud-sdk \
-  nightowl \
-  postgres-unofficial
+  postgres-unofficial \
+  nightfall
