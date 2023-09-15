@@ -11,11 +11,9 @@ function install() {
 }
 
 install 413857545   # Divvy
-install 1176895641  # Spark
 install 409183694   # Keynote
 install 803453959   # Slack
 install 1263070803  # Lungo
-install 1116599239  # NordVPN
 install 568494494   # Pocket
 install 1082624744  # Gifox
 install 1471867429  # OTP Auth
