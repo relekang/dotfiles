@@ -66,7 +66,8 @@ install \
   glow \
   tmux \
   gnu-sed \
-  zoxide
+  zoxide \
+  starship
 
 
 
