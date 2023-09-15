@@ -6,6 +6,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
   fi
 
   curl -sS https://starship.rs/install.sh | sh
+  curl -fsSL https://bun.sh/install | bash
 
   APT=zsh-syntax-highlighting
   echo "Need sudo to install $APT"

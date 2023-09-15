@@ -62,10 +62,16 @@ else
   fi
 fi
 
+[ -s "/Users/rolf/.bun/_bun" ] && source "/Users/rolf/.bun/_bun"
+
+export BUN_INSTALL="$HOME/.bun"
+
+
 PATH=~/.local/bin:$PATH
 PATH=~/.node-bin/node_modules/.bin:$PATH
 PATH=~/bin:$PATH
 PATH=~/.bin:$PATH
+PATH="$BUN_INSTALL/bin:$PATH"
 export PATH
 
 . /Users/rolf/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

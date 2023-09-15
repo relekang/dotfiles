@@ -17,6 +17,11 @@ if [[ "$(uname)" == 'Darwin' ]]; then
   . "$DIR/mas.sh"
   . "$DIR/iterm.sh"
 
+
+  if [[ ! -f ~/.bun/bin/bun ]]; then 
+    curl -fsSL https://bun.sh/install | bash
+  fi
+
   if command -v defaultbrowser &> /dev/null; then
     if [ -d "/Applications/Choosy.app" ]; then
       echo -e $(bold "Setting choosy as default browser")
