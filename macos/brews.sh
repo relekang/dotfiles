@@ -79,7 +79,6 @@ install --cask \
   postico \
   firefox \
   visual-studio-code \
-  choosy \
   jetbrains-toolbox \
   docker \
   google-cloud-sdk \

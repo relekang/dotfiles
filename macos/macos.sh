@@ -62,11 +62,6 @@ defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false"
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
 
-############ Choosy
-
-defaults write com.choosyosx.Choosy displayMenuBarItem -integer 0
-defaults write com.choosyosx.Choosy launchAtLogin -integer 1
-
 ############ iTerm
 defaults write com.googlecode.iterm2 DimInactiveSplitPanes -integer 1
 defaults write com.googlecode.iterm2 DimOnlyText -integer 1

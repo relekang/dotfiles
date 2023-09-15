@@ -23,9 +23,9 @@ if [[ "$(uname)" == 'Darwin' ]]; then
   fi
 
   if command -v defaultbrowser &> /dev/null; then
-    if [ -d "/Applications/Choosy.app" ]; then
-      echo -e $(bold "Setting choosy as default browser")
-      defaultbrowser choosy
+    if [ -d "/Applications/Velja.app" ]; then
+      echo -e $(bold "Setting Velja as default browser")
+      defaultbrowser Velja
     else
       echo -e $(bold "Setting firefox as default browser")
       defaultbrowser firefox
