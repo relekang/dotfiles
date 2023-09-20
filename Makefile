@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zsh-custom $(HOME)/.python os secret-aliases
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zsh-custom $(HOME)/.python $(HOME)/.ssh/authorized_keys os secret-aliases
 install-docker: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
 $(HOME)/.oh-my-zsh:
@@ -49,6 +49,15 @@ $(HOME)/.tmux.conf:
 $(HOME)/.tmux/plugins:
 	@mkdir -p $(HOME)/.tmux/plugins
 	@echo "Created dir .tmux/plugins"
+
+$(HOME)/.ssh:
+	@mkdir -p $(HOME)/.ssh
+	@chmod 700 $(HOME)/.ssh
+	@echo "Created dir .ssh"
+
+$(HOME)/.ssh/authorized_keys: $(HOME)/.ssh
+	@curl https://github.com/relekang.keys > $(HOME)/.ssh/authorized_keys
+	@echo "Added authorized_keys from github"
 
 $(HOME)/.tmux/plugins/tmp: $(HOME)/.tmux/plugins
 	@git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
