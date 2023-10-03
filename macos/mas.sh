@@ -19,3 +19,4 @@ install 1082624744  # Gifox
 install 1471867429  # OTP Auth
 install 904280696   # Things 3
 install 1607635845  # Velja
+install 1529448980  # Reeder
