@@ -167,5 +167,7 @@
     "plaintext": true,
     "markdown": false
   },
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "audioCues.volume": 0,
+  "editor.accessibilitySupport": "off"
 }
