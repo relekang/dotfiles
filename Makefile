@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zsh-custom $(HOME)/.python $(HOME)/.ssh/authorized_keys os secret-aliases
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zsh-custom $(HOME)/.python $(HOME)/.ssh/authorized_keys $(HOME)/.config/k9s os secret-aliases
 install-docker: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
 $(HOME)/.oh-my-zsh:
@@ -33,6 +33,10 @@ $(HOME)/.vimrc:
 $(HOME)/.config/nvim:
 	@ln -s $(shell pwd)/nvim $(HOME)/.config/nvim
 	@echo "Created symbolic link for nvim"
+
+$(HOME)/.config/k9s:
+	@ln -s $(shell pwd)/k9s $(HOME)/.config/k9s
+	@echo "Created symbolic link for k9s"
 
 $(HOME)/.hyper.js:
 	@ln -s $(shell pwd)/hyper.js $(HOME)/.hyper.js

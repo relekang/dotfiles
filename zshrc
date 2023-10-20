@@ -15,6 +15,7 @@ export LANG=en_US.UTF-8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8 2>/dev/null)
 export PHANTOMJS_BIN=/usr/local/bin/phantomjs
 export GOPATH=$HOME/.gocode/
+export XDG_CONFIG_HOME=$HOME/.config
 
 plugins=()
 
