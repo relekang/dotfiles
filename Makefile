@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zsh-custom $(HOME)/.python $(HOME)/.ssh/authorized_keys $(HOME)/.config/k9s os secret-aliases
+install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zsh-custom $(HOME)/.python $(HOME)/.ssh/authorized_keys $(HOME)/.config/k9s os secret-aliases
 install-docker: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
 $(HOME)/.oh-my-zsh:
@@ -17,6 +17,10 @@ $(HOME)/.local/bin/git-delete-merged:
 $(HOME)/.zshrc:
 	@ln -s $(shell pwd)/zshrc $(HOME)/.zshrc
 	@echo "Created symbolic link for .zshrc"
+
+$(HOME)/.zshenv:
+	@ln -s $(shell pwd)/zshenv $(HOME)/.zshenv
+	@echo "Created symbolic link for .zshenv"
 
 $(HOME)/.zsh-custom:
 	@ln -s $(shell pwd)/zsh-custom $(HOME)/.zsh-custom
