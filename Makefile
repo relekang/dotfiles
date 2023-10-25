@@ -1,4 +1,5 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zsh-custom $(HOME)/.python $(HOME)/.ssh/authorized_keys $(HOME)/.config/k9s os secret-aliases
+install: $(HOME)/.oh-my-zsh $(HOME)/.python $(HOME)/.ssh/authorized_keys links os secret-aliases
+links: $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zsh-custom $(HOME)/.config/k9s
 install-docker: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
 $(HOME)/.oh-my-zsh:
