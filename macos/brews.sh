@@ -83,4 +83,5 @@ install --cask \
   docker \
   google-cloud-sdk \
   postgres-unofficial \
-  nightfall
+  nightfall \
+  arc
