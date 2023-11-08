@@ -7,7 +7,7 @@ if [ ! -d Fira_Code ]; then
 fi
 
 if [ ! -d FiraCode ]; then
-  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
   unzip -o FiraCode.zip -d FiraCode
   rm -rf FiraCode/*Windows*
   rm -rf FiraCode*.zip
