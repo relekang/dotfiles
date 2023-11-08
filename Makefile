@@ -114,12 +114,12 @@ vscode: $(HOME)/Library/Application\ Support/Code/User/settings.json
 	brew install --cask visual-studio-code
 	./vscode/install-extensions
 
-/usr/local/bin/brew:
+/opt/homebrew/bin/brew:
 	bash macos/homebrew.sh
 
-homebrew: /usr/local/bin/brew
+homebrew: /opt/homebrew/bin/brew
 
-$(HOME)/.python: /usr/local/bin/brew
+$(HOME)/.python: /opt/homebrew/bin/brew
 	bash python/init
 	@touch $(HOME)/.python
 
