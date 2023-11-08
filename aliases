@@ -41,8 +41,10 @@ alias vi='vim'
 alias nv='nvim'
 alias vim='$VIM -p'
 
+
 alias avim="NVIM_APPNAME=astro nvim"
 alias lvim="NVIM_APPNAME=lazyvim nvim"
+alias lv="NVIM_APPNAME=lazyvim nvim"
 
 awk_arg='BEGIN {FS=":"} {print$1}'
 
