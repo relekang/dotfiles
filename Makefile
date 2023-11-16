@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.python $(HOME)/.ssh/authorized_keys links os secret-aliases
+install: $(HOME)/.oh-my-zsh $(HOME)/.python $(HOME)/.ssh/authorized_keys links secret-aliases $(HOME)/.config/k9s/skins/catppuccin iterm-catppuccin
 links: $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zsh-custom $(HOME)/.config/k9s
 install-docker: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
@@ -42,6 +42,14 @@ $(HOME)/.config/nvim:
 $(HOME)/.config/k9s:
 	@ln -s $(shell pwd)/k9s $(HOME)/.config/k9s
 	@echo "Created symbolic link for k9s"
+
+$(HOME)/.config/k9s/skins: $(HOME)/.config/k9s
+	@mkdir $(HOME)/.config/k9s/skins
+
+$(HOME)/.config/k9s/skins/catppuccin: $(HOME)/.config/k9s/skins
+	@git clone https://github.com/catppuccin/k9s.git $(HOME)/.config/k9s/skins/catppuccin --depth 1
+	@cp $(HOME)/.config/k9s/skins/catppuccin/dist/mocha.yml $(HOME)/.config/k9s/skin.yml
+	@echo "Cloned k9s skin catppuccin"
 
 $(HOME)/.hyper.js:
 	@ln -s $(shell pwd)/hyper.js $(HOME)/.hyper.js
@@ -96,6 +104,11 @@ $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switc
 	@ln -s $(shell pwd)/iterm-light-switch.py $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
 
 iterm-scripts: $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
+
+iterm-catppuccin:
+	@git clone git@github.com:catppuccin/iterm.git iterm-catppuccin --depth 1
+	@open iterm-catppuccin/colors/catppuccin-mocha.itermcolors
+	@echo "Cloned iterm-catppuccin"
 
 secret-aliases:
 	touch secret-aliases
