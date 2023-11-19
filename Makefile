@@ -47,9 +47,9 @@ $(HOME)/.hyper.js:
 	@ln -s $(shell pwd)/hyper.js $(HOME)/.hyper.js
 	@echo "Created symbolic link for .hyper.js"
 
-$(HOME)/.atom:
-	@ln -s $(shell pwd)/atom $(HOME)/.atom
-	@echo "Created symbolic link for .atom/"
+$(HOME)/.rustup:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
 
 $(HOME)/.tmux.conf:
 	@ln -s $(shell pwd)/tmux.conf $(HOME)/.tmux.conf
