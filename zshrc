@@ -33,6 +33,8 @@ PATH=/Users/rolf/Library/Python/2.7/bin:/Users/rolf/Library/Python/3.7/bin:$PATH
 PATH=~/.poetry/bin:$PATH
 export PATH
 
+source "$HOME/.cargo/env"
+
 export COLOR_MODE=$(color-mode)
 
 PYTHON=$(which python3)
