@@ -65,7 +65,8 @@ install \
 	tmux \
 	gnu-sed \
 	zoxide \
-	starship
+	starship \
+	yippy
 
 install --cask \
 	spotify \
@@ -80,4 +81,4 @@ install --cask \
 	google-cloud-sdk \
 	postgres-unofficial \
 	nightfall \
-	arc
+	keycastr
