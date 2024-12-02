@@ -1,0 +1,30 @@
+# !/bin/bash
+#
+
+set -e
+
+current_epoch=$(date +%s)
+
+for dir in */ ; do
+    if [ -d "$dir/.git" ]; then
+        cd "$dir"  > /dev/null
+        echo "Repository: $(git remote -v | head -n1 | awk '{print $2}' )"
+        git fetch --tags   || true
+        (git for-each-ref --sort=creatordate --format '%(creatordate:short) %(refname:short)' refs/tags |
+         tail -n 10 |
+        while read -r line; do
+            tag_date=$(echo $line | cut -d' ' -f1)
+            tag_epoch=$(date -jf "%Y-%m-%d" $tag_date +%s)
+            # Calculate the difference in days
+            day_diff=$(( (current_epoch - tag_epoch) / 86400 ))
+            if [ $day_diff -le 7 ]; then
+                echo $line
+            fi
+        done |
+        cut -d' ' -f1 |    # Extract just the dates
+        sort |             # Sort the dates
+        uniq -c            # Count occurrences of each date
+        echo)              # Print a newline for better readability
+        cd - > /dev/null
+    fi
+done
