@@ -1,4 +1,4 @@
-install: $(HOME)/.oh-my-zsh $(HOME)/.python $(HOME)/.ssh/authorized_keys links secret-aliases $(HOME)/.config/k9s/skins/catppuccin iterm-catppuccin
+install: $(HOME)/.oh-my-zsh $(HOME)/.python $(HOME)/.ssh/authorized_keys links secret-aliases $(HOME)/.config/k9s/skins/catppuccin iterm
 links: $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zsh-custom $(HOME)/.config/k9s
 install-docker: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
@@ -99,16 +99,39 @@ $(HOME)/.i3status.conf:
 $(HOME)/.i3:
 	mkdir -p $(HOME)/.i3
 
+iterm: \
+	iterm-scripts \
+	iterm-colors/tokyonight_moon.itermcolors \
+	iterm-colors/tokyonight_day.itermcolors \
+	iterm-colors/tokyonight_storm.itermcolors \
+	iterm-colors/tokyonight_night.itermcolors \
+	iterm-colors/catppuccin_frappe.itermcolors \
+	iterm-colors/catppuccin_latte.itermcolors \
+	iterm-colors/catppuccin_macchiato.itermcolors \
+	iterm-colors/catppuccin_mocha.itermcolors
+
 $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py:
 	mkdir -p $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch
 	@ln -s $(shell pwd)/iterm-light-switch.py $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
 
 iterm-scripts: $(HOME)/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/iterm-light-switch.py
 
-iterm-catppuccin:
-	@git clone git@github.com:catppuccin/iterm.git iterm-catppuccin --depth 1
-	@open iterm-catppuccin/colors/catppuccin-mocha.itermcolors
-	@echo "Cloned iterm-catppuccin"
+iterm-colors:
+	@mkdir iterm-colors
+
+iterm-colors/catppuccin_%.itermcolors: iterm-colors
+	@wget -nv https://raw.githubusercontent.com/catppuccin/iterm/main/colors/catppuccin-$*.itermcolors \
+		-O iterm-colors/catppuccin_$*.itermcolors
+	@touch iterm-colors/catppuccin_$*.itermcolors
+	@open iterm-colors/catppuccin_$*.itermcolors
+	@echo "Downloaded iterm-colors/catppuccin-$*.itermcolors"
+
+iterm-colors/tokyonight_%.itermcolors: iterm-colors
+	@wget -nv https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/iterm/tokyonight_$*.itermcolors \
+		-O iterm-colors/tokyonight_$*.itermcolors
+	@touch iterm-colors/tokyonight_$*.itermcolors
+	@open iterm-colors/tokyonight_$*.itermcolors
+	@echo "Downloaded iterm-colors/tokyonight_$*.itermcolors"
 
 secret-aliases:
 	touch secret-aliases

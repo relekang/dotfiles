@@ -10,7 +10,7 @@ Fira_Code
 secret-aliases
 docker-data
 !docker-data/.gitkeep
-iterm-catppuccin
+iterm-colors
 *.itermcolors
 
 k9s/skins/
