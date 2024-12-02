@@ -1,0 +1,8 @@
+#!/bin/bash
+while grep -q -- '--UUID--' "$1"; do
+  # Generate a new lowercase UUID
+  new_uuid=$(uuidgen | tr '[:upper:]' '[:lower:]')
+  
+  # Use awk to replace the first occurrence of --UUID-- with the new UUID
+  awk -v uuid="$new_uuid" '!done && /--UUID--/ {sub(/--UUID--/, uuid); done=1} 1' "$1" > temp && mv temp "$1"
+done
