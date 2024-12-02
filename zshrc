@@ -56,6 +56,10 @@ if which fnm > /dev/null; then
   eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 fi
 
+if [[ -f "$HOME/.rye/env" ]]; then
+ source "$HOME/.rye/env"
+fi
+
 if [[ "$(uname)" == "Darwin" ]]; then
   if [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
