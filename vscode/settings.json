@@ -1,7 +1,7 @@
 {
   "debug.onTaskErrors": "debugAnyway",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.cursorStyle": "line",
   "editor.folding": true,
@@ -79,13 +79,13 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.autoDetectColorScheme": true,
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "Tokyo Storm AltSynt",
   "workbench.editor.showIcons": false,
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
   "workbench.iconTheme": null,
-  "workbench.preferredDarkColorTheme": "GitHub Dark",
+  "workbench.preferredDarkColorTheme": "Tokyo Night",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.settings.editor": "json",
   "workbench.colorCustomizations": {
@@ -132,8 +132,8 @@
   },
   "[python]": {
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true,
-        "editor.formatOnSave": true
+      "source.organizeImports": "explicit",
+      "editor.formatOnSave": "explicit"
     }
   },
   "[reason]": {
@@ -144,11 +144,11 @@
   },
   "[typescriptreact]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -168,6 +168,7 @@
     "markdown": false
   },
   "window.zoomLevel": 1,
-  "audioCues.volume": 0,
-  "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
+  "prisma.showPrismaDataPlatformNotification": false,
+  "accessibility.signalOptions.volume": 0
 }
