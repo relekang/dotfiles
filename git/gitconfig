@@ -99,8 +99,3 @@
 
 [rerere]
 	enabled = true
-
-[includeIf "gitdir:~/dev/wanda/"]
-  path = ~/.files/git/gitconfig-wanda
-[blame]
-  #ignoreRevsFile = .git-blame-ignore-revs
