@@ -27,6 +27,7 @@ alias uuidn="npx --yes uuid v4 | tr -d '\n'"
 alias uuidc="npx --yes uuid v4 | tr -d '\n' | pbcopy"
 
 alias pp=pnpm
+alias mr="mise run"
 
 
 #
