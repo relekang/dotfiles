@@ -67,6 +67,15 @@ $(HOME)/.tmux/plugins:
 	@mkdir -p $(HOME)/.tmux/plugins
 	@echo "Created dir .tmux/plugins"
 
+tmux: $(HOME)/.tmux.conf $(HOME)/.tmux/plugins/tmp
+
+$(HOME)/.config/kitty/themes:
+	@mkdir -p $(HOME)/.config/kitty/themes
+	@echo "Created dir .config/kitty/themes"
+$(HOME)/.config/kitty/themes/c: $(HOME)/.config/kitty/themes
+
+kitty: $(HOME)/.config/kitty/themes $(HOME)/.tmux/plugins/tmp
+
 $(HOME)/.ssh:
 	@mkdir -p $(HOME)/.ssh
 	@chmod 700 $(HOME)/.ssh
@@ -83,8 +92,6 @@ $(HOME)/.tmux/plugins/tmp: $(HOME)/.tmux/plugins
 $(HOME)/Library/Application\ Support/Code/User/settings.json:
 	@ln -s $(shell pwd)/vscode/settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 	@echo "Created symbolic link for vscode settings.json"
-
-tmux: $(HOME)/.tmux.conf $(HOME)/.tmux/plugins/tmp
 
 i3: $(HOME)/.i3/config $(HOME)/.i3status.conf
 
