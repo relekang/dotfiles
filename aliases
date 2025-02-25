@@ -64,7 +64,7 @@ alias txl="tmux list-sessions"
 
 #
 # file endings
-alias -s md=glow
+alias -s md="glow --pager"
 alias -s html=open
 alias -s txt=less
 alias -s json=jq
