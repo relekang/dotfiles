@@ -75,11 +75,13 @@
   ss = stash save
   sw = stash show
 
+  recent = "!git branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\" | fzf --ansi | awk 'BEGIN{FS=\"\t\"} {print $2}' | xargs git checkout"
+  re = recent
+
   main-branch = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
   cleanup = "!git b --merged | grep -v develop | grep -v $(git main-branch) | grep  -v $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') | xargs git b -d"
   delete-merged = "!git-delete-merged"
   exec = "!exec "
-  recent = "!git branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\" | fzf --ansi | awk 'BEGIN{FS=\"\t\"} {print $2}' | xargs git checkout"
   fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit -n --fixup"
   om = "!git checkout $(git main-branch)"
   r-main = "!git r -i origin/$(git main-branch)"
