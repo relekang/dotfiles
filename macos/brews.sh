@@ -69,7 +69,8 @@ install \
   starship \
   yippy \
   mise \
-  poppler
+  poppler \
+  uv
 
 install --cask \
   spotify \
