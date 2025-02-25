@@ -101,3 +101,6 @@
 
 [rerere]
 	enabled = true
+
+[includeIf "gitdir:~/dev/crdbrd/"]
+  path = ~/.files/git/gitconfig-crdbrd
