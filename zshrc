@@ -35,6 +35,7 @@ PATH=~/.poetry/bin:$PATH
 export PATH
 
 source "$HOME/.cargo/env"
+eval "$(mise activate -s zsh)"
 
 export COLOR_MODE=$(color-mode)
 
