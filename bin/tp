@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: tp <name>"
+  echo "Attach or create a tmux project session using tmux-templates/<name>.sh"
+}
+
+if [[ $# -ne 1 ]]; then
+  usage
+  exit 1
+fi
+
+if ! command -v tmux >/dev/null 2>&1; then
+  echo "Error: tmux is not installed or not in PATH" >&2
+  exit 1
+fi
+
+template_name="$1"
+session_name="$(basename "$PWD" | sed 's/[^A-Za-z0-9._-]/_/g')"
+
+dotfiles_root="${DOT:-$HOME/.files}"
+template_path="$dotfiles_root/tmux-templates/$template_name.sh"
+
+if tmux has-session -t "$session_name" 2>/dev/null; then
+  exec tmux attach-session -t "$session_name"
+fi
+
+if [[ ! -f "$template_path" ]]; then
+  echo "Error: tmux template not found: $template_path" >&2
+  exit 1
+fi
+
+tmux new-session -d -s "$session_name" -n workspace
+
+# shellcheck disable=SC1090
+source "$template_path"
+
+exec tmux attach-session -t "$session_name"
