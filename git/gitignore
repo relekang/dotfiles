@@ -11,3 +11,5 @@ node_modules/
 .classpath
 .project
 .settings
+local-scripts
+local_scripts
