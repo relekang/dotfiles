@@ -1,0 +1,11 @@
+[templates]
+git_push_bookmark = '"rolf/push-" ++ change_id.short()'
+
+[ui]
+default-command = "log"
+diff-editor = ":builtin"
+diff-formatter = ":git"
+
+[user]
+name = "Rolf Erik Lekang"
+email = "me@rolflekang.com"

@@ -39,6 +39,10 @@ $(HOME)/.config/nvim:
 	@ln -s $(shell pwd)/nvim $(HOME)/.config/nvim
 	@echo "Created symbolic link for nvim"
 
+$(HOME)/.config/jj:
+	@ln -s $(shell pwd)/jj $(HOME)/.config/jj
+	@echo "Created symbolic link for jj"
+
 $(HOME)/.config/k9s:
 	@ln -s $(shell pwd)/k9s $(HOME)/.config/k9s
 	@echo "Created symbolic link for k9s"
