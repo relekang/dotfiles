@@ -1,5 +1,5 @@
 install: $(HOME)/.oh-my-zsh $(HOME)/.python $(HOME)/.ssh/authorized_keys links secret-aliases $(HOME)/.config/k9s/skins/catppuccin iterm
-links: $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zsh-custom $(HOME)/.config/k9s
+links: $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.zsh-custom $(HOME)/.config/k9s $(HOME)/.pi
 install-docker: $(HOME)/.oh-my-zsh $(HOME)/.gitconfig $(HOME)/.zshrc
 
 $(HOME)/.oh-my-zsh:
@@ -46,6 +46,10 @@ $(HOME)/.config/jj:
 $(HOME)/.config/k9s:
 	@ln -s $(shell pwd)/k9s $(HOME)/.config/k9s
 	@echo "Created symbolic link for k9s"
+
+$(HOME)/.pi:
+	@ln -s $(shell pwd)/pi $(HOME)/.pi
+	@echo "Created symbolic link for .pi"
 
 $(HOME)/.config/k9s/skins: $(HOME)/.config/k9s
 	@mkdir $(HOME)/.config/k9s/skins
@@ -177,7 +181,7 @@ os: iterm-scripts
 clean:
 	@rm -f $(HOME)/.gitconfig $(HOME)/.zshrc $(HOME)/.zsh-custom
 	@rm -f $(HOME)/.vimrc $(HOME)/.vim
-	@rm -f $(HOME)/.python
+	@rm -f $(HOME)/.python $(HOME)/.pi
 	@rm -f $(HOME)/Library/Application\ Support/Code/User/settings.json
 	@echo "Removed all dotfiles"
 
