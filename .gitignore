@@ -16,3 +16,5 @@ iterm-colors
 k9s/skins/
 
 .jj
+jj
+!jj/config.toml
