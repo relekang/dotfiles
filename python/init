@@ -1,7 +1,0 @@
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  brew install python
-fi
-
-curl -sSL https://install.python-poetry.org | python3 -
-
-

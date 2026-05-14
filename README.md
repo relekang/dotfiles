@@ -2,6 +2,28 @@
 
 Dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
+## What is managed
+
+### Default apply
+
+- shell config
+- git and jj config
+- tmux config and templates
+- helper scripts in `~/.local/bin`
+- starship config
+- pi config
+- `authorized_keys`
+- core shell tooling bootstrap
+
+### Tagged apply
+
+- `packages`: broader package-manager installs
+- `macos`: macOS preferences and App Store setup
+- `linux`: Linux desktop/i3-related setup
+- `editors`: external `vimfiles` bootstrap
+- `terminals`: terminal app installs
+- `dev`: broader development tooling like Poetry and Bun
+
 ## Bootstrap
 
 ### Direct chezmoi bootstrap
@@ -27,11 +49,14 @@ The base apply manages a private aliases file at `~/.config/zsh/private-aliases.
 Run extra setup explicitly after the base apply:
 
 ```sh
-chezmoi apply --include=tag:packages
-chezmoi apply --include=tag:macos
-chezmoi apply --include=tag:linux
-chezmoi apply --include=tag:editors
-chezmoi apply --include=tag:terminals
-chezmoi apply --include=tag:dev
+chezmoi apply --override-data '{"chezmoi":{"tags":["packages"]}}'
+chezmoi apply --override-data '{"chezmoi":{"tags":["macos"]}}'
+chezmoi apply --override-data '{"chezmoi":{"tags":["linux"]}}'
+chezmoi apply --override-data '{"chezmoi":{"tags":["editors"]}}'
+chezmoi apply --override-data '{"chezmoi":{"tags":["terminals"]}}'
+chezmoi apply --override-data '{"chezmoi":{"tags":["dev"]}}'
 ```
 
+Linux/i3 config files are materialized when running with the `linux` tag.
+
+`.pi` remains at `~/.pi`.

@@ -1,17 +1,33 @@
 {{ if has "dev" ((index .chezmoi "tags") | default (list)) }}#!/usr/bin/env bash
 set -euo pipefail
 
+install_poetry() {
+  if ! command -v poetry >/dev/null 2>&1; then
+    curl -sSL https://install.python-poetry.org | python3 -
+  fi
+}
+
+install_bun() {
+  if ! command -v bun >/dev/null 2>&1; then
+    curl -fsSL https://bun.sh/install | bash
+  fi
+}
+
 case "{{ .chezmoi.os }}" in
   darwin)
     if command -v brew >/dev/null 2>&1; then
-      brew install go terraform
+      brew install go python terraform
     fi
+    install_poetry
+    install_bun
     ;;
   linux)
     if command -v apt-get >/dev/null 2>&1; then
       sudo apt-get update
-      sudo apt-get install -y golang
+      sudo apt-get install -y golang python3
     fi
+    install_poetry
+    install_bun
     ;;
 esac
 {{ end }}

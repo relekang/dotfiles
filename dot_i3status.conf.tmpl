@@ -1,4 +1,4 @@
-general {
+{{ if and (has "linux" ((index .chezmoi "tags") | default (list))) (eq .chezmoi.os "linux") }}general {
         output_format = "i3bar"
         colors = true
         interval = 5
@@ -11,7 +11,6 @@ order += "tztime san-francisco"
 order += "tztime local"
 
 ethernet eth0 {
-        # if you use %speed, i3status requires the cap_net_admin capability
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
 }
@@ -33,3 +32,4 @@ cpu_temperature 0 {
         format = "T: %degrees °C"
         path = "/sys/devices/platform/coretemp.0/temp1_input"
 }
+{{ end }}

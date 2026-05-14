@@ -1,10 +1,59 @@
 {{ if and (has "macos" ((index .chezmoi "tags") | default (list))) (eq .chezmoi.os "darwin") }}#!/usr/bin/env bash
 set -euo pipefail
 
+if [[ ! -f /Library/Apple/usr/share/rosetta/rosetta ]]; then
+  sudo softwareupdate --install-rosetta
+fi
+
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -int 0
+defaults write NSGlobalDomain com.apple.keyboard.fnState -int 1
+defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock tilesize -integer 16
+defaults write com.apple.dock largesize -integer 80
+defaults write com.apple.dock magnification -integer 1
 defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-time-modifier -integer 0
+defaults write com.apple.dock autohide-delay -integer 0
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write com.apple.finder ShowHardDrivesOnDesktop -integer 0
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -integer 0
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.menuextra.clock Show24Hour -integer 1
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+mkdir -p "$HOME/Desktop/Screenshots"
+defaults write com.apple.screencapture location "$HOME/Desktop/Screenshots"
+
+if command -v mas >/dev/null 2>&1; then
+  mas install 413857545   # Divvy
+  mas install 409183694   # Keynote
+  mas install 803453959   # Slack
+  mas install 1263070803  # Lungo
+  mas install 568494494   # Pocket
+  mas install 1082624744  # Gifox
+  mas install 1471867429  # OTP Auth
+  mas install 904280696   # Things 3
+  mas install 1607635845  # Velja
+  mas install 1529448980  # Reeder
+fi
+
+if command -v defaultbrowser >/dev/null 2>&1; then
+  if [[ -d "/Applications/Velja.app" ]]; then
+    defaultbrowser Velja
+  else
+    defaultbrowser firefox
+  fi
+fi
+
 killall Dock >/dev/null 2>&1 || true
+killall SystemUIServer >/dev/null 2>&1 || true
+killall Finder >/dev/null 2>&1 || true
+sudo nvram SystemAudioVolume=" "
 {{ end }}

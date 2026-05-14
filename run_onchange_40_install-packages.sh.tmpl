@@ -13,17 +13,50 @@ case "{{ .chezmoi.os }}" in
     fi
 
     brew install \
+      ansible \
+      coreutils \
+      fnm \
       gh \
+      git-flow \
       git-lfs \
       glow \
+      gnu-sed \
+      grip \
+      htop \
+      httpie \
       jq \
+      mosh \
+      nginx \
+      node \
+      openjdk \
+      poppler \
+      postgresql \
+      redis \
       ripgrep \
+      sops \
+      sshuttle \
+      watch \
+      wget \
+      yippy \
       uv
+
+    brew install --cask \
+      alfred \
+      docker \
+      dropbox \
+      firefox \
+      google-cloud-sdk \
+      jetbrains-toolbox \
+      keycastr \
+      nightfall \
+      postico \
+      postgres-unofficial \
+      spotify
     ;;
   linux)
     if command -v apt-get >/dev/null 2>&1; then
       sudo apt-get update
-      sudo apt-get install -y jq ripgrep
+      sudo apt-get install -y jq ripgrep wget
     fi
     ;;
 esac

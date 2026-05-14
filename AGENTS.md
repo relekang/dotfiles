@@ -15,6 +15,8 @@ Guidance for coding agents working in this dotfiles repository.
 - `dot_config/jj/`: `jj` configuration.
 - `dot_tmux.conf`, `dot_local/share/tmux-templates/`: tmux setup.
 - `dot_local/bin/`: installed helper scripts.
+- `dot_irssi/`: irssi config.
+- `dot_config/i3/`, `dot_i3status.conf.tmpl`: tagged Linux/i3 config.
 - `private_dot_config/zsh/private-aliases.zsh`: private aliases; do not commit real secrets.
 - `run_onchange_*`: provisioning hooks for default and tagged setup.
 
