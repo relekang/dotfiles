@@ -13,3 +13,9 @@ node_modules/
 .settings
 local-scripts
 local_scripts
+
+ty.toml
+
+.plans
+.reviews
+.results
