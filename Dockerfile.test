@@ -1,0 +1,35 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    bash \
+    ca-certificates \
+    curl \
+    file \
+    git \
+    sudo \
+    xz-utils \
+    zsh \
+  && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /src
+COPY . .
+
+RUN curl -fsLS get.chezmoi.io | sh -s -- -b /usr/local/bin
+
+RUN zsh -n dot_zshrc dot_zshenv \
+  && bash -n initial.sh \
+    chezmoi_scripts/run_onchange_10_install-core-shell.sh \
+    chezmoi_scripts/run_onchange_20_install-tmux-plugins.sh \
+    chezmoi_scripts/run_onchange_30_update-authorized-keys.sh \
+    dot_local/bin/*
+
+RUN mkdir -p /root \
+  && chezmoi --source=/src --destination=/root doctor >/tmp/chezmoi-doctor.txt \
+  && chezmoi --source=/src --destination=/root apply \
+  && chezmoi --source=/src --destination=/root \
+    --override-data '{"chezmoi":{"tags":["linux"]}}' apply
+
+CMD ["zsh"]

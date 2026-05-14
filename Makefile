@@ -1,8 +1,10 @@
 CHEZMOI ?= chezmoi
 CHEZMOI_SOURCE = $(CHEZMOI) --source=$(CURDIR)
 CHEZMOI_TAG = $(CHEZMOI_SOURCE) --override-data '{"chezmoi":{"tags":["$(TAG)"]}}'
+DOCKER ?= docker
+DOCKER_IMAGE ?= dotfiles-test
 
-.PHONY: install apply diff doctor tags apply-tag apply-packages apply-macos apply-linux apply-editors apply-terminals apply-dev clean
+.PHONY: install apply diff doctor tags apply-tag apply-packages apply-macos apply-linux apply-editors apply-terminals apply-dev docker-image clean
 
 install apply:
 	$(CHEZMOI_SOURCE) apply
@@ -39,6 +41,9 @@ tags:
 	@echo "Available tags: packages macos linux editors terminals dev"
 	@echo "Example: make apply-packages"
 	@echo "Example: $(CHEZMOI_SOURCE) --override-data '{\"chezmoi\":{\"tags\":[\"packages\"]}}' apply"
+
+docker-image:
+	$(DOCKER) build -t $(DOCKER_IMAGE) -f Dockerfile.test .
 
 clean:
 	@echo "No legacy symlink cleanup remains. Use chezmoi state commands if needed."

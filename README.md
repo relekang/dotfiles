@@ -44,6 +44,14 @@ The wrapper helps with SSH key setup, then switches to the SSH repo URL for `che
 
 The base apply manages a private aliases file at `~/.config/zsh/private-aliases.zsh`.
 
+## Docker test image
+
+Build the validation image with:
+
+```sh
+make docker-image
+```
+
 ## Optional tagged provisioning
 
 Run extra setup explicitly after the base apply:
