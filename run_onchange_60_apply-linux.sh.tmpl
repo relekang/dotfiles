@@ -1,4 +1,4 @@
-{{ if and .chezmoi.tags.linux (eq .chezmoi.os "linux") }}#!/usr/bin/env bash
+{{ if and (has "linux" ((index .chezmoi "tags") | default (list))) (eq .chezmoi.os "linux") }}#!/usr/bin/env bash
 set -euo pipefail
 
 if command -v apt-get >/dev/null 2>&1; then

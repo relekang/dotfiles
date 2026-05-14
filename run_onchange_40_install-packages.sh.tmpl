@@ -1,4 +1,4 @@
-{{ if .chezmoi.tags.packages }}#!/usr/bin/env bash
+{{ if has "packages" ((index .chezmoi "tags") | default (list)) }}#!/usr/bin/env bash
 set -euo pipefail
 
 if ! command -v brew >/dev/null 2>&1; then

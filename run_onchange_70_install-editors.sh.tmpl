@@ -1,4 +1,4 @@
-{{ if .chezmoi.tags.editors }}#!/usr/bin/env bash
+{{ if has "editors" ((index .chezmoi "tags") | default (list)) }}#!/usr/bin/env bash
 set -euo pipefail
 
 repo_dir="$HOME/dev/vimfiles"

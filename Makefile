@@ -1,15 +1,16 @@
 CHEZMOI ?= chezmoi
+CHEZMOI_SOURCE = $(CHEZMOI) --source=$(CURDIR)
 
 .PHONY: install apply diff doctor tags clean
 
 install apply:
-	$(CHEZMOI) apply
+	$(CHEZMOI_SOURCE) apply
 
 diff:
-	$(CHEZMOI) diff
+	$(CHEZMOI_SOURCE) diff
 
 doctor:
-	$(CHEZMOI) doctor
+	$(CHEZMOI_SOURCE) doctor
 
 tags:
 	@echo "Available tags: packages macos linux editors terminals dev"
