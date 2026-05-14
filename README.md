@@ -18,6 +18,10 @@ curl -fsSL https://raw.githubusercontent.com/relekang/dotfiles/main/initial.sh |
 
 The wrapper helps with SSH key setup, then switches to the SSH repo URL for `chezmoi init --apply`.
 
+## Private aliases
+
+The base apply manages a private aliases file at `~/.config/zsh/private-aliases.zsh`.
+
 ## Optional tagged provisioning
 
 Run extra setup explicitly after the base apply:

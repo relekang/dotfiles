@@ -1,15 +1,30 @@
 {{ if has "packages" ((index .chezmoi "tags") | default (list)) }}#!/usr/bin/env bash
 set -euo pipefail
 
-if ! command -v brew >/dev/null 2>&1; then
-  exit 0
-fi
+case "{{ .chezmoi.os }}" in
+  darwin)
+    if ! command -v brew >/dev/null 2>&1; then
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      if [[ -x /opt/homebrew/bin/brew ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      elif [[ -x /usr/local/bin/brew ]]; then
+        eval "$(/usr/local/bin/brew shellenv)"
+      fi
+    fi
 
-brew install \
-  glow \
-  gh \
-  git-lfs \
-  jq \
-  ripgrep \
-  uv
+    brew install \
+      gh \
+      git-lfs \
+      glow \
+      jq \
+      ripgrep \
+      uv
+    ;;
+  linux)
+    if command -v apt-get >/dev/null 2>&1; then
+      sudo apt-get update
+      sudo apt-get install -y jq ripgrep
+    fi
+    ;;
+esac
 {{ end }}
