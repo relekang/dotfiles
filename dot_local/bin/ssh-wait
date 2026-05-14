@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+
+if [ -z "$1" ]; then
+  echo "Usage ssh-wait <ssh-options...>"
+  exit 0
+fi
+
+while true; do
+  echo "Connecting"
+  ssh $@ && exit 0 || sleep 2
+done

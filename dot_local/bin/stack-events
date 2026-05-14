@@ -1,0 +1,13 @@
+#!/bin/bash -ue
+
+STACK=$1
+
+# The newline in the sed command is necessary to get all the items events on separate lines
+aws cloudformation describe-stack-events \
+  --stack-name $STACK \
+  --max-items 50 \
+  | jq -r '.StackEvents[] | .Timestamp, .ResourceStatus, .LogicalResourceId, .ResourceStatusReason' \
+  | tr '\n' ' ' \
+  | sed -E 's/([0-9]{4}-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2})\.[0-9]{3}Z/\
+\1 \2/g' \
+  | sed -E 's/null//g'

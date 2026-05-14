@@ -1,0 +1,42 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = ["typer", "brreg"]
+# ///
+import typer
+from brreg.enhetsregisteret import Client, EnhetQuery
+from rich.table import Table
+from rich.console import Console
+
+app = typer.Typer()
+console = Console()
+error_console = Console(stderr=True, style="bold red")
+brreg = Client()
+
+
+@app.command()
+def search(query: list[str]):
+    query: str = " ".join(query)
+    cursor = brreg.search_enhet(EnhetQuery(navn=query))
+    table = Table("Name", "Item")
+    page = next(cursor.pages)
+    for enhet in page.items:
+        table.add_row(enhet.navn, enhet.organisasjonsnummer)
+    console.print(table)
+
+
+@app.command()
+def number(query: list[str]):
+    query: str = " ".join(query)
+    cursor = brreg.search_enhet(EnhetQuery(navn=query))
+    for enhet in cursor.items:
+        if enhet.navn.lower() == query.lower():
+            console.print(enhet.organisasjonsnummer)
+            return
+        if enhet.navn.replace(" AS", "").replace("AS ", "").lower() == query.lower():
+            console.print(enhet.organisasjonsnummer)
+            return
+    error_console.print(f"Could not find organization with name: {query}")
+
+
+if __name__ == "__main__":
+    app()

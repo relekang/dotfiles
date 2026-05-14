@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+resolve_path() {
+  local path="$1"
+  local base="$2"
+
+  if [[ "$path" = /* ]]; then
+    printf '%s\n' "$path"
+  else
+    python3 - <<'PY' "$base" "$path"
+import os
+import sys
+print(os.path.realpath(os.path.join(sys.argv[1], sys.argv[2])))
+PY
+  fi
+}
+
+find_jj_root() {
+  local dir="$PWD"
+
+  while [[ "$dir" != "/" ]]; do
+    if [[ -e "$dir/.jj" ]]; then
+      printf '%s\n' "$dir"
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+
+  return 1
+}
+
+if git rev-parse --show-toplevel >/dev/null 2>&1; then
+  exec gh "$@"
+fi
+
+if ! command -v jj >/dev/null 2>&1; then
+  exec gh "$@"
+fi
+
+jj_root="$(find_jj_root || true)"
+if [[ -z "$jj_root" ]]; then
+  exec gh "$@"
+fi
+
+repo_pointer="$jj_root/.jj/repo"
+if [[ ! -f "$repo_pointer" ]]; then
+  exec gh "$@"
+fi
+
+shared_repo_dir="$(resolve_path "$(<"$repo_pointer")" "$(dirname "$repo_pointer")")"
+git_target_file="$shared_repo_dir/store/git_target"
+if [[ ! -f "$git_target_file" ]]; then
+  echo "jjgh: no backing git repo found for jj workspace: $jj_root" >&2
+  exit 1
+fi
+
+backing_git_dir="$(resolve_path "$(<"$git_target_file")" "$(dirname "$git_target_file")")"
+if [[ ! -d "$backing_git_dir" ]]; then
+  echo "jjgh: backing git dir does not exist: $backing_git_dir" >&2
+  exit 1
+fi
+
+target_rev='@'
+if [[ "$(jj --ignore-working-copy log -r @ --no-graph -T 'empty' | tr -d '\n')" == "true" ]] \
+  && [[ "$(jj --ignore-working-copy log -r @ --no-graph -T 'parents.len()' | tr -d '\n')" == "1" ]]; then
+  target_rev='parents(@)'
+fi
+
+tmp_git_dir="$(mktemp -d "${TMPDIR:-/tmp}/jjgh.XXXXXX")"
+cleanup() {
+  rm -rf "$tmp_git_dir"
+}
+trap cleanup EXIT
+
+printf '%s\n' "$backing_git_dir" > "$tmp_git_dir/commondir"
+printf '[core]\n\tworktree = %s\n' "$jj_root" > "$tmp_git_dir/config"
+
+current_bookmark="$({ jj --ignore-working-copy log -r "$target_rev" --no-graph -T 'bookmarks.map(|b| b.name()).join("\n")' || true; } | head -n1)"
+if [[ -n "$current_bookmark" ]] && git --git-dir="$backing_git_dir" show-ref --verify --quiet "refs/heads/$current_bookmark"; then
+  printf 'ref: refs/heads/%s\n' "$current_bookmark" > "$tmp_git_dir/HEAD"
+else
+  jj --ignore-working-copy log -r "$target_rev" --no-graph -T 'commit_id' | tr -d '\n' > "$tmp_git_dir/HEAD"
+  printf '\n' >> "$tmp_git_dir/HEAD"
+fi
+
+GIT_DIR="$tmp_git_dir" gh "$@"

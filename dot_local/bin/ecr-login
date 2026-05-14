@@ -1,0 +1,10 @@
+#!/bin/bash -xe
+
+account="$(aws sts get-caller-identity | jq -r ".Account")"
+region="$(aws ec2 describe-availability-zones --output text --query 'AvailabilityZones[0].[RegionName]')"
+
+echo "Logging into $account.dkr.ecr.$region.amazonaws.com"
+
+aws ecr get-login-password | docker login --username AWS --password-stdin "$account.dkr.ecr.$region.amazonaws.com"
+
+

@@ -1,0 +1,15 @@
+{{ if .chezmoi.tags.packages }}#!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v brew >/dev/null 2>&1; then
+  exit 0
+fi
+
+brew install \
+  glow \
+  gh \
+  git-lfs \
+  jq \
+  ripgrep \
+  uv
+{{ end }}

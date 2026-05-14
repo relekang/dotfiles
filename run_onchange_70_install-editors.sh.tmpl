@@ -1,0 +1,12 @@
+{{ if .chezmoi.tags.editors }}#!/usr/bin/env bash
+set -euo pipefail
+
+repo_dir="$HOME/dev/vimfiles"
+
+if [[ ! -d "$repo_dir/.git" ]]; then
+  mkdir -p "$(dirname "$repo_dir")"
+  git clone git@github.com:relekang/vimfiles.git "$repo_dir"
+fi
+
+make -C "$repo_dir"
+{{ end }}

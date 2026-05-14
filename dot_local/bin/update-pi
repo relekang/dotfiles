@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+package='@mariozechner/pi-coding-agent@latest'
+system_path='/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  echo "Usage: update-pi [npm install args...]"
+  echo
+  echo "Updates pi using the system Node/npm, ignoring fnm and mise shims."
+  echo "Any extra arguments are passed to: npm install -g"
+  exit 0
+fi
+
+system_npm="$(/usr/bin/env -i HOME="$HOME" PATH="$system_path" sh -lc 'command -v npm')"
+system_node="$(/usr/bin/env -i HOME="$HOME" PATH="$system_path" sh -lc 'command -v node')"
+
+if [[ -z "$system_npm" || -z "$system_node" ]]; then
+  echo "Error: could not find system node/npm in PATH: $system_path" >&2
+  exit 1
+fi
+
+export PATH="$system_path"
+unset npm_config_prefix NPM_CONFIG_PREFIX FNM_MULTISHELL_PATH MISE_SHELL MISE_SESSION_DIR
+
+echo "Using system node: $system_node ($($system_node -v))"
+echo "Using system npm:  $system_npm ($($system_npm -v))"
+echo "Updating pi via:   $system_npm install -g $package $*"
+
+"$system_npm" install -g "$package" "$@"
+
+pi_path="$(command -v pi || true)"
+if [[ -n "$pi_path" ]]; then
+  echo "pi is now available at: $pi_path"
+  "$pi_path" --version || true
+fi

@@ -1,0 +1,32 @@
+#!/bin/bash -e
+
+
+if [ -z "$1" ]; then
+  echo "Usage ssm-session <name> [<number in list>]"
+  exit 0
+fi
+
+instance_ids="[]"
+
+while [[ "$(echo "$instance_ids" | jq -r '. | length')" == "0" ]]; do
+  echo "Looking up instances.."
+  instance_ids=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" "Name=tag:Name,Values=$1" --query 'Reservations[].Instances[].InstanceId')
+  sleep 2
+done
+
+if [[ "$(echo "$instance_ids" | jq -r '. | length')" != "1" ]]; then
+  if [ -n "$2" ]; then
+    instance_id=$(echo "$instance_ids" | jq -r ". | nth($2)")
+  else
+    echo "Got more than one instance ids $(echo "$instance_ids" | jq -r '. | to_entries | map((.key|tostring) + ": " + (.value|tostring)) | join("  ")')"
+    echo "Send the number of the one you want as second argument. Example ssm-session $1 0".
+    exit 1
+  fi
+else
+  instance_id=$(echo "$instance_ids" | jq -r '.[]')
+fi
+
+while true; do
+  echo "Connecting"
+  aws ssm start-session --target "$instance_id" && exit 0 || sleep 2
+done

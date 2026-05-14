@@ -1,0 +1,9 @@
+#!/bin/bash -eu
+
+name=$1
+
+git clone https://github.com/ryyppy/nextjs-default.git $name
+cd $name
+rm -rf .git
+git init --initial-branch=main
+sed -i '' 's/rescript-nextjs-template/'$name'/' package.json bsconfig.json

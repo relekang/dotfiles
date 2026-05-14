@@ -1,0 +1,18 @@
+#!/bin/bash
+
+org_name=$1
+
+gh repo list $org_name --limit 1000 --json nameWithOwner | jq -r '.[].nameWithOwner'
+
+sleep 2
+
+gh repo list $org_name --limit 1000 --json nameWithOwner | jq -r '.[].nameWithOwner' | while read repo; do
+  repo_name=$(basename "$repo")
+  if [ -d "$repo_name" ]; then
+    cd "$repo_name"
+    git fetch
+    cd -
+  else
+    gh repo clone "$repo"
+  fi
+done

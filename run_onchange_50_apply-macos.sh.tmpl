@@ -1,0 +1,10 @@
+{{ if and .chezmoi.tags.macos (eq .chezmoi.os "darwin") }}#!/usr/bin/env bash
+set -euo pipefail
+
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -int 0
+defaults write com.apple.dock autohide -bool true
+killall Dock >/dev/null 2>&1 || true
+{{ end }}
