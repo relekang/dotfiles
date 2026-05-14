@@ -1,0 +1,32 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = ["typer", "httpx", "rss-parser"]
+# ///
+import typer
+import httpx
+from rss_parser import RSSParser
+from rich.table import Table
+from rich.console import Console
+
+app = typer.Typer()
+console = Console()
+error_console = Console(stderr=True, style="bold red")
+
+
+@app.command()
+def rss(url: str):
+    url = f"http://{url}" if not url.startswith("http") else url
+    response = httpx.get(url, follow_redirects=True)
+    response.raise_for_status()
+    rss = RSSParser.parse(response.text)
+
+    table = Table("Name", "Published at")
+    for item in rss.channel.items:
+      table.add_row(item.title.content, item.pub_date.content)
+
+    console.print(table)
+
+
+
+if __name__ == "__main__":
+    app()
