@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/bin/open -g xbar://app.xbarapp.com/refreshAllPlugins

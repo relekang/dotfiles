@@ -4,29 +4,30 @@ Guidance for coding agents working in this dotfiles repository.
 
 ## Project overview
 
-- This repo manages personal shell/editor/terminal configuration files.
-- Most installation logic is in `Makefile` and `initial.sh`.
-- Many targets create symlinks from repo files into `$HOME`.
+- This repo is a `chezmoi` source directory for personal shell/editor/terminal configuration files.
+- Bootstrap entrypoints are `initial.sh` and direct `chezmoi init --apply`.
+- Most managed files use `chezmoi` naming such as `dot_*`, `private_*`, and `run_onchange_*`.
 
 ## Important paths
 
-- `Makefile`: main install/link automation.
-- `zshrc`, `zshenv`, `zsh-custom/`: shell setup.
-- `git/`: git config and helper scripts.
-- `jj/`: `jj` configuration.
-- `vimfiles/`, `vscode/`, `k9s/`, `i3/`, `macos/`, `linux`: tool/OS-specific config.
-- `secret-aliases`: local secrets placeholder; do not commit real secrets.
+- `dot_zshrc`, `dot_zshenv`, `dot_config/zsh/`: shell setup.
+- `dot_gitconfig`, `dot_config/git/`: git config and helper data.
+- `dot_config/jj/`: `jj` configuration.
+- `dot_tmux.conf`, `dot_local/share/tmux-templates/`: tmux setup.
+- `dot_local/bin/`: installed helper scripts.
+- `private_dot_config/zsh/private-aliases.zsh`: private aliases; do not commit real secrets.
+- `run_onchange_*`: provisioning hooks for default and tagged setup.
 
 ## Working rules
 
 - Prefer small, targeted edits that preserve existing style.
 - Do not rewrite unrelated dotfiles or normalize formatting globally.
 - Avoid destructive operations on user machine paths outside this repo.
-- If a change affects symlink targets in `$HOME`, update `Makefile` targets consistently.
+- If a change affects installed destinations in `$HOME`, keep the corresponding `chezmoi` source files and scripts consistent.
 
 ## Validation
 
-- For install logic changes, run the narrowest relevant `make` target when possible.
+- For install logic changes, run the narrowest relevant `chezmoi` or script validation step when possible.
 - For script changes, run shell syntax checks where practical (for example: `bash -n <script>`).
 - Do not run broad system-setup targets unless explicitly requested.
 
