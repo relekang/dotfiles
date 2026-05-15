@@ -17,4 +17,4 @@ k9s/skins/
 
 .jj
 jj
-!jj/config.toml
+!dot_config/jj/config.toml
