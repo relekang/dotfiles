@@ -12,3 +12,6 @@ email = "me@rolflekang.com"
 
 [aliases]
 push = ["util", "exec", "--", "uvx", "jj-pre-push==0.3.1", "push"]
+
+[remotes.origin]
+auto-track-bookmarks = "glob:rolf/*"
