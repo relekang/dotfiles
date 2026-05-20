@@ -1,7 +1,7 @@
 {{ if has "editors" ((index .chezmoi "tags") | default (list)) }}#!/usr/bin/env bash
 set -euo pipefail
 
-repo_dir="$HOME/dev/vimfiles"
+repo_dir="$HOME/.config/vimfiles"
 
 if [[ ! -d "$repo_dir/.git" ]]; then
   mkdir -p "$(dirname "$repo_dir")"
