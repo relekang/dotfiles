@@ -22,7 +22,7 @@ w_extra_env_lines() {
 
 w_post_create() {
   mise trust
-  mise run dev:setup-cert
+  mise r install
   ln -s "$w_source_repo/src/local_scripts" "$destination/src/local_scripts"
   ln -s "$w_source_repo/ty.toml" "$destination/ty.toml"
   ln -s "$w_source_repo/.plans" "$destination/.plans"
