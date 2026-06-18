@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/tmux"
+
+if defaults read -g AppleInterfaceStyle >/dev/null 2>&1; then
+  theme_file="$config_dir/theme-dark.conf"
+else
+  theme_file="$config_dir/theme-light.conf"
+fi
+
+exec tmux source-file "$theme_file"
