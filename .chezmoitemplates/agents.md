@@ -1,0 +1,10 @@
+- Use `jj` instead of git, if `.jj` is in not the directory ask to initialize `jj`
+- Use conventional commits without scope and sentence casing in the subject
+- On Github ask for permission before doing these actions
+  - Resolving comments, unless skill explicitly state it
+  - Creating PR
+  - Commenting or replying to a comment
+  - check-requests skill is allowed to do what is needed to create draft prs
+- Don't assume. Don't hide confusion. Surface trade-offs.
+- Minimum code that solves the problem. Nothing speculative.
+- Touch only what you must. Clean up only your own mess.

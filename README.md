@@ -12,6 +12,7 @@ Dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 - helper scripts in `~/.local/bin`
 - starship config
 - pi config
+- AI agent prompts and skills for Claude, Codex, and pi
 - `authorized_keys`
 - core shell tooling bootstrap
 
@@ -66,5 +67,3 @@ chezmoi apply --override-data '{"chezmoi":{"tags":["dev"]}}'
 ```
 
 Linux/i3 config files are materialized when running with the `linux` tag.
-
-`.pi` remains at `~/.pi`.
