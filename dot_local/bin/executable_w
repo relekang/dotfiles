@@ -60,7 +60,9 @@ session_name_for_path() {
 workspace_exists_in_repo() {
   local repo="$1"
   local workspace_name="$2"
-  jj -R "$repo" workspace list | grep -q "^${workspace_name}:"
+  local workspace_list
+  workspace_list="$(jj -R "$repo" workspace list)"
+  grep -q "^${workspace_name}:" <<<"$workspace_list"
 }
 
 resolve_workspace_name_for_template() {
@@ -81,12 +83,24 @@ resolve_workspace_name_for_template() {
   printf '%s%s\n' "$prefix_basename" "$requested_name"
 }
 
+start_tmux_session() {
+  local destination="$1"
+  local tmux_project="$2"
+
+  if ! command -v tp >/dev/null 2>&1; then
+    echo "Error: tmux is enabled but tp is not in PATH" >&2
+    exit 1
+  fi
+
+  (cd "$destination" && tp "$tmux_project")
+}
+
 create_workspace() {
   local project="$1"
   shift
 
   local run_tmux=true
-  local workspace_name=""
+  local requested_workspace_name=""
 
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -103,18 +117,18 @@ create_workspace() {
         exit 1
         ;;
       *)
-        if [[ -n "$workspace_name" ]]; then
+        if [[ -n "$requested_workspace_name" ]]; then
           echo "Error: only one workspace name is allowed" >&2
           usage
           exit 1
         fi
-        workspace_name="$1"
+        requested_workspace_name="$1"
         ;;
     esac
     shift
   done
 
-  if [[ -z "$workspace_name" ]]; then
+  if [[ -z "$requested_workspace_name" ]]; then
     usage
     exit 1
   fi
@@ -127,7 +141,12 @@ create_workspace() {
 
   load_template "$template_path"
 
-  local destination="${w_destination_prefix}${workspace_name}"
+  local workspace_name
+  workspace_name="$(resolve_workspace_name_for_template "$requested_workspace_name")"
+  local prefix_basename
+  prefix_basename="$(basename "$w_destination_prefix")"
+  local workspace_suffix="${workspace_name#${prefix_basename}}"
+  local destination="${w_destination_prefix}${workspace_suffix}"
   w_tmux_project="${w_tmux_project:-$project}"
   w_env_source="${w_env_source:-.env}"
 
@@ -141,8 +160,26 @@ create_workspace() {
     exit 1
   fi
 
-  if [[ -e "$destination" ]]; then
-    echo "Error: destination already exists: $destination" >&2
+  local workspace_already_exists=false
+  if workspace_exists_in_repo "$w_source_repo" "$workspace_name"; then
+    workspace_already_exists=true
+  fi
+
+  if [[ "$workspace_already_exists" == true && -d "$destination" ]]; then
+    echo "JJ workspace already exists: $workspace_name"
+    if [[ "$run_tmux" == true ]]; then
+      start_tmux_session "$destination" "$w_tmux_project"
+    fi
+    return 0
+  fi
+
+  if [[ "$workspace_already_exists" == false && -e "$destination" ]]; then
+    echo "Error: destination already exists without a matching jj workspace: $destination" >&2
+    exit 1
+  fi
+
+  if [[ "$workspace_already_exists" == true && ! -d "$destination" ]]; then
+    echo "Error: jj workspace exists but destination is missing: $destination" >&2
     exit 1
   fi
 
@@ -169,11 +206,17 @@ create_workspace() {
     fi
   fi
 
+  local created_workspace=false
   jj -R "$w_source_repo" workspace add "$destination"
-  cp "$w_source_repo/$w_env_source" "$destination/.env"
-
+  created_workspace=true
   echo "Created workspace: $destination"
-  echo "Copied .env"
+
+  if [[ ! -f "$destination/.env" ]]; then
+    cp "$w_source_repo/$w_env_source" "$destination/.env"
+    echo "Copied .env"
+  else
+    echo ".env already exists: $destination/.env"
+  fi
 
   if [[ -n "$port" ]]; then
     local env_port_lines=("PORT=$port")
@@ -183,31 +226,34 @@ create_workspace() {
       done < <(w_extra_env_lines "$port")
     fi
 
-    {
-      local line
-      for line in "${env_port_lines[@]}"; do
-        printf '%s\n' "$line"
-      done
-    } > "$destination/.env.ports"
+    if [[ ! -f "$destination/.env.ports" ]]; then
+      {
+        local line
+        for line in "${env_port_lines[@]}"; do
+          printf '%s\n' "$line"
+        done
+      } > "$destination/.env.ports"
 
-    echo "Wrote .env.ports"
+      echo "Wrote .env.ports"
+    else
+      echo ".env.ports already exists: $destination/.env.ports"
+    fi
   fi
 
   if declare -f w_post_create >/dev/null 2>&1; then
-    (
-      cd "$destination"
-      w_post_create
-    )
-    echo "Ran project post-create setup"
+    if [[ "$created_workspace" == true ]]; then
+      (
+        cd "$destination"
+        w_post_create
+      )
+      echo "Ran project post-create setup"
+    else
+      echo "Skipped project post-create setup; workspace already exists"
+    fi
   fi
 
   if [[ "$run_tmux" == true ]]; then
-    if ! command -v tp >/dev/null 2>&1; then
-      echo "Error: tmux is enabled but tp is not in PATH" >&2
-      exit 1
-    fi
-
-    (cd "$destination" && tp "$w_tmux_project")
+    start_tmux_session "$destination" "$w_tmux_project"
   fi
 }
 
