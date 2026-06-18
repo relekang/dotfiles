@@ -1,0 +1,7 @@
+--when.repositories = ["~/dev/crdbrd/"]
+
+[revset-aliases]
+"trunk()" = "main@origin"
+
+[user]
+email = "rolf@cardboard.inc"
