@@ -26,6 +26,6 @@ w_post_create() {
   ln -s "$w_source_repo/src/local_scripts" "$destination/src/local_scripts"
   ln -s "$w_source_repo/ty.toml" "$destination/ty.toml"
   ln -s "$w_source_repo/.plans" "$destination/.plans"
-  ln -s "$w_source_repo/.results" "$destination/.plans"
-  ln -s "$w_source_repo/.reviews" "$destination/.plans"
+  ln -s "$w_source_repo/.results" "$destination/.results"
+  ln -s "$w_source_repo/.reviews" "$destination/.reviews"
 }
