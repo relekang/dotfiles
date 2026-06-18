@@ -11,5 +11,5 @@ iterm-colors
 k9s/skins/
 
 .jj
-jj
+/jj
 !dot_config/jj/config.toml
