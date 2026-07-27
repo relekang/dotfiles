@@ -18,7 +18,7 @@ if ! command -v tmux >/dev/null 2>&1; then
 fi
 
 template_name="${1:-default}"
-session_name="$(basename "$PWD" | sed 's/[^A-Za-z0-9._-]/_/g')"
+session_name="$(basename "$PWD" | sed 's/^\.\.*//; s/[^A-Za-z0-9._-]/_/g')"
 
 template_path="${XDG_DATA_HOME:-$HOME/.local/share}/tmux-templates/$template_name.sh"
 
