@@ -29,7 +29,7 @@ templates_dir="${XDG_DATA_HOME:-$HOME/.local/share}/workspace-templates"
 load_template() {
   local template_path="$1"
 
-  unset w_source_repo w_destination_prefix w_tmux_project w_env_source w_base_ports
+  unset w_source_repo w_destination_prefix w_tmux_project w_env_source w_base_ports w_port_env_var
   unset -f w_extra_env_lines 2>/dev/null || true
   unset -f w_post_create 2>/dev/null || true
 
@@ -149,6 +149,7 @@ create_workspace() {
   local destination="${w_destination_prefix}${workspace_suffix}"
   w_tmux_project="${w_tmux_project:-$project}"
   w_env_source="${w_env_source:-.env}"
+  w_port_env_var="${w_port_env_var:-PORT}"
 
   if [[ ! -d "$w_source_repo" ]]; then
     echo "Error: source repository not found: $w_source_repo" >&2
@@ -179,8 +180,9 @@ create_workspace() {
   fi
 
   if [[ "$workspace_already_exists" == true && ! -d "$destination" ]]; then
-    echo "Error: jj workspace exists but destination is missing: $destination" >&2
-    exit 1
+    jj -R "$w_source_repo" workspace forget "$workspace_name"
+    echo "Forgot stale jj workspace with missing destination: $workspace_name"
+    workspace_already_exists=false
   fi
 
   if [[ ! -f "$w_source_repo/$w_env_source" ]]; then
@@ -201,7 +203,7 @@ create_workspace() {
     done
 
     if [[ -z "$port" ]]; then
-      echo "Error: no available PORT found from base ports: ${w_base_ports[*]}" >&2
+      echo "Error: no available $w_port_env_var found from base ports: ${w_base_ports[*]}" >&2
       exit 1
     fi
   fi
@@ -219,7 +221,7 @@ create_workspace() {
   fi
 
   if [[ -n "$port" ]]; then
-    local env_port_lines=("PORT=$port")
+    local env_port_lines=("$w_port_env_var=$port")
     if declare -f w_extra_env_lines >/dev/null 2>&1; then
       while IFS= read -r line; do
         env_port_lines+=("$line")
