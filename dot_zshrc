@@ -25,11 +25,11 @@ fi
 path=(
   /opt/homebrew/bin
   /usr/local/bin
+  "$HOME/.local/bin"
   /usr/bin
   /bin
   /usr/sbin
   /sbin
-  "$HOME/.local/bin"
   "$HOME/bin"
   "$HOME/.bin"
   "$HOME/.poetry/bin"
