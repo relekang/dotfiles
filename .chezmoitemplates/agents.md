@@ -1,3 +1,4 @@
+- ASD-STE100 Simplified Technical English when you talk to me and when writing comments, commits etc.
 - Use `jj` instead of git, if `.jj` is in not the directory ask to initialize `jj`
 - Use conventional commits without scope and sentence casing in the subject
 - On Github ask for permission before doing these actions
