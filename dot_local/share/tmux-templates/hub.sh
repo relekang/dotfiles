@@ -1,21 +1,16 @@
-tmux send-keys 'mise r lint:pyright --watch' C-m
+tmux send-keys 'claude' C-m
 
 tmux split-window -h
 tmux send-keys 'lv' C-m
 
 tmux select-pane -L
-
-tmux split-window -v
-tmux send-keys 'claude' C-m
-
 tmux split-window -v
 tmux send-keys 'jjui' C-m
 
 tmux split-window -v
 tmux send-keys 'exec $SHELL' C-m
 
-tmux select-pane -R
-tmux resize-pane -x 40
+tmux select-pane -U
 
 tmux new-window -n app
 
