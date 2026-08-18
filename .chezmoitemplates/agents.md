@@ -12,7 +12,7 @@
 
 In PRs:
 
-- Prefix summaries written by an agent with `:robot: summary`.
+- Prefix summaries written by an agent with `## :robot: summary`.
 - Use stacked PRs when the work has dependent changes that can be reviewed separately.
 - When you edit a PR that has dependent PRs, push the full stack, not only the edited PR.
 - Do not list routine CI-equivalent verification, such as lint or test commands, unless the user asks for it.
