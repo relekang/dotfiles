@@ -32,6 +32,7 @@ load_template() {
   unset w_source_repo w_destination_prefix w_tmux_project w_env_source w_base_ports w_port_env_var
   unset -f w_extra_env_lines 2>/dev/null || true
   unset -f w_post_create 2>/dev/null || true
+  unset -f w_pre_delete 2>/dev/null || true
 
   # shellcheck disable=SC1090
   source "$template_path"
@@ -308,6 +309,14 @@ delete_workspace() {
   local destination="${w_destination_prefix}${workspace_suffix}"
   local session_name
   session_name="$(session_name_for_path "$destination")"
+
+  if [[ -e "$destination" ]] && declare -f w_pre_delete >/dev/null 2>&1; then
+    (
+      cd "$destination"
+      w_pre_delete
+    )
+    echo "Ran project pre-delete cleanup"
+  fi
 
   if workspace_exists_in_repo "$w_source_repo" "$workspace_name"; then
     jj -R "$w_source_repo" workspace forget "$workspace_name"

@@ -56,3 +56,7 @@ EOF
   ln -s "$w_source_repo/.results" "$destination/.results"
   ln -s "$w_source_repo/.reviews" "$destination/.reviews"
 }
+
+w_pre_delete() {
+  mise run db:drop
+}
