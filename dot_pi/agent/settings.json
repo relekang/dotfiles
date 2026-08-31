@@ -1,7 +1,8 @@
 {
-  "lastChangelogVersion": "0.74.0",
+  "lastChangelogVersion": "0.84.4",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "medium",
-  "editorPaddingX": 1
+  "editorPaddingX": 1,
+  "theme": "dark"
 }
