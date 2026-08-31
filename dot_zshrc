@@ -12,6 +12,9 @@ export LANG="en_US.UTF-8"
 export GOPATH="$HOME/.gocode"
 export NVIM_APPNAME="lazyvim"
 
+# Increase the limit of open files. The macOS default of 256 is too low for Pulumi.
+ulimit -n 65536
+
 if [[ -x /usr/libexec/java_home ]]; then
   export JAVA_HOME="$(/usr/libexec/java_home -v 1.8 2>/dev/null)"
 fi
