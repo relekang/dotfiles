@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+herdr_bin="${HERDR_BINARY:-herdr}"
+state_home="${XDG_STATE_HOME:-$HOME/.local/state}"
+session_key="$(printf '%s' "${HERDR_SOCKET_PATH:-default}" | shasum | awk '{print $1}')"
+state_dir="$state_home/herdr"
+history_file="$state_dir/workspace-history-$session_key"
+pid_file="$state_dir/workspace-history-$session_key.pid"
+
+mkdir -p "$state_dir"
+
+current_workspace() {
+  "$herdr_bin" api snapshot | jq -r '.result.snapshot.focused_workspace_id // empty'
+}
+
+record_workspace() {
+  local workspace_id="$1"
+  [[ -n "$workspace_id" ]] || return 0
+
+  {
+    printf '%s\n' "$workspace_id"
+    if [[ -f "$history_file" ]]; then
+      grep -v -F -x "$workspace_id" "$history_file" || true
+    fi
+  } | awk 'NF && !seen[$0]++ { print }' | head -20 > "$history_file.tmp"
+
+  mv "$history_file.tmp" "$history_file"
+}
+
+run_daemon() {
+  local last=""
+
+  while true; do
+    current="$(current_workspace || true)"
+    if [[ -n "$current" && "$current" != "$last" ]]; then
+      record_workspace "$current"
+      last="$current"
+    fi
+    sleep 0.5
+  done
+}
+
+start_daemon() {
+  if [[ -f "$pid_file" ]] && kill -0 "$(cat "$pid_file")" 2>/dev/null; then
+    return 0
+  fi
+
+  nohup "$0" --daemon >/dev/null 2>&1 &
+  printf '%s\n' "$!" > "$pid_file"
+}
+
+switch_to_last_workspace() {
+  start_daemon
+
+  local current target
+  current="$(current_workspace)"
+  record_workspace "$current"
+
+  target=""
+  if [[ -f "$history_file" ]]; then
+    target="$(awk -v current="$current" 'NF && $0 != current { print; exit }' "$history_file")"
+  fi
+
+  [[ -n "$target" ]] || exit 0
+
+  {
+    printf '%s\n' "$target"
+    printf '%s\n' "$current"
+    grep -v -F -x -e "$target" -e "$current" "$history_file" || true
+  } | awk 'NF && !seen[$0]++ { print }' | head -20 > "$history_file.tmp"
+  mv "$history_file.tmp" "$history_file"
+
+  exec "$herdr_bin" workspace focus "$target"
+}
+
+case "${1:-}" in
+  --daemon)
+    run_daemon
+    ;;
+  --start-daemon)
+    start_daemon
+    ;;
+  *)
+    switch_to_last_workspace
+    ;;
+esac

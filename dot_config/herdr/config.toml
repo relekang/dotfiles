@@ -12,6 +12,20 @@ width = "90%"
 height = "80%"
 
 [[keys.command]]
+key = "prefix+j"
+type = "popup"
+command = "herdr-jjui-current-workspace"
+description = "open jjui"
+width = "90%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+="
+type = "shell"
+command = "herdr-workspace-toggle"
+description = "switch to last used workspace"
+
+[[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
 command = "vim-herdr-navigation.left"

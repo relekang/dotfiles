@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+herdr_bin="${HERDR_BINARY:-herdr}"
+
+workspace_cwd() {
+  "$herdr_bin" api snapshot | jq -r '
+    .result.snapshot as $snapshot
+    | ($snapshot.focused_workspace_id // empty) as $workspace_id
+    | ($snapshot.focused_pane_id // empty) as $focused_pane_id
+    | (
+        $snapshot.panes[]?
+        | select(.pane_id == $focused_pane_id and .workspace_id == $workspace_id)
+        | .foreground_cwd // .cwd // empty
+      ) // (
+        $snapshot.panes[]?
+        | select(.workspace_id == $workspace_id)
+        | .foreground_cwd // .cwd // empty
+      ) // empty
+  '
+}
+
+cwd="$(workspace_cwd)"
+
+if [[ -n "$cwd" && -d "$cwd" ]]; then
+  cd "$cwd"
+fi
+
+exec jjui "$@"
