@@ -1,5 +1,16 @@
 onboarding = false
 
+[keys]
+workspace_picker = ""
+
+[[keys.command]]
+key = "prefix+w"
+type = "popup"
+command = "herdr-workspace-picker"
+description = "jump to workspace"
+width = "90%"
+height = "80%"
+
 [[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"

@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v fzf >/dev/null 2>&1; then
+  echo "Error: fzf is not installed or not in PATH" >&2
+  exit 1
+fi
+
+herdr_bin="${HERDR_BINARY:-herdr}"
+export HERDR_BINARY="$herdr_bin"
+
+if ! command -v "$herdr_bin" >/dev/null 2>&1; then
+  echo "Error: herdr is not installed or not in PATH" >&2
+  exit 1
+fi
+
+workspaces_json="$("$herdr_bin" workspace list)"
+panes_json="$("$herdr_bin" pane list)"
+
+selection="$(
+  WORKSPACES_JSON="$workspaces_json" PANES_JSON="$panes_json" python3 - <<'PY' |
+import json
+import os
+
+workspaces = json.loads(os.environ["WORKSPACES_JSON"])["result"]["workspaces"]
+panes = json.loads(os.environ["PANES_JSON"])["result"]["panes"]
+panes_by_workspace = {}
+
+for pane in panes:
+    panes_by_workspace.setdefault(pane["workspace_id"], []).append(pane)
+
+for workspace in workspaces:
+    if workspace.get("focused"):
+        continue
+
+    workspace_id = workspace["workspace_id"]
+    workspace_panes = panes_by_workspace.get(workspace_id, [])
+    focused_pane = next((pane for pane in workspace_panes if pane.get("focused")), None)
+    pane = focused_pane or workspace_panes[0] if workspace_panes else None
+    pane_id = pane["pane_id"] if pane else ""
+    label = workspace.get("label") or workspace_id
+    status = workspace.get("agent_status") or "unknown"
+    print(f"{label}\t{status}\t{workspace_id}\t{pane_id}")
+PY
+  fzf \
+    --reverse \
+    --header jump-to-workspace \
+    --delimiter=$'\t' \
+    --with-nth=1,2 \
+    --preview 'if [ -n {4} ]; then "${HERDR_BINARY:-herdr}" pane read --lines 40 --format ansi {4}; fi' || true
+)"
+
+if [[ -z "$selection" ]]; then
+  exit 0
+fi
+
+workspace_id="$(awk -F '\t' '{print $3}' <<<"$selection")"
+exec "$herdr_bin" workspace focus "$workspace_id"
