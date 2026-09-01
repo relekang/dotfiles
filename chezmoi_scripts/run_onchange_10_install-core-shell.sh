@@ -57,6 +57,40 @@ install_mise() {
   fi
 }
 
+run_herdr() {
+  if have_cmd herdr; then
+    herdr "$@"
+  elif [[ -x "$HOME/.local/bin/herdr" ]]; then
+    "$HOME/.local/bin/herdr" "$@"
+  else
+    return 127
+  fi
+}
+
+install_herdr() {
+  if ! have_cmd herdr && [[ ! -x "$HOME/.local/bin/herdr" ]]; then
+    curl -fsSL https://herdr.dev/install.sh | sh
+  fi
+}
+
+install_herdr_integrations() {
+  local integration
+
+  for integration in pi claude codex opencode; do
+    if have_cmd "$integration"; then
+      run_herdr integration install "$integration"
+    fi
+  done
+}
+
+install_herdr_plugins() {
+  if ! run_herdr plugin list | grep -q '^vim-herdr-navigation\b'; then
+    run_herdr plugin install paulbkim-dev/vim-herdr-navigation -y
+  fi
+
+  run_herdr plugin action list --plugin vim-herdr-navigation
+}
+
 install_jj_if_available() {
   if have_cmd jj; then
     return
@@ -84,6 +118,9 @@ case "$(uname -s)" in
     install_with_brew zoxide
     install_with_brew zsh-syntax-highlighting
     install_with_brew mise
+    install_herdr
+    install_herdr_integrations
+    install_herdr_plugins
     ;;
   Linux)
     install_with_apt tmux
@@ -92,6 +129,9 @@ case "$(uname -s)" in
     install_with_apt zsh-syntax-highlighting
     install_starship
     install_mise
+    install_herdr
+    install_herdr_integrations
+    install_herdr_plugins
     install_jj_if_available
     ;;
 esac
