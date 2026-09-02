@@ -6,6 +6,7 @@
   - Create a PR.
   - Comment or reply to a comment.
   - The check-requests skill can do what it needs to create draft PRs.
+- Use `gh-resolve-review-thread THREAD_ID...` instead of a direct `gh api` call to resolve pull request review threads.
 - Don't assume. Don't hide confusion. Surface trade-offs.
 - Use the minimum code that solves the problem. Do not add speculative changes.
 - Touch only what you must. Clean up only your own mess.
