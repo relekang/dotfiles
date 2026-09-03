@@ -48,3 +48,7 @@ key = "ctrl+l"
 type = "plugin_action"
 command = "vim-herdr-navigation.right"
 description = "navigate right (vim/herdr)"
+
+[ui]
+pane_outer_borders = false
+pane_gaps = false
