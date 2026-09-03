@@ -4,18 +4,18 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  w c <project> [--no-tmux] <workspace-name>
-  w create <project> [--no-tmux] <workspace-name>
+  w c <project> [--no-herdr] <workspace-name>
+  w create <project> [--no-herdr] <workspace-name>
   w d <workspace-name>
   w delete <workspace-name>
 
 Commands:
   c, create   Create a new jj workspace using workspace-templates/<project>.sh
-  d, delete   Delete a workspace folder, forget the jj workspace, and try to kill its tmux session
+  d, delete   Delete a workspace folder, forget the jj workspace, and close its Herdr workspace
 
 Legacy mode:
-  w <project> [--no-tmux] <workspace-name>
-    Treated the same as: w c <project> [--no-tmux] <workspace-name>
+  w <project> [--no-herdr] <workspace-name>
+    Treated the same as: w c <project> [--no-herdr] <workspace-name>
 EOF
 }
 
@@ -29,7 +29,7 @@ templates_dir="${XDG_DATA_HOME:-$HOME/.local/share}/workspace-templates"
 load_template() {
   local template_path="$1"
 
-  unset w_source_repo w_destination_prefix w_tmux_project w_env_source w_base_ports w_port_env_var
+  unset w_source_repo w_destination_prefix w_herdr_project w_env_source w_base_ports w_port_env_var
   unset -f w_extra_env_lines 2>/dev/null || true
   unset -f w_post_create 2>/dev/null || true
   unset -f w_pre_delete 2>/dev/null || true
@@ -52,10 +52,6 @@ load_template() {
 port_in_use() {
   local port="$1"
   lsof -nP -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1
-}
-
-session_name_for_path() {
-  basename "$1" | sed 's/[^A-Za-z0-9._-]/_/g'
 }
 
 workspace_exists_in_repo() {
@@ -84,29 +80,29 @@ resolve_workspace_name_for_template() {
   printf '%s%s\n' "$prefix_basename" "$requested_name"
 }
 
-start_tmux_session() {
+start_herdr_workspace() {
   local destination="$1"
-  local tmux_project="$2"
+  local herdr_project="$2"
 
-  if ! command -v tp >/dev/null 2>&1; then
-    echo "Error: tmux is enabled but tp is not in PATH" >&2
+  if ! command -v hp >/dev/null 2>&1; then
+    echo "Error: Herdr is enabled but hp is not in PATH" >&2
     exit 1
   fi
 
-  (cd "$destination" && tp "$tmux_project")
+  (cd "$destination" && hp "$herdr_project")
 }
 
 create_workspace() {
   local project="$1"
   shift
 
-  local run_tmux=true
+  local run_herdr=true
   local requested_workspace_name=""
 
   while [[ $# -gt 0 ]]; do
     case "$1" in
-      --no-tmux)
-        run_tmux=false
+      --no-herdr)
+        run_herdr=false
         ;;
       -h|--help)
         usage
@@ -148,7 +144,7 @@ create_workspace() {
   prefix_basename="$(basename "$w_destination_prefix")"
   local workspace_suffix="${workspace_name#${prefix_basename}}"
   local destination="${w_destination_prefix}${workspace_suffix}"
-  w_tmux_project="${w_tmux_project:-$project}"
+  w_herdr_project="${w_herdr_project:-$project}"
   w_env_source="${w_env_source:-.env}"
   w_port_env_var="${w_port_env_var:-PORT}"
 
@@ -169,8 +165,8 @@ create_workspace() {
 
   if [[ "$workspace_already_exists" == true && -d "$destination" ]]; then
     echo "JJ workspace already exists: $workspace_name"
-    if [[ "$run_tmux" == true ]]; then
-      start_tmux_session "$destination" "$w_tmux_project"
+    if [[ "$run_herdr" == true ]]; then
+      start_herdr_workspace "$destination" "$w_herdr_project"
     fi
     return 0
   fi
@@ -255,8 +251,8 @@ create_workspace() {
     fi
   fi
 
-  if [[ "$run_tmux" == true ]]; then
-    start_tmux_session "$destination" "$w_tmux_project"
+  if [[ "$run_herdr" == true ]]; then
+    start_herdr_workspace "$destination" "$w_herdr_project"
   fi
 }
 
@@ -307,8 +303,8 @@ delete_workspace() {
   prefix_basename="$(basename "$w_destination_prefix")"
   local workspace_suffix="${workspace_name#${prefix_basename}}"
   local destination="${w_destination_prefix}${workspace_suffix}"
-  local session_name
-  session_name="$(session_name_for_path "$destination")"
+  local herdr_workspace_label
+  herdr_workspace_label="$(basename "$destination")"
 
   if [[ -e "$destination" ]] && declare -f w_pre_delete >/dev/null 2>&1; then
     (
@@ -332,15 +328,26 @@ delete_workspace() {
     echo "Folder already absent: $destination"
   fi
 
-  if command -v tmux >/dev/null 2>&1; then
-    if tmux has-session -t "$session_name" 2>/dev/null; then
-      tmux kill-session -t "$session_name" >/dev/null 2>&1 || true
-      echo "Killed tmux session: $session_name"
+  if command -v herdr >/dev/null 2>&1 && herdr status server >/dev/null 2>&1; then
+    if ! command -v jq >/dev/null 2>&1; then
+      echo "Error: jq is required to close the Herdr workspace" >&2
+      exit 1
+    fi
+
+    local herdr_workspace_id
+    herdr_workspace_id="$(
+      herdr workspace list |
+        jq -r --arg wanted_label "$herdr_workspace_label" '.result.workspaces[] | select(.label == $wanted_label) | .workspace_id' |
+        head -n 1
+    )"
+    if [[ -n "$herdr_workspace_id" ]]; then
+      herdr workspace close "$herdr_workspace_id" >/dev/null
+      echo "Closed Herdr workspace: $herdr_workspace_label"
     else
-      echo "Tmux session not found: $session_name"
+      echo "Herdr workspace not found: $herdr_workspace_label"
     fi
   else
-    echo "tmux not installed; skipped tmux session cleanup"
+    echo "Herdr server not running; skipped workspace cleanup"
   fi
 }
 

@@ -1,6 +1,6 @@
 w_source_repo="$HOME/dev/crdbrd/hub"
 w_destination_prefix="$HOME/dev/crdbrd/hub-"
-w_tmux_project="hub"
+w_herdr_project="hub"
 
 # Since hub#5803 ports and the Redis cache DB derive from INSTANCE_NUMBER,
 # the trailing digits of the checkout directory name. Workspaces keep
