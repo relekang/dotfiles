@@ -49,6 +49,10 @@ type = "plugin_action"
 command = "vim-herdr-navigation.right"
 description = "navigate right (vim/herdr)"
 
+[experimental]
+kitty_graphics = true
+
 [ui]
+agent_panel_sort = "priority"
 pane_outer_borders = false
 pane_gaps = false
