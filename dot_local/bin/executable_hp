@@ -2,16 +2,11 @@
 set -euo pipefail
 
 usage() {
-  echo "Usage: hp [project]"
-  echo "Attach to a Herdr project session and open the current directory as a workspace."
+  echo "Usage: hp [--session name] [project]"
+  echo "Open the current directory as a workspace in the default Herdr session."
   echo "If a project template exists, it configures each new workspace."
   echo "If no project is provided, uses the current directory name."
 }
-
-if [[ $# -gt 1 ]]; then
-  usage
-  exit 1
-fi
 
 if ! command -v herdr >/dev/null 2>&1; then
   echo "Error: herdr is not installed or not in PATH" >&2
@@ -23,16 +18,60 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-session_name="${1:-$(basename "$PWD")}"
-session_name="$(printf '%s' "$session_name" | sed 's/^\.\.*//; s/[^A-Za-z0-9._-]/_/g')"
+project_name=""
+session_name=""
 
-if [[ -z "$session_name" ]]; then
-  echo "Error: session name is empty after sanitization" >&2
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --session)
+      if [[ $# -lt 2 ]]; then
+        echo "Error: --session requires a name" >&2
+        exit 1
+      fi
+      session_name="$2"
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --*)
+      echo "Error: unknown option: $1" >&2
+      usage
+      exit 1
+      ;;
+    *)
+      if [[ -n "$project_name" ]]; then
+        echo "Error: only one project is allowed" >&2
+        usage
+        exit 1
+      fi
+      project_name="$1"
+      ;;
+  esac
+  shift
+done
+
+project_name="${project_name:-$(basename "$PWD")}"
+project_name="$(printf '%s' "$project_name" | sed 's/^\.\.*//; s/[^A-Za-z0-9._-]/_/g')"
+
+if [[ -z "$project_name" ]]; then
+  echo "Error: project name is empty after sanitization" >&2
   exit 1
 fi
 
+session_args=()
+if [[ -n "$session_name" ]]; then
+  session_name="$(printf '%s' "$session_name" | sed 's/^\.\.*//; s/[^A-Za-z0-9._-]/_/g')"
+  if [[ -z "$session_name" ]]; then
+    echo "Error: session name is empty after sanitization" >&2
+    exit 1
+  fi
+  session_args=(--session "$session_name")
+fi
+
 hp_herdr() {
-  herdr --session "$session_name" "$@"
+  herdr "${session_args[@]}" "$@"
 }
 
 if ! hp_herdr status server >/dev/null 2>&1; then
@@ -45,7 +84,7 @@ if ! hp_herdr status server >/dev/null 2>&1; then
   done
 
   if ! hp_herdr status server >/dev/null 2>&1; then
-    echo "Error: failed to start Herdr session: $session_name" >&2
+    echo "Error: failed to start Herdr session: ${session_name:-default}" >&2
     exit 1
   fi
 fi
@@ -53,7 +92,7 @@ fi
 workspace_label="$(basename "$PWD")"
 workspace_id="$(
   hp_herdr workspace list |
-    jq -r --arg label "$workspace_label" '.result.workspaces[] | select(.label == $label) | .workspace_id' |
+    jq -r --arg wanted_label "$workspace_label" '.result.workspaces[] | select(.label == $wanted_label) | .workspace_id' |
     head -n 1
 )"
 
@@ -66,7 +105,7 @@ else
   workspace_id="$(jq -r '.result.workspace.workspace_id' <<<"$workspace_result")"
   root_pane_id="$(jq -r '.result.root_pane.pane_id' <<<"$workspace_result")"
 
-  template_path="${XDG_DATA_HOME:-$HOME/.local/share}/herdr-templates/$session_name.sh"
+  template_path="${XDG_DATA_HOME:-$HOME/.local/share}/herdr-templates/$project_name.sh"
   if [[ -f "$template_path" ]]; then
     # shellcheck disable=SC1090
     source "$template_path"
@@ -74,4 +113,4 @@ else
   fi
 fi
 
-exec herdr --session "$session_name"
+exec herdr "${session_args[@]}"
