@@ -2,9 +2,10 @@
 set -euo pipefail
 
 usage() {
-  echo "Usage: hp [name]"
-  echo "Attach or create a Herdr project session."
-  echo "If no name is provided, uses the current directory name."
+  echo "Usage: hp [project]"
+  echo "Attach to a Herdr project session and open the current directory as a workspace."
+  echo "If a project template exists, it configures each new workspace."
+  echo "If no project is provided, uses the current directory name."
 }
 
 if [[ $# -gt 1 ]]; then
@@ -17,12 +18,60 @@ if ! command -v herdr >/dev/null 2>&1; then
   exit 1
 fi
 
+if ! command -v jq >/dev/null 2>&1; then
+  echo "Error: jq is not installed or not in PATH" >&2
+  exit 1
+fi
+
 session_name="${1:-$(basename "$PWD")}"
 session_name="$(printf '%s' "$session_name" | sed 's/^\.\.*//; s/[^A-Za-z0-9._-]/_/g')"
 
 if [[ -z "$session_name" ]]; then
   echo "Error: session name is empty after sanitization" >&2
   exit 1
+fi
+
+hp_herdr() {
+  herdr --session "$session_name" "$@"
+}
+
+if ! hp_herdr status server >/dev/null 2>&1; then
+  hp_herdr server >/dev/null 2>&1 &
+  for _ in {1..50}; do
+    if hp_herdr status server >/dev/null 2>&1; then
+      break
+    fi
+    sleep 0.1
+  done
+
+  if ! hp_herdr status server >/dev/null 2>&1; then
+    echo "Error: failed to start Herdr session: $session_name" >&2
+    exit 1
+  fi
+fi
+
+workspace_label="$(basename "$PWD")"
+workspace_id="$(
+  hp_herdr workspace list |
+    jq -r --arg label "$workspace_label" '.result.workspaces[] | select(.label == $label) | .workspace_id' |
+    head -n 1
+)"
+
+if [[ -n "$workspace_id" ]]; then
+  hp_herdr workspace focus "$workspace_id" >/dev/null
+else
+  workspace_result="$(
+    hp_herdr workspace create --cwd "$PWD" --label "$workspace_label" --focus
+  )"
+  workspace_id="$(jq -r '.result.workspace.workspace_id' <<<"$workspace_result")"
+  root_pane_id="$(jq -r '.result.root_pane.pane_id' <<<"$workspace_result")"
+
+  template_path="${XDG_DATA_HOME:-$HOME/.local/share}/herdr-templates/$session_name.sh"
+  if [[ -f "$template_path" ]]; then
+    # shellcheck disable=SC1090
+    source "$template_path"
+    hp_setup_workspace "$workspace_id" "$root_pane_id"
+  fi
 fi
 
 exec herdr --session "$session_name"
