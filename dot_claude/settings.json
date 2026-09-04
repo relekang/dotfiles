@@ -33,6 +33,10 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash '/Users/rolf/.claude/statusline-command.sh'"
+  },
   "effortLevel": "high",
   "awaySummaryEnabled": false,
   "autoUpdatesChannel": "latest",
