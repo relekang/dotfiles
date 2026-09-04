@@ -7,6 +7,22 @@ success_symbol = "[➜](bold green)"
 [gcloud]
 disabled = true
 
+[git_branch]
+disabled = true
+
+[git_commit]
+disabled = true
+
+[git_status]
+disabled = true
+
+[custom.jj]
+command = "jj log --ignore-working-copy --no-graph -r 'latest(ancestors(@) & bookmarks())' -T 'bookmarks.map(|bookmark| bookmark.name()).join(\" \")'"
+when = "jj root --ignore-working-copy"
+symbol = " "
+format = "[$symbol$output]($style) "
+style = "bold mauve"
+
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
 flamingo = "#f0c6c6"
