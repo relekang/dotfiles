@@ -17,7 +17,11 @@ disabled = true
 disabled = true
 
 [custom.jj]
-command = "jj log --ignore-working-copy --no-graph -r 'latest(ancestors(@) & bookmarks())' -T 'bookmarks.map(|bookmark| bookmark.name()).join(\" \")'"
+command = """
+state="$(jj log --no-graph -r @ -T 'if(empty, \"✓\", \"*\")')"
+bookmark="$(jj log --ignore-working-copy --no-graph -r 'latest(ancestors(@) & bookmarks())' -T 'bookmarks.map(|bookmark| bookmark.name()).join(\" \")')"
+printf '%s %s' "$bookmark" "$state"
+"""
 when = "jj root --ignore-working-copy"
 symbol = " "
 format = "[$symbol$output]($style) "
