@@ -145,7 +145,7 @@ create_workspace() {
   local workspace_suffix="${workspace_name#${prefix_basename}}"
   local destination="${w_destination_prefix}${workspace_suffix}"
   w_herdr_project="${w_herdr_project:-$project}"
-  w_env_source="${w_env_source:-.env}"
+  w_env_source="${w_env_source-.env}"
   w_port_env_var="${w_port_env_var:-PORT}"
 
   if [[ ! -d "$w_source_repo" ]]; then
@@ -182,7 +182,7 @@ create_workspace() {
     workspace_already_exists=false
   fi
 
-  if [[ ! -f "$w_source_repo/$w_env_source" ]]; then
+  if [[ -n "$w_env_source" && ! -f "$w_source_repo/$w_env_source" ]]; then
     echo "Error: missing env source in repository: $w_source_repo/$w_env_source" >&2
     exit 1
   fi
@@ -210,11 +210,13 @@ create_workspace() {
   created_workspace=true
   echo "Created workspace: $destination"
 
-  if [[ ! -f "$destination/.env" ]]; then
-    cp "$w_source_repo/$w_env_source" "$destination/.env"
-    echo "Copied .env"
-  else
-    echo ".env already exists: $destination/.env"
+  if [[ -n "$w_env_source" ]]; then
+    if [[ ! -f "$destination/.env" ]]; then
+      cp "$w_source_repo/$w_env_source" "$destination/.env"
+      echo "Copied .env"
+    else
+      echo ".env already exists: $destination/.env"
+    fi
   fi
 
   if [[ -n "$port" ]]; then
