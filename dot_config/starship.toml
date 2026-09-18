@@ -26,6 +26,7 @@ when = "jj root --ignore-working-copy"
 symbol = " "
 format = "[$symbol$output]($style) "
 style = "bold mauve"
+ignore_timeout = true
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
