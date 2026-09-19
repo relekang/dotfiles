@@ -34,7 +34,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash '/Users/rolf/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
             "timeout": 10
           }
         ]
@@ -43,7 +43,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash '/Users/rolf/.claude/statusline-command.sh'"
+    "command": "bash \"$HOME/.claude/statusline-command.sh\""
   },
   "effortLevel": "high",
   "awaySummaryEnabled": false,
