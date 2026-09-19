@@ -96,8 +96,18 @@
 [push]
 	default = current
 
+{{ if eq .chezmoi.os "darwin" -}}
 [credential]
 	helper = osxkeychain
+
+{{ end -}}
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
 
 [rerere]
 	enabled = true
