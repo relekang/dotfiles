@@ -45,6 +45,27 @@ install_with_apt() {
   fi
 }
 
+install_with_pacman() {
+  local package="$1"
+
+  if ! pacman -Q "$package" >/dev/null 2>&1; then
+    sudo pacman -S --needed --noconfirm "$package"
+  fi
+}
+
+install_linux_package() {
+  local package="$1"
+
+  if have_cmd apt-get && have_cmd dpkg; then
+    install_with_apt "$package"
+  elif have_cmd pacman; then
+    install_with_pacman "$package"
+  else
+    echo "warning: no supported Linux package manager found" >&2
+    return 1
+  fi
+}
+
 install_starship() {
   if ! have_cmd starship; then
     curl -fsSL https://starship.rs/install.sh | sh -s -- -y
@@ -98,8 +119,10 @@ install_jj_if_available() {
 
   if have_cmd apt-cache && apt-cache show jj >/dev/null 2>&1; then
     install_with_apt jj
+  elif have_cmd pacman; then
+    install_with_pacman jujutsu
   else
-    echo "warning: jj package not available via apt; install it manually" >&2
+    echo "warning: jj package not available; install it manually" >&2
   fi
 }
 
@@ -123,10 +146,10 @@ case "$(uname -s)" in
     install_herdr_plugins
     ;;
   Linux)
-    install_with_apt tmux
-    install_with_apt fzf
-    install_with_apt neovim
-    install_with_apt zsh-syntax-highlighting
+    install_linux_package tmux
+    install_linux_package fzf
+    install_linux_package neovim
+    install_linux_package zsh-syntax-highlighting
     install_starship
     install_mise
     install_herdr
