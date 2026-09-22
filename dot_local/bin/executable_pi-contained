@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if (( $# > 1 )); then
+  echo "Usage: pi-contained [path]" >&2
+  exit 2
+fi
+
+if ! command -v docker >/dev/null 2>&1; then
+  echo "Error: docker is not installed." >&2
+  exit 1
+fi
+
+if [[ ! -d "$HOME/.pi" ]]; then
+  echo "Error: $HOME/.pi does not exist." >&2
+  exit 1
+fi
+
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/pi-contained"
+dockerfile="$config_dir/Dockerfile"
+image="pi-contained"
+
+if [[ ! -f "$dockerfile" ]]; then
+  echo "Error: $dockerfile does not exist." >&2
+  exit 1
+fi
+
+dockerfile_hash="$(cksum < "$dockerfile" | awk '{ print $1 "-" $2 }')"
+image_hash="$(docker image inspect --format '{{ index .Config.Labels "dev.pi-contained.dockerfile-hash" }}' "$image" 2>/dev/null || true)"
+
+if [[ "$image_hash" != "$dockerfile_hash" ]]; then
+  echo "Building $image..." >&2
+  docker build \
+    --label "dev.pi-contained.dockerfile-hash=$dockerfile_hash" \
+    --tag "$image" \
+    "$config_dir"
+fi
+
+run_args=(
+  --rm
+  --init
+  --interactive
+  --tty
+  --user "$(id -u):$(id -g)"
+  --env HOME=/home/pi
+  --env "TERM=${TERM:-xterm-256color}"
+  --mount "type=bind,source=$HOME/.pi,target=/home/pi/.pi"
+)
+
+if [[ -d "$HOME/.pi-shared" ]]; then
+  run_args+=(--mount "type=bind,source=$HOME/.pi-shared,target=/home/pi/.pi-shared")
+fi
+
+if [[ -d "$HOME/.agents" ]]; then
+  run_args+=(--mount "type=bind,source=$HOME/.agents,target=/home/pi/.agents")
+fi
+
+if (( $# == 1 )); then
+  if [[ ! -d "$1" ]]; then
+    echo "Error: $1 is not a directory." >&2
+    exit 1
+  fi
+
+  project_dir="$(cd -- "$1" && pwd -P)"
+  run_args+=(
+    --mount "type=bind,source=$project_dir,target=/workspace"
+    --workdir /workspace
+  )
+fi
+
+exec docker run "${run_args[@]}" "$image"
