@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 1 || $# -gt 2 || "${1:-}" == -h || "${1:-}" == --help ]]; then
+  echo 'Usage: pi-ralph TASK_FILE [MAX_ITERATIONS (default: 10)]' >&2
+  exit 2
+fi
+
+task=$1
+max=${2:-10}
+if [[ ! -f "$task" ]]; then
+  echo "Task file not found: $task" >&2
+  exit 2
+fi
+if [[ ! "$max" =~ ^[1-9][0-9]*$ ]]; then
+  echo 'MAX_ITERATIONS must be a positive integer' >&2
+  exit 2
+fi
+
+for ((iteration = 1; iteration <= max; iteration++)); do
+  printf '\nPi Ralph pass %d/%d\n' "$iteration" "$max" >&2
+  if output=$(pi --print -- "Read the task file at $task. Work on that task in the current directory. Check the current files before you change them; earlier passes may have made progress. Do not stop after planning: implement and verify what you can. If the entire task is complete, put RALPH_TASK_COMPLETE on the last line of your final answer. Otherwise, state what remains, and do not print that marker."); then
+    printf '%s\n' "$output"
+  else
+    status=$?
+    echo "Pi failed on pass $iteration (exit $status)" >&2
+    exit "$status"
+  fi
+  if [[ "${output##*$'\n'}" == RALPH_TASK_COMPLETE ]]; then
+    echo "Task complete after $iteration pass(es)." >&2
+    exit 0
+  fi
+done
+
+echo "Task not complete after $max passes." >&2
+exit 1
