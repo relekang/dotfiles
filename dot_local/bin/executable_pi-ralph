@@ -1,8 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+model_args=()
+if [[ "${1:-}" == --model ]]; then
+  if [[ -z "${2:-}" ]]; then
+    echo '--model needs a model name' >&2
+    exit 2
+  fi
+  model_args=(--model "$2")
+  shift 2
+fi
+
 if [[ $# -lt 1 || $# -gt 2 || "${1:-}" == -h || "${1:-}" == --help ]]; then
-  echo 'Usage: pi-ralph TASK_FILE [MAX_ITERATIONS (default: 10)]' >&2
+  echo 'Usage: pi-ralph [--model MODEL] TASK_FILE [MAX_ITERATIONS (default: 10)]' >&2
   exit 2
 fi
 
@@ -19,7 +29,7 @@ fi
 
 for ((iteration = 1; iteration <= max; iteration++)); do
   printf '\nPi Ralph pass %d/%d\n' "$iteration" "$max" >&2
-  if output=$(pi --print -- "Read the task file at $task. Work on that task in the current directory. Check the current files before you change them; earlier passes may have made progress. Do not stop after planning: implement and verify what you can. If the entire task is complete, put RALPH_TASK_COMPLETE on the last line of your final answer. Otherwise, state what remains, and do not print that marker."); then
+  if output=$(pi "${model_args[@]}" --print -- "Read the task file at $task. Work on that task in the current directory. Check the current files before you change them; earlier passes may have made progress. Do not stop after planning: implement and verify what you can. If the entire task is complete, put RALPH_TASK_COMPLETE on the last line of your final answer. Otherwise, state what remains, and do not print that marker."); then
     printf '%s\n' "$output"
   else
     status=$?
