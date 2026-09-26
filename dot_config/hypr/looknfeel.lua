@@ -10,6 +10,9 @@ hl.config({
     },
     resize_on_border = true,
   },
+  decoration = {
+    rounding = 4,
+  },
 })
 
 -- https://wiki.hypr.land/Configuring/Basics/Variables/#general
