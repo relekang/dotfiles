@@ -126,6 +126,10 @@ install_jj_if_available() {
   fi
 }
 
+if [[ "$(uname -s)" == Linux ]]; then
+  install_linux_package zsh
+fi
+
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
