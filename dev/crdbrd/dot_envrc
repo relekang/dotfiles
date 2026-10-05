@@ -1,2 +1,3 @@
 export CODEX_HOME="$HOME/.codex-work"
+export CLAUDE_CONFIG_DIR="$HOME/.claude-work"
 export PI_CODING_AGENT_DIR="$HOME/.pi-work/agent"
