@@ -137,6 +137,7 @@ fi
 case "$(uname -s)" in
   Darwin)
     ensure_homebrew
+    install_with_brew direnv
     install_with_brew starship
     install_with_brew tmux
     install_with_brew jj
@@ -150,6 +151,7 @@ case "$(uname -s)" in
     install_herdr_plugins
     ;;
   Linux)
+    install_linux_package direnv
     install_linux_package tmux
     install_linux_package fzf
     install_linux_package neovim
