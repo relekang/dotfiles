@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# mise config: {{ include "dot_config/mise/config.toml" | sha256sum }}
+set -euo pipefail
+
+if command -v mise >/dev/null 2>&1; then
+  mise install
+else
+  "$HOME/.local/bin/mise" install
+fi

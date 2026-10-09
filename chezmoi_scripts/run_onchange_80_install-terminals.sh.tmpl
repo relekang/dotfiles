@@ -1,7 +1,0 @@
-{{ if and (has "terminals" ((index .chezmoi "tags") | default (list))) (eq .chezmoi.os "darwin") }}#!/usr/bin/env bash
-set -euo pipefail
-
-if command -v brew >/dev/null 2>&1; then
-  brew install --cask kitty
-fi
-{{ end }}

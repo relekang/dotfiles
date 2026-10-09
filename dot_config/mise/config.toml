@@ -4,12 +4,26 @@ idiomatic_version_file_enable_tools = ["node"]
 minimum_release_age = "5d"
 
 [tools]
-claude = { version = "latest", auto_update = "2h" }
-codex = { version = "latest", auto_update = "2h" }
+claude = { version = "latest", auto_update = "2h", minimum_release_age = "1d" }
+codex = { version = "latest", auto_update = "2h", minimum_release_age = "1d" }
 jj = { version = "latest", auto_update = "2h" }
 herdr = { version = "latest", auto_update = "2h" }
 jjui = { version = "latest", auto_update = "2h" }
 gh = { version = "latest", auto_update = "2h" }
 glow = { version = "latest", auto_update = "2h" }
 node = { version = "24", auto_update = "2h" }
-pi = { version = "latest", auto_update = "2h" }
+pi = { version = "latest", auto_update = "2h", minimum_release_age = "1d" }
+go = { version = "latest", auto_update = "2h" }
+python = { version = "latest", auto_update = "2h" }
+terraform = { version = "latest", auto_update = "2h" }
+bun = { version = "latest", auto_update = "2h" }
+uv = { version = "latest", auto_update = "2h" }
+direnv = { version = "latest", auto_update = "2h" }
+zoxide = { version = "latest", auto_update = "2h" }
+jq = { version = "latest", auto_update = "2h" }
+"conda:htop" = { version = "latest", auto_update = "2h" }
+"pipx:sshuttle" = { version = "latest", auto_update = "2h" }
+ripgrep = { version = "latest", auto_update = "2h" }
+sops = { version = "latest", auto_update = "2h" }
+tmux = { version = "latest", auto_update = "2h" }
+fzf = { version = "latest", auto_update = "2h" }

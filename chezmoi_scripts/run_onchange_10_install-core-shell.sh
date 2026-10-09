@@ -79,18 +79,12 @@ install_mise() {
 }
 
 run_herdr() {
-  if have_cmd herdr; then
-    herdr "$@"
-  elif [[ -x "$HOME/.local/bin/herdr" ]]; then
-    "$HOME/.local/bin/herdr" "$@"
+  if have_cmd mise; then
+    mise exec herdr -- herdr "$@"
+  elif [[ -x "$HOME/.local/bin/mise" ]]; then
+    "$HOME/.local/bin/mise" exec herdr -- herdr "$@"
   else
     return 127
-  fi
-}
-
-install_herdr() {
-  if ! have_cmd herdr && [[ ! -x "$HOME/.local/bin/herdr" ]]; then
-    curl -fsSL https://herdr.dev/install.sh | sh
   fi
 }
 
@@ -112,20 +106,6 @@ install_herdr_plugins() {
   run_herdr plugin action list --plugin vim-herdr-navigation
 }
 
-install_jj_if_available() {
-  if have_cmd jj; then
-    return
-  fi
-
-  if have_cmd apt-cache && apt-cache show jj >/dev/null 2>&1; then
-    install_with_apt jj
-  elif have_cmd pacman; then
-    install_with_pacman jujutsu
-  else
-    echo "warning: jj package not available; install it manually" >&2
-  fi
-}
-
 if [[ "$(uname -s)" == Linux ]]; then
   install_linux_package zsh
 fi
@@ -137,30 +117,19 @@ fi
 case "$(uname -s)" in
   Darwin)
     ensure_homebrew
-    install_with_brew direnv
     install_with_brew starship
-    install_with_brew tmux
-    install_with_brew jj
     install_with_brew neovim
-    install_with_brew fzf
-    install_with_brew zoxide
     install_with_brew zsh-syntax-highlighting
     install_with_brew mise
-    install_herdr
     install_herdr_integrations
     install_herdr_plugins
     ;;
   Linux)
-    install_linux_package direnv
-    install_linux_package tmux
-    install_linux_package fzf
     install_linux_package neovim
     install_linux_package zsh-syntax-highlighting
     install_starship
     install_mise
-    install_herdr
     install_herdr_integrations
     install_herdr_plugins
-    install_jj_if_available
     ;;
 esac
