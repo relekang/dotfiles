@@ -30,3 +30,5 @@ fzf = { version = "latest", auto_update = "2h" }
 hunk = { version = "latest", auto_update = "2h" }
 "go:github.com/rakyll/hey" = { version = "latest", auto_update = "2h" }
 k9s = { version = "latest", auto_update = "2h" }
+pnpm = { version = "latest", auto_update = "2h" }
+"aqua:binwiederhier/ntfy" = { version = "latest", auto_update = "2h" }
