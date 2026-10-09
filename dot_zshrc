@@ -114,8 +114,6 @@ fi
 autoload -Uz compinit
 compinit
 
-export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3.9"
-
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
