@@ -15,6 +15,7 @@ alias pbjson="pbpaste | python -m json.tool | pbcopy"
 
 alias parrot="curl parrot.live"
 
+alias docker=podman
 alias dc="docker compose"
 
 alias nr="npm run --"
