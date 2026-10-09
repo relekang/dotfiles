@@ -1,0 +1,15 @@
+[settings]
+python.uv_venv_auto = "create|source"
+idiomatic_version_file_enable_tools = ["node"]
+minimum_release_age = "5d"
+
+[tools]
+claude = { version = "latest", auto_update = "2h" }
+codex = { version = "latest", auto_update = "2h" }
+jj = { version = "latest", auto_update = "2h" }
+herdr = { version = "latest", auto_update = "2h" }
+jjui = { version = "latest", auto_update = "2h" }
+gh = { version = "latest", auto_update = "2h" }
+glow = { version = "latest", auto_update = "2h" }
+node = { version = "24", auto_update = "2h" }
+pi = { version = "latest", auto_update = "2h" }
