@@ -27,3 +27,6 @@ ripgrep = { version = "latest", auto_update = "2h" }
 sops = { version = "latest", auto_update = "2h" }
 tmux = { version = "latest", auto_update = "2h" }
 fzf = { version = "latest", auto_update = "2h" }
+hunk = { version = "latest", auto_update = "2h" }
+"go:github.com/rakyll/hey" = { version = "latest", auto_update = "2h" }
+k9s = { version = "latest", auto_update = "2h" }
