@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "1.0.0",
+  "lastChangelogVersion": "1.0.4",
   "defaultProvider": "openai-codex",
-  "defaultModel": "sol-6",
+  "defaultModel": "sol-6.1",
   "defaultThinkingLevel": "medium",
   "editorPaddingX": 1,
   "theme": "dark"
