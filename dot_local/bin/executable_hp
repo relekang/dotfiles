@@ -3,7 +3,8 @@ set -euo pipefail
 
 usage() {
   echo "Usage: hp [--session name] [project]"
-  echo "Open the current directory as a workspace in the default Herdr session."
+  echo "Open the current directory as a workspace in a Herdr session."
+  echo "Directories under ~/dev/crdbrd use the work session by default."
   echo "If a project template exists, it configures each new workspace."
   echo "If no project is provided, uses the current directory name."
 }
@@ -51,6 +52,10 @@ while [[ $# -gt 0 ]]; do
   esac
   shift
 done
+
+if [[ -z "$session_name" && ( "$PWD" == "$HOME/dev/crdbrd" || "$PWD" == "$HOME/dev/crdbrd/"* ) ]]; then
+  session_name="work"
+fi
 
 project_name="${project_name:-$(basename "$PWD")}"
 project_name="$(printf '%s' "$project_name" | sed 's/^\.\.*//; s/[^A-Za-z0-9._-]/_/g')"
