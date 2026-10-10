@@ -18,7 +18,9 @@ Dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 ### Tagged apply
 
-- `packages`: broader package-manager installs
+- `packages`: broader package-manager installs; Mosh on Arch and Debian-based Linux;
+  Podman, podman-compose, spotifyd, playerctl, and bind on Arch. On Linux, adds the
+  Mosh UDP rule (ports 60000–61000) only if UFW is installed and active.
 - `macos`: macOS preferences and App Store setup
 - `linux`: Linux desktop/i3-related setup
 - `editors`: external `vimfiles` bootstrap

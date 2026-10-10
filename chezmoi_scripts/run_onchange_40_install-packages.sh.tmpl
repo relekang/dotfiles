@@ -31,5 +31,28 @@ case "{{ .chezmoi.os }}" in
       postgres-unofficial \
       spotify
     ;;
+  linux)
+    if command -v apt-get >/dev/null 2>&1 && command -v dpkg-query >/dev/null 2>&1; then
+      if ! dpkg-query -W -f='${Status}\n' mosh 2>/dev/null | grep -qx 'install ok installed'; then
+        sudo apt-get update
+        sudo apt-get install -y mosh
+      fi
+    elif command -v pacman >/dev/null 2>&1; then
+      sudo pacman -S --needed --noconfirm \
+        mosh \
+        podman \
+        podman-compose \
+        spotifyd \
+        playerctl \
+        bind
+    else
+      echo "warning: no supported Linux package manager found" >&2
+      exit 1
+    fi
+
+    if command -v ufw >/dev/null 2>&1 && sudo LC_ALL=C ufw status | grep -qx 'Status: active'; then
+      sudo ufw allow 60000:61000/udp comment 'mosh'
+    fi
+    ;;
 esac
 {{ end }}
