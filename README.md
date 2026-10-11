@@ -20,8 +20,9 @@ Dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 - `packages`: broader package-manager installs; Mosh on Arch and Debian-based Linux;
   Podman, podman-compose, spotifyd, playerctl, and bind on Arch. On Linux, adds the
-  HTTP and HTTPS TCP rules (ports 80 and 443) if UFW is installed, and the Mosh UDP
-  rule (ports 60000–61000) only if UFW is active. Does not enable UFW.
+  HTTP and HTTPS TCP rules (ports 80 and 443) and development server TCP rules
+  (ports 8000–8999) if UFW is installed, and the Mosh UDP rule (ports 60000–61000)
+  only if UFW is active. Does not enable UFW.
 - `macos`: macOS preferences and App Store setup
 - `linux`: Linux desktop/i3-related setup
 - `editors`: external `vimfiles` bootstrap

@@ -53,6 +53,7 @@ case "{{ .chezmoi.os }}" in
     if command -v ufw >/dev/null 2>&1; then
       sudo ufw allow 80/tcp comment 'http'
       sudo ufw allow 443/tcp comment 'https'
+      sudo ufw allow 8000:8999/tcp comment 'devservers'
       if sudo LC_ALL=C ufw status | grep -qx 'Status: active'; then
         sudo ufw allow 60000:61000/udp comment 'mosh'
       fi
