@@ -50,8 +50,12 @@ case "{{ .chezmoi.os }}" in
       exit 1
     fi
 
-    if command -v ufw >/dev/null 2>&1 && sudo LC_ALL=C ufw status | grep -qx 'Status: active'; then
-      sudo ufw allow 60000:61000/udp comment 'mosh'
+    if command -v ufw >/dev/null 2>&1; then
+      sudo ufw allow 80/tcp comment 'http'
+      sudo ufw allow 443/tcp comment 'https'
+      if sudo LC_ALL=C ufw status | grep -qx 'Status: active'; then
+        sudo ufw allow 60000:61000/udp comment 'mosh'
+      fi
     fi
     ;;
 esac
