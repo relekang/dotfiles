@@ -47,6 +47,7 @@
 -- Use macOS-style natural scrolling on the touchpad.
 hl.config({
   input = {
+    kb_file = os.getenv("HOME") .. "/.config/hypr/mac-norwegian.xkb",
     kb_options = "caps:escape,shift:both_capslock_cancel",
     touchpad = {
       natural_scroll = true,
