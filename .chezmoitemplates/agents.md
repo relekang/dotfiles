@@ -10,6 +10,7 @@
 - Don't assume. Don't hide confusion. Surface trade-offs.
 - Use the minimum code that solves the problem. Do not add speculative changes.
 - Touch only what you must. Clean up only your own mess.
+- Do not install packages from the AUR unless the user explicitly asks you to do so.
 
 In PRs:
 
