@@ -60,7 +60,7 @@ hl.config({
 -- These device rules keep physical click-to-click behavior on Apple touchpads.
 hl.device({ name = "apple-mtp-multi-touch", tap_to_click = false })
 hl.device({ name = "apple-spi-trackpad", tap_to_click = false })
-hl.device({ name = "logitech-g502-1", sensitivity = 0.4 })
+hl.device({ name = "logitech-g502-1", sensitivity = 0.3 })
 
 -- App-specific touchpad scroll speeds.
 -- o.window("(Alacritty|kitty|foot)", { scroll_touchpad = 1.5 })
