@@ -16,6 +16,6 @@ tmux new-window -n app
 
 tmux send-keys 'mise r app:server' C-m
 tmux split-window -h
-tmux send-keys 'NODE_OPTIONS=--max-old-space-size=384 mise r app:ui' C-m
+tmux send-keys 'MIMALLOC_PURGE_DELAY=0 mise r app:ui' C-m
 
 tmux select-window -t workspace

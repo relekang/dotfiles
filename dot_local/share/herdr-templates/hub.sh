@@ -28,6 +28,6 @@ hp_setup_workspace() {
   tasks_pane_id="$(jq -r '.result.pane.pane_id' <<<"$tasks_result")"
 
   hp_herdr pane run "$app_pane_id" "mise r app:server" >/dev/null
-  hp_herdr pane run "$ui_pane_id" "NODE_OPTIONS=--max-old-space-size=384 mise r app:ui" >/dev/null
+  hp_herdr pane run "$ui_pane_id" "MIMALLOC_PURGE_DELAY=0 mise r app:ui" >/dev/null
   hp_herdr pane run "$tasks_pane_id" "mise r app:tasks" >/dev/null
 }
