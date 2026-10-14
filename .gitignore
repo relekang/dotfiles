@@ -8,8 +8,8 @@ docker-data
 iterm-colors
 *.itermcolors
 
-k9s/skins/
+home/k9s/skins/
 
 .jj
 /jj
-!dot_config/jj/config.toml
+!home/dot_config/jj/config.toml

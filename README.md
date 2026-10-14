@@ -2,6 +2,9 @@
 
 Dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
+The chezmoi source files are in `home/`. The `.chezmoiroot` file selects this
+source root. Bootstrap and repository tools stay at the repository root.
+
 ## What is managed
 
 ### Default apply

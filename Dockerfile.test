@@ -19,12 +19,12 @@ COPY . .
 
 RUN curl -fsLS get.chezmoi.io | sh -s -- -b /usr/local/bin
 
-RUN zsh -n dot_zshrc dot_zshenv \
+RUN zsh -n home/dot_zshrc home/dot_zshenv \
   && bash -n initial.sh \
-    chezmoi_scripts/run_onchange_10_install-core-shell.sh \
-    chezmoi_scripts/run_onchange_20_install-tmux-plugins.sh \
-    chezmoi_scripts/run_onchange_30_update-authorized-keys.sh \
-    dot_local/bin/*
+    home/chezmoi_scripts/run_onchange_10_install-core-shell.sh \
+    home/chezmoi_scripts/run_onchange_20_install-tmux-plugins.sh \
+    home/chezmoi_scripts/run_onchange_30_update-authorized-keys.sh \
+    home/dot_local/bin/*
 
 RUN mkdir -p /root \
   && chezmoi --source=/src --destination=/root doctor >/tmp/chezmoi-doctor.txt \
