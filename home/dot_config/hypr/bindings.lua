@@ -28,6 +28,16 @@
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
 
+hl.unbind("SUPER + SHIFT + P")
+hl.unbind("SUPER + SHIFT + B")
+
+o.bind("SUPER + SHIFT + P", "Personal", {
+  launch = 'firefox --profile "$HOME/.config/mozilla/firefox/lr2techk.default-release"',
+})
+o.bind("SUPER + SHIFT + B", "Work", {
+  launch = 'firefox --profile "$HOME/.config/mozilla/firefox/aTcdEM0K.Profile 1"',
+})
+
 o.bind("SUPER + SHIFT + T", "Center window at 60% width below the bar", function()
   local window = hl.get_active_window()
   if not window then return end
