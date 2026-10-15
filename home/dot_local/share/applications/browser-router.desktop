@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Browser Router
+Exec=browser-router %u
+Terminal=false
+Type=Application
+Icon=web-browser
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+NoDisplay=true
+StartupNotify=false

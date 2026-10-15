@@ -52,6 +52,40 @@ The wrapper helps with SSH key setup, then switches to the SSH repo URL for `che
 
 The base apply manages a private aliases file at `~/.config/zsh/private-aliases.zsh`.
 
+## Browser routing
+
+On Linux, `browser-router` reads private rules from
+`~/.config/browser-router/rules.json` (or `$XDG_CONFIG_HOME/browser-router/rules.json`).
+Keep this file outside chezmoi. It is not backed up by this repository.
+
+Example:
+
+```json
+{
+  "rules": [
+    {"domains": ["video.example.com"], "profile": "youtube"},
+    {"regex": "project-example", "profile": "work"}
+  ]
+}
+```
+
+Profiles are `personal`, `work`, and `youtube`. Domain rules include subdomains.
+Regex rules search the full URL and ignore letter case. The first matching rule
+wins. If a rule has both domains and a regex, either can match. With no match,
+a missing rules file, or invalid rules, the router opens Junction.
+
+Requires Firefox, Python 3, `gio`, and Junction. The Firefox profile desktop
+entries must point to profiles on the current machine. To enable routing:
+
+```sh
+update-desktop-database ~/.local/share/applications
+xdg-settings set default-web-browser browser-router.desktop
+xdg-mime default browser-router.desktop x-scheme-handler/http x-scheme-handler/https
+```
+
+To use only the chooser again, replace `browser-router.desktop` with
+`re.sonny.Junction.desktop` in those commands.
+
 ## Docker test image
 
 Build the validation image with:

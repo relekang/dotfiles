@@ -1,0 +1,73 @@
+#!/usr/bin/python3
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+from urllib.parse import urlsplit
+
+
+PROFILES = {
+    "personal": "firefox-personal.desktop",
+    "work": "firefox-work.desktop",
+    "youtube": "firefox-youtube.desktop",
+}
+
+
+def load_rules(path):
+    if not path.exists():
+        return []
+    rules = json.loads(path.read_text())["rules"]
+    if not isinstance(rules, list):
+        raise ValueError("rules must be a list")
+    compiled = []
+    for rule in rules:
+        if not isinstance(rule, dict):
+            raise ValueError("each rule must be an object")
+        profile = PROFILES[rule["profile"]]
+        domains = rule.get("domains", [])
+        if not isinstance(domains, list) or any(
+            not isinstance(domain, str) or not domain for domain in domains
+        ):
+            raise ValueError("domains must be a list of nonempty strings")
+        pattern = re.compile(rule["regex"], re.IGNORECASE) if "regex" in rule else None
+        if not domains and pattern is None:
+            raise ValueError("each rule needs domains or regex")
+        compiled.append((profile, [domain.lower() for domain in domains], pattern))
+    return compiled
+
+
+def select_profile(url, rules):
+    host = (urlsplit(url).hostname or "").lower().rstrip(".")
+    for profile, domains, pattern in rules:
+        if any(host == domain or host.endswith("." + domain) for domain in domains):
+            return profile
+        if pattern is not None and pattern.search(url):
+            return profile
+    return None
+
+
+def main(urls):
+    config_home = Path(os.environ.get("XDG_CONFIG_HOME") or Path.home() / ".config")
+    try:
+        rules = load_rules(config_home / "browser-router" / "rules.json")
+    except (OSError, ValueError, KeyError, TypeError, re.error):
+        print("browser-router: Cannot read rules. Using Junction.", file=sys.stderr)
+        rules = []
+
+    data_home = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local/share")
+    for url in urls:
+        try:
+            profile = select_profile(url, rules)
+        except ValueError:
+            profile = None
+        if profile:
+            desktop = data_home / "applications" / profile
+            subprocess.run(["gio", "launch", str(desktop), url], check=True)
+        else:
+            subprocess.run(["junction", url], check=True)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
