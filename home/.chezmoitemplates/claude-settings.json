@@ -18,6 +18,9 @@
       "Bash(mise t:*)"
     ]
   },
+{{- if .work }}
+  "advisorModel": "fable",
+{{- end }}
   "model": "opus",
   "modelSettings": {
     "claude-fable-5-1": {
