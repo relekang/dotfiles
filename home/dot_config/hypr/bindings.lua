@@ -28,7 +28,7 @@
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
 
-o.bind("SUPER + SHIFT + T", "Center window at 60% width and full height", function()
+o.bind("SUPER + SHIFT + T", "Center window at 60% width below the bar", function()
   local window = hl.get_active_window()
   if not window then return end
 
@@ -39,8 +39,17 @@ o.bind("SUPER + SHIFT + T", "Center window at 60% width and full height", functi
     width, height = height, width
   end
 
+  local reserved = monitor.reserved
+  local border = hl.get_config("general.border_size")
+  local window_width = math.floor(width * 0.6)
+  local window_height = math.floor(height - reserved.top - reserved.bottom - 2 * border)
+
   hl.dispatch(hl.dsp.window.fullscreen_state({ internal = 0, client = 0 }))
   hl.dispatch(hl.dsp.window.float({ action = "set" }))
-  hl.dispatch(hl.dsp.window.resize({ x = math.floor(width * 0.6), y = math.floor(height) }))
-  hl.dispatch(hl.dsp.window.center())
+  hl.dispatch(hl.dsp.window.resize({ x = window_width, y = window_height }))
+  hl.dispatch(hl.dsp.window.move({
+    x = monitor.position.x + math.floor((width - window_width) / 2),
+    y = monitor.position.y + reserved.top + border,
+    relative = false,
+  }))
 end)
