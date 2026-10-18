@@ -1,5 +1,6 @@
 - ASD-STE100 Simplified Technical English when you talk to me and when writing comments, commits etc.
-- Use `jj` instead of git. If the repo does not have `.jj`, ask before you initialize `jj`.
+- Use `jj` instead of git.
+- Prefix all Git branch names and `jj` bookmark names with `rolf/`.
 - Use conventional commits. Do not use scopes. Use sentence case in the subject.
 - On GitHub, ask for permission before these actions:
   - Resolve comments, unless a skill explicitly allows it.
@@ -14,6 +15,7 @@
 
 In PRs:
 
+- Do not use Conventional Commit format for PR titles.
 - Prefix summaries written by an agent with `## :robot: summary`.
 - Use stacked PRs when the work has dependent changes that can be reviewed separately.
 - When you edit a PR that has dependent PRs, push the full stack, not only the edited PR.

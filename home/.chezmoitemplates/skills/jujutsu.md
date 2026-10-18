@@ -12,6 +12,8 @@ This skill helps you work with Jujutsu, a Git-compatible VCS with mutable commit
 
 ## Important: Automated/Agent Environment
 
+It is always permitted to initialize `jj` locally. Do not ask for permission. For an existing Git repository, use `jj git init --colocate`.
+
 When running as an agent:
 
 1. **Always use `-m` flags** to provide messages inline rather than relying on editor prompts:
