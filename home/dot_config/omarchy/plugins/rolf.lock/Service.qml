@@ -11,7 +11,7 @@ Builtin.Service {
   property var lockedAudioStates: []
 
   function syncLockAudio() {
-    if (root.locked) {
+    if (root.currentlyLocked()) {
       var sink = root.defaultSink
       if (!sink || !sink.ready || !sink.audio) return
       if (!root.lockedAudioStates.some(state => state.node === sink)) {
@@ -30,9 +30,16 @@ Builtin.Service {
     }
   }
 
-  onLockedChanged: root.syncLockAudio()
+  onLockRequestedChanged: root.syncLockAudio()
   onDefaultSinkChanged: {
-    if (root.locked) root.syncLockAudio()
+    if (root.currentlyLocked()) root.syncLockAudio()
+  }
+
+  Timer {
+    interval: 100
+    repeat: true
+    running: root.lockRequested || root.lockedAudioStates.length > 0
+    onTriggered: root.syncLockAudio()
   }
 
   PwObjectTracker {
@@ -42,14 +49,14 @@ Builtin.Service {
   Connections {
     target: root.defaultSink
     function onReadyChanged() {
-      if (root.locked) root.syncLockAudio()
+      if (root.currentlyLocked()) root.syncLockAudio()
     }
   }
 
   Connections {
     target: root.defaultSink ? root.defaultSink.audio : null
     function onMutedChanged() {
-      if (root.locked && !root.defaultSink.audio.muted) root.syncLockAudio()
+      if (root.currentlyLocked() && !root.defaultSink.audio.muted) root.syncLockAudio()
     }
   }
 
