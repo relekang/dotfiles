@@ -1,0 +1,6 @@
+[Unit]
+Description=Block sleep and lid-close suspend while connected to power
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/systemd-inhibit --what=idle:sleep:handle-lid-switch --who=Keep-awake-on-AC --why=Keep-displays-and-machine-on-while-charging --mode=block /usr/bin/sleep infinity

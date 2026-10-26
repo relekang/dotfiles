@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "rolf.lock",
+  "name": "Lock Screen (Always On With Charger)",
+  "version": "1.0.0",
+  "author": "rolf",
+  "description": "Keep displays and the machine on while connected to power. Use normal behavior on battery.",
+  "omarchy": {
+    "capabilities": [
+      "authentication"
+    ],
+    "clonedFrom": "omarchy.lock"
+  },
+  "kinds": [
+    "service"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Service.qml"
+  }
+}
