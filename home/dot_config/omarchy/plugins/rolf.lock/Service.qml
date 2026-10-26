@@ -1,10 +1,57 @@
 import QtQuick
 import Quickshell.Io
 import Quickshell.Services.UPower
+import Quickshell.Services.Pipewire
 import "file:/usr/share/omarchy/shell/plugins/lock" as Builtin
 
 Builtin.Service {
   id: root
+
+  readonly property var defaultSink: Pipewire.defaultAudioSink
+  property var lockedAudioStates: []
+
+  function syncLockAudio() {
+    if (root.locked) {
+      var sink = root.defaultSink
+      if (!sink || !sink.ready || !sink.audio) return
+      if (!root.lockedAudioStates.some(state => state.node === sink)) {
+        root.lockedAudioStates = root.lockedAudioStates.concat([{
+          node: sink, volume: sink.audio.volume, muted: sink.audio.muted
+        }])
+      }
+      sink.audio.muted = true
+    } else {
+      for (var state of root.lockedAudioStates) {
+        if (!state.node || !state.node.ready || !state.node.audio) continue
+        state.node.audio.volume = state.volume
+        state.node.audio.muted = state.muted
+      }
+      root.lockedAudioStates = []
+    }
+  }
+
+  onLockedChanged: root.syncLockAudio()
+  onDefaultSinkChanged: {
+    if (root.locked) root.syncLockAudio()
+  }
+
+  PwObjectTracker {
+    objects: (root.defaultSink ? [root.defaultSink] : []).concat(root.lockedAudioStates.map(state => state.node).filter(node => node !== null))
+  }
+
+  Connections {
+    target: root.defaultSink
+    function onReadyChanged() {
+      if (root.locked) root.syncLockAudio()
+    }
+  }
+
+  Connections {
+    target: root.defaultSink ? root.defaultSink.audio : null
+    function onMutedChanged() {
+      if (root.locked && !root.defaultSink.audio.muted) root.syncLockAudio()
+    }
+  }
 
   function runBlank() {
     if (!UPower.onBattery) return
