@@ -1,0 +1,3 @@
+- Most work should have a Linear ticket. Tiny chores do not need one.
+- Before you start work, look for related tasks in Linear. If you find one, ask whether it is the current task or whether a new task should be created. If you find none, ask whether to create a new task.
+- Mark the confirmed Linear task as In Progress when work starts. Do this early in grill-me sessions too, not only when implementation starts.
