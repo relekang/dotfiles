@@ -5,6 +5,6 @@ Exec=browser-router %u
 Terminal=false
 Type=Application
 Icon=web-browser
-MimeType=x-scheme-handler/http;x-scheme-handler/https;
 NoDisplay=true
 StartupNotify=false
+MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;x-scheme-handler/http;x-scheme-handler/https;
