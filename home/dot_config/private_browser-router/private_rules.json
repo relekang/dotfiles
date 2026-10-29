@@ -1,0 +1,12 @@
+{
+  "rules": [
+    {
+      "regex": "crdbrd|cardboard",
+      "profile": "work"
+    },
+    {
+      "domains": ["youtube.com", "youtu.be"],
+      "profile": "youtube"
+    }
+  ]
+}

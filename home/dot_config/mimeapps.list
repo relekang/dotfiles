@@ -1,0 +1,15 @@
+[Default Applications]
+text/html=browser-router.desktop
+x-scheme-handler/http=browser-router.desktop
+x-scheme-handler/https=browser-router.desktop
+x-scheme-handler/about=browser-router.desktop
+x-scheme-handler/unknown=browser-router.desktop
+x-scheme-handler/mailto=HEY.desktop
+x-scheme-handler/codex=chatgpt.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+text/xml=browser-router.desktop
+application/xhtml+xml=browser-router.desktop
+
+[Added Associations]
+x-scheme-handler/https=firefox-work.desktop;firefox-personal.desktop;chromium.desktop;
+text/html=firefox.desktop;
