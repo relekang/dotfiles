@@ -64,6 +64,8 @@ hl.config({
 --   },
 -- })
 
+o.window("^re\\.sonny\\.Junction$", { float = true, center = true })
+
 -- Opt another application in to Omarchy's standard transparency.
 -- Find its class with: hyprctl clients
 -- o.transparent_window("my-app")
