@@ -4,15 +4,11 @@ idiomatic_version_file_enable_tools = ["node"]
 minimum_release_age = "5d"
 
 [tools]
-claude = { version = "latest", auto_update = "2h", minimum_release_age = "1d" }
-codex = { version = "latest", auto_update = "2h", minimum_release_age = "1d" }
 jj = { version = "latest", auto_update = "2h" }
 herdr = { version = "latest", auto_update = "2h" }
 jjui = { version = "latest", auto_update = "2h" }
-gh = { version = "latest", auto_update = "2h" }
 glow = { version = "latest", auto_update = "2h" }
-node = { version = "24", auto_update = "2h" }
-pi = { version = "latest", auto_update = "2h", minimum_release_age = "1d" }
+node = { version = "26", auto_update = "2h" }
 go = { version = "latest", auto_update = "2h" }
 python = { version = "latest", auto_update = "2h" }
 terraform = { version = "latest", auto_update = "2h" }
@@ -27,8 +23,8 @@ ripgrep = { version = "latest", auto_update = "2h" }
 sops = { version = "latest", auto_update = "2h" }
 tmux = { version = "latest", auto_update = "2h" }
 fzf = { version = "latest", auto_update = "2h" }
-hunk = { version = "latest", auto_update = "2h" }
 "go:github.com/rakyll/hey" = { version = "latest", auto_update = "2h" }
 k9s = { version = "latest", auto_update = "2h" }
 pnpm = { version = "latest", auto_update = "2h" }
 "aqua:binwiederhier/ntfy" = { version = "latest", auto_update = "2h" }
+gcloud = "590.0.1"
