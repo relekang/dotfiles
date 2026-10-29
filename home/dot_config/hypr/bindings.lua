@@ -30,6 +30,10 @@
 
 hl.unbind("SUPER + SHIFT + P")
 hl.unbind("SUPER + SHIFT + B")
+hl.unbind("SUPER + CTRL + ALT + C")
+
+o.rebind("SUPER + SHIFT + S", "Screenshot", "omarchy-capture-screenshot")
+o.rebind("SUPER + SHIFT + ALT + S", "Google Maps", { webapp = "https://maps.google.com/", focus = true })
 
 o.bind("SUPER + SHIFT + P", "Personal", {
   launch = 'firefox --profile "$HOME/.config/mozilla/firefox/lr2techk.default-release"',
@@ -38,7 +42,7 @@ o.bind("SUPER + SHIFT + B", "Work", {
   launch = 'firefox --profile "$HOME/.config/mozilla/firefox/aTcdEM0K.Profile 1"',
 })
 
-o.bind("SUPER + SHIFT + T", "Center window at 60% width below the bar", function()
+o.rebind("SUPER + SHIFT + T", "Center window at 60% width below the bar", function()
   local window = hl.get_active_window()
   if not window then return end
 
